@@ -62,8 +62,8 @@
             this.txtVolumeFlow = new System.Windows.Forms.TextBox();
             this.txtDiameter = new System.Windows.Forms.TextBox();
             this.rioDiameter = new System.Windows.Forms.RadioButton();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
@@ -74,6 +74,8 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.txtVolumeFlow3 = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtIsoIndex3 = new System.Windows.Forms.TextBox();
             this.label46 = new System.Windows.Forms.Label();
             this.txtViscosity3 = new System.Windows.Forms.TextBox();
             this.txtEnthalpy3 = new System.Windows.Forms.TextBox();
@@ -87,6 +89,8 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.txtVolumeFlow2 = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txtIsoIndex2 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.txtViscosity2 = new System.Windows.Forms.TextBox();
             this.txtEnthalpy2 = new System.Windows.Forms.TextBox();
@@ -100,40 +104,50 @@
             this.label34 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.txtVolumeFlow1 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtIsoIndex1 = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.txtViscosity1 = new System.Windows.Forms.TextBox();
             this.txtEnthalpy1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkTemperature = new System.Windows.Forms.CheckBox();
-            this.chkPressure = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtPressure = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtState = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtMassFlow = new System.Windows.Forms.TextBox();
             this.txtTemperature = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.chkDataSync = new System.Windows.Forms.CheckBox();
             this.chkTopMost = new System.Windows.Forms.CheckBox();
-            this.txtState = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.cbxBolt = new System.Windows.Forms.ComboBox();
+            this.txtHoleSize = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // rioOperatingCondition
             // 
             this.rioOperatingCondition.AutoSize = true;
-            this.rioOperatingCondition.Location = new System.Drawing.Point(11, 181);
+            this.rioOperatingCondition.Location = new System.Drawing.Point(9, 188);
             this.rioOperatingCondition.Name = "rioOperatingCondition";
             this.rioOperatingCondition.Size = new System.Drawing.Size(71, 16);
             this.rioOperatingCondition.TabIndex = 3;
@@ -144,7 +158,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(186, 183);
+            this.label5.Location = new System.Drawing.Point(169, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 2;
@@ -154,7 +168,7 @@
             // 
             this.rioStandardCondition.AutoSize = true;
             this.rioStandardCondition.Checked = true;
-            this.rioStandardCondition.Location = new System.Drawing.Point(11, 147);
+            this.rioStandardCondition.Location = new System.Drawing.Point(9, 154);
             this.rioStandardCondition.Name = "rioStandardCondition";
             this.rioStandardCondition.Size = new System.Drawing.Size(71, 16);
             this.rioStandardCondition.TabIndex = 3;
@@ -166,7 +180,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(186, 149);
+            this.label6.Location = new System.Drawing.Point(169, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 12);
             this.label6.TabIndex = 2;
@@ -174,17 +188,17 @@
             // 
             // txtOperatingFlow
             // 
-            this.txtOperatingFlow.Location = new System.Drawing.Point(91, 179);
+            this.txtOperatingFlow.Location = new System.Drawing.Point(89, 186);
             this.txtOperatingFlow.Name = "txtOperatingFlow";
             this.txtOperatingFlow.ReadOnly = true;
-            this.txtOperatingFlow.Size = new System.Drawing.Size(91, 21);
-            this.txtOperatingFlow.TabIndex = 15;
+            this.txtOperatingFlow.Size = new System.Drawing.Size(75, 21);
+            this.txtOperatingFlow.TabIndex = 3;
             this.txtOperatingFlow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(188, 16);
+            this.label7.Location = new System.Drawing.Point(171, 23);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 12);
             this.label7.TabIndex = 2;
@@ -192,16 +206,16 @@
             // 
             // txtStandardFlow
             // 
-            this.txtStandardFlow.Location = new System.Drawing.Point(91, 145);
+            this.txtStandardFlow.Location = new System.Drawing.Point(89, 152);
             this.txtStandardFlow.Name = "txtStandardFlow";
-            this.txtStandardFlow.Size = new System.Drawing.Size(91, 21);
-            this.txtStandardFlow.TabIndex = 14;
+            this.txtStandardFlow.Size = new System.Drawing.Size(75, 21);
+            this.txtStandardFlow.TabIndex = 2;
             this.txtStandardFlow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 16);
+            this.label8.Location = new System.Drawing.Point(9, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 0;
@@ -209,24 +223,24 @@
             // 
             // txtOperatingPressure
             // 
-            this.txtOperatingPressure.Location = new System.Drawing.Point(91, 12);
+            this.txtOperatingPressure.Location = new System.Drawing.Point(89, 19);
             this.txtOperatingPressure.Name = "txtOperatingPressure";
-            this.txtOperatingPressure.Size = new System.Drawing.Size(91, 21);
-            this.txtOperatingPressure.TabIndex = 12;
+            this.txtOperatingPressure.Size = new System.Drawing.Size(75, 21);
+            this.txtOperatingPressure.TabIndex = 0;
             this.txtOperatingPressure.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtOperatingTemperature
             // 
-            this.txtOperatingTemperature.Location = new System.Drawing.Point(91, 45);
+            this.txtOperatingTemperature.Location = new System.Drawing.Point(89, 53);
             this.txtOperatingTemperature.Name = "txtOperatingTemperature";
-            this.txtOperatingTemperature.Size = new System.Drawing.Size(91, 21);
-            this.txtOperatingTemperature.TabIndex = 13;
+            this.txtOperatingTemperature.Size = new System.Drawing.Size(75, 21);
+            this.txtOperatingTemperature.TabIndex = 1;
             this.txtOperatingTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 49);
+            this.label9.Location = new System.Drawing.Point(9, 56);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 12);
             this.label9.TabIndex = 0;
@@ -235,7 +249,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(188, 49);
+            this.label10.Location = new System.Drawing.Point(171, 56);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(17, 12);
             this.label10.TabIndex = 2;
@@ -243,9 +257,9 @@
             // 
             // txtStandardPressure
             // 
-            this.txtStandardPressure.Location = new System.Drawing.Point(91, 78);
+            this.txtStandardPressure.Location = new System.Drawing.Point(89, 85);
             this.txtStandardPressure.Name = "txtStandardPressure";
-            this.txtStandardPressure.Size = new System.Drawing.Size(91, 21);
+            this.txtStandardPressure.Size = new System.Drawing.Size(75, 21);
             this.txtStandardPressure.TabIndex = 16;
             this.txtStandardPressure.Text = "0.1";
             this.txtStandardPressure.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -253,7 +267,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 82);
+            this.label11.Location = new System.Drawing.Point(9, 89);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 12);
             this.label11.TabIndex = 0;
@@ -261,9 +275,9 @@
             // 
             // txtStandardTemperature
             // 
-            this.txtStandardTemperature.Location = new System.Drawing.Point(91, 111);
+            this.txtStandardTemperature.Location = new System.Drawing.Point(89, 118);
             this.txtStandardTemperature.Name = "txtStandardTemperature";
-            this.txtStandardTemperature.Size = new System.Drawing.Size(91, 21);
+            this.txtStandardTemperature.Size = new System.Drawing.Size(75, 21);
             this.txtStandardTemperature.TabIndex = 17;
             this.txtStandardTemperature.Text = "0";
             this.txtStandardTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -271,7 +285,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(11, 115);
+            this.label12.Location = new System.Drawing.Point(9, 122);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(53, 12);
             this.label12.TabIndex = 0;
@@ -280,7 +294,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(188, 82);
+            this.label13.Location = new System.Drawing.Point(171, 89);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(29, 12);
             this.label13.TabIndex = 2;
@@ -289,7 +303,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(188, 115);
+            this.label14.Location = new System.Drawing.Point(171, 122);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(17, 12);
             this.label14.TabIndex = 2;
@@ -304,7 +318,7 @@
             this.tabControl1.Location = new System.Drawing.Point(5, 1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(416, 324);
+            this.tabControl1.Size = new System.Drawing.Size(416, 382);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.TabStop = false;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -318,7 +332,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(408, 298);
+            this.tabPage1.Size = new System.Drawing.Size(408, 356);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "管径计算";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -333,7 +347,7 @@
             this.lstVelocity.LabelWrap = false;
             this.lstVelocity.Location = new System.Drawing.Point(190, 14);
             this.lstVelocity.Name = "lstVelocity";
-            this.lstVelocity.Size = new System.Drawing.Size(213, 281);
+            this.lstVelocity.Size = new System.Drawing.Size(213, 336);
             this.lstVelocity.TabIndex = 5;
             this.lstVelocity.UseCompatibleStateImageBehavior = false;
             this.lstVelocity.View = System.Windows.Forms.View.Details;
@@ -352,7 +366,7 @@
             // 
             this.groupBox2.Location = new System.Drawing.Point(6, 133);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(178, 162);
+            this.groupBox2.Size = new System.Drawing.Size(178, 217);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "烟风管道";
@@ -460,47 +474,31 @@
             this.rioDiameter.UseVisualStyleBackColor = true;
             this.rioDiameter.CheckedChanged += new System.EventHandler(this.rioDiameter_CheckedChanged);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.rioOperatingCondition);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.txtOperatingPressure);
-            this.tabPage2.Controls.Add(this.rioStandardCondition);
-            this.tabPage2.Controls.Add(this.txtStandardPressure);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.txtOperatingFlow);
-            this.tabPage2.Controls.Add(this.txtOperatingTemperature);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.txtStandardTemperature);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.txtStandardFlow);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(408, 298);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "流量折算";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.groupBox6);
-            this.tabPage3.Controls.Add(this.groupBox4);
-            this.tabPage3.Controls.Add(this.groupBox5);
-            this.tabPage3.Controls.Add(this.groupBox3);
+            this.tabPage3.Controls.Add(this.groupBox8);
+            this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(408, 298);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "汽水性质";
+            this.tabPage3.Size = new System.Drawing.Size(408, 356);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "杂项功能";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox6);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.groupBox5);
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(408, 356);
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "汽水性质";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
@@ -513,12 +511,15 @@
             this.groupBox6.Controls.Add(this.label42);
             this.groupBox6.Controls.Add(this.label45);
             this.groupBox6.Controls.Add(this.txtVolumeFlow3);
+            this.groupBox6.Controls.Add(this.label36);
+            this.groupBox6.Controls.Add(this.txtIsoIndex3);
             this.groupBox6.Controls.Add(this.label46);
             this.groupBox6.Controls.Add(this.txtViscosity3);
             this.groupBox6.Controls.Add(this.txtEnthalpy3);
-            this.groupBox6.Location = new System.Drawing.Point(207, 149);
+            this.groupBox6.ForeColor = System.Drawing.Color.ForestGreen;
+            this.groupBox6.Location = new System.Drawing.Point(207, 182);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(192, 143);
+            this.groupBox6.Size = new System.Drawing.Size(192, 168);
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "饱和水";
@@ -535,7 +536,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(145, 114);
+            this.label38.Location = new System.Drawing.Point(146, 144);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(29, 12);
             this.label38.TabIndex = 5;
@@ -544,7 +545,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(145, 84);
+            this.label39.Location = new System.Drawing.Point(146, 84);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(17, 12);
             this.label39.TabIndex = 5;
@@ -552,10 +553,10 @@
             // 
             // txtDensity3
             // 
-            this.txtDensity3.Location = new System.Drawing.Point(60, 20);
+            this.txtDensity3.Location = new System.Drawing.Point(66, 20);
             this.txtDensity3.Name = "txtDensity3";
             this.txtDensity3.ReadOnly = true;
-            this.txtDensity3.Size = new System.Drawing.Size(79, 21);
+            this.txtDensity3.Size = new System.Drawing.Size(73, 21);
             this.txtDensity3.TabIndex = 1;
             this.txtDensity3.TabStop = false;
             this.txtDensity3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -563,7 +564,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(145, 54);
+            this.label40.Location = new System.Drawing.Point(146, 54);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(35, 12);
             this.label40.TabIndex = 5;
@@ -581,7 +582,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(145, 24);
+            this.label42.Location = new System.Drawing.Point(146, 24);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(35, 12);
             this.label42.TabIndex = 4;
@@ -590,7 +591,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(10, 114);
+            this.label45.Location = new System.Drawing.Point(10, 144);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(53, 12);
             this.label45.TabIndex = 2;
@@ -598,13 +599,32 @@
             // 
             // txtVolumeFlow3
             // 
-            this.txtVolumeFlow3.Location = new System.Drawing.Point(66, 110);
+            this.txtVolumeFlow3.Location = new System.Drawing.Point(66, 140);
             this.txtVolumeFlow3.Name = "txtVolumeFlow3";
             this.txtVolumeFlow3.ReadOnly = true;
             this.txtVolumeFlow3.Size = new System.Drawing.Size(73, 21);
             this.txtVolumeFlow3.TabIndex = 3;
             this.txtVolumeFlow3.TabStop = false;
             this.txtVolumeFlow3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(10, 114);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(53, 12);
+            this.label36.TabIndex = 2;
+            this.label36.Text = "等熵指数";
+            // 
+            // txtIsoIndex3
+            // 
+            this.txtIsoIndex3.Location = new System.Drawing.Point(66, 110);
+            this.txtIsoIndex3.Name = "txtIsoIndex3";
+            this.txtIsoIndex3.ReadOnly = true;
+            this.txtIsoIndex3.Size = new System.Drawing.Size(73, 21);
+            this.txtIsoIndex3.TabIndex = 3;
+            this.txtIsoIndex3.TabStop = false;
+            this.txtIsoIndex3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label46
             // 
@@ -627,10 +647,10 @@
             // 
             // txtEnthalpy3
             // 
-            this.txtEnthalpy3.Location = new System.Drawing.Point(60, 50);
+            this.txtEnthalpy3.Location = new System.Drawing.Point(66, 50);
             this.txtEnthalpy3.Name = "txtEnthalpy3";
             this.txtEnthalpy3.ReadOnly = true;
-            this.txtEnthalpy3.Size = new System.Drawing.Size(79, 21);
+            this.txtEnthalpy3.Size = new System.Drawing.Size(73, 21);
             this.txtEnthalpy3.TabIndex = 3;
             this.txtEnthalpy3.TabStop = false;
             this.txtEnthalpy3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -646,12 +666,15 @@
             this.groupBox4.Controls.Add(this.label26);
             this.groupBox4.Controls.Add(this.label27);
             this.groupBox4.Controls.Add(this.txtVolumeFlow2);
+            this.groupBox4.Controls.Add(this.label35);
+            this.groupBox4.Controls.Add(this.txtIsoIndex2);
             this.groupBox4.Controls.Add(this.label28);
             this.groupBox4.Controls.Add(this.txtViscosity2);
             this.groupBox4.Controls.Add(this.txtEnthalpy2);
-            this.groupBox4.Location = new System.Drawing.Point(6, 149);
+            this.groupBox4.ForeColor = System.Drawing.Color.Red;
+            this.groupBox4.Location = new System.Drawing.Point(6, 182);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(192, 143);
+            this.groupBox4.Size = new System.Drawing.Size(192, 168);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "饱和汽";
@@ -668,7 +691,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(145, 114);
+            this.label22.Location = new System.Drawing.Point(145, 144);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(29, 12);
             this.label22.TabIndex = 5;
@@ -723,7 +746,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(10, 114);
+            this.label27.Location = new System.Drawing.Point(10, 144);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(53, 12);
             this.label27.TabIndex = 2;
@@ -731,13 +754,32 @@
             // 
             // txtVolumeFlow2
             // 
-            this.txtVolumeFlow2.Location = new System.Drawing.Point(66, 110);
+            this.txtVolumeFlow2.Location = new System.Drawing.Point(66, 140);
             this.txtVolumeFlow2.Name = "txtVolumeFlow2";
             this.txtVolumeFlow2.ReadOnly = true;
             this.txtVolumeFlow2.Size = new System.Drawing.Size(73, 21);
             this.txtVolumeFlow2.TabIndex = 3;
             this.txtVolumeFlow2.TabStop = false;
             this.txtVolumeFlow2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(10, 114);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(53, 12);
+            this.label35.TabIndex = 2;
+            this.label35.Text = "等熵指数";
+            // 
+            // txtIsoIndex2
+            // 
+            this.txtIsoIndex2.Location = new System.Drawing.Point(66, 110);
+            this.txtIsoIndex2.Name = "txtIsoIndex2";
+            this.txtIsoIndex2.ReadOnly = true;
+            this.txtIsoIndex2.Size = new System.Drawing.Size(73, 21);
+            this.txtIsoIndex2.TabIndex = 3;
+            this.txtIsoIndex2.TabStop = false;
+            this.txtIsoIndex2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label28
             // 
@@ -779,12 +821,14 @@
             this.groupBox5.Controls.Add(this.label34);
             this.groupBox5.Controls.Add(this.label43);
             this.groupBox5.Controls.Add(this.txtVolumeFlow1);
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.txtIsoIndex1);
             this.groupBox5.Controls.Add(this.label44);
             this.groupBox5.Controls.Add(this.txtViscosity1);
             this.groupBox5.Controls.Add(this.txtEnthalpy1);
             this.groupBox5.Location = new System.Drawing.Point(207, 8);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(192, 135);
+            this.groupBox5.Size = new System.Drawing.Size(192, 168);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "过热汽/过冷水";
@@ -792,7 +836,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(10, 21);
+            this.label29.Location = new System.Drawing.Point(10, 23);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(29, 12);
             this.label29.TabIndex = 0;
@@ -801,7 +845,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(145, 111);
+            this.label30.Location = new System.Drawing.Point(145, 142);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(29, 12);
             this.label30.TabIndex = 5;
@@ -810,7 +854,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(145, 81);
+            this.label31.Location = new System.Drawing.Point(145, 83);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(17, 12);
             this.label31.TabIndex = 5;
@@ -819,7 +863,7 @@
             // txtDensity1
             // 
             this.txtDensity1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtDensity1.Location = new System.Drawing.Point(66, 17);
+            this.txtDensity1.Location = new System.Drawing.Point(66, 19);
             this.txtDensity1.Name = "txtDensity1";
             this.txtDensity1.ReadOnly = true;
             this.txtDensity1.Size = new System.Drawing.Size(73, 21);
@@ -830,7 +874,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(145, 51);
+            this.label32.Location = new System.Drawing.Point(145, 53);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(35, 12);
             this.label32.TabIndex = 5;
@@ -839,7 +883,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(10, 51);
+            this.label33.Location = new System.Drawing.Point(10, 53);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(29, 12);
             this.label33.TabIndex = 2;
@@ -848,7 +892,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(145, 21);
+            this.label34.Location = new System.Drawing.Point(145, 23);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(35, 12);
             this.label34.TabIndex = 4;
@@ -857,7 +901,7 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(10, 111);
+            this.label43.Location = new System.Drawing.Point(10, 142);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(53, 12);
             this.label43.TabIndex = 2;
@@ -865,7 +909,7 @@
             // 
             // txtVolumeFlow1
             // 
-            this.txtVolumeFlow1.Location = new System.Drawing.Point(66, 107);
+            this.txtVolumeFlow1.Location = new System.Drawing.Point(66, 138);
             this.txtVolumeFlow1.Name = "txtVolumeFlow1";
             this.txtVolumeFlow1.ReadOnly = true;
             this.txtVolumeFlow1.Size = new System.Drawing.Size(73, 21);
@@ -873,10 +917,29 @@
             this.txtVolumeFlow1.TabStop = false;
             this.txtVolumeFlow1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(10, 113);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(53, 12);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "等熵指数";
+            // 
+            // txtIsoIndex1
+            // 
+            this.txtIsoIndex1.Location = new System.Drawing.Point(66, 109);
+            this.txtIsoIndex1.Name = "txtIsoIndex1";
+            this.txtIsoIndex1.ReadOnly = true;
+            this.txtIsoIndex1.Size = new System.Drawing.Size(73, 21);
+            this.txtIsoIndex1.TabIndex = 3;
+            this.txtIsoIndex1.TabStop = false;
+            this.txtIsoIndex1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(10, 81);
+            this.label44.Location = new System.Drawing.Point(10, 83);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(53, 12);
             this.label44.TabIndex = 2;
@@ -884,7 +947,7 @@
             // 
             // txtViscosity1
             // 
-            this.txtViscosity1.Location = new System.Drawing.Point(66, 77);
+            this.txtViscosity1.Location = new System.Drawing.Point(66, 79);
             this.txtViscosity1.Name = "txtViscosity1";
             this.txtViscosity1.ReadOnly = true;
             this.txtViscosity1.Size = new System.Drawing.Size(73, 21);
@@ -894,7 +957,7 @@
             // 
             // txtEnthalpy1
             // 
-            this.txtEnthalpy1.Location = new System.Drawing.Point(66, 47);
+            this.txtEnthalpy1.Location = new System.Drawing.Point(66, 49);
             this.txtEnthalpy1.Name = "txtEnthalpy1";
             this.txtEnthalpy1.ReadOnly = true;
             this.txtEnthalpy1.Size = new System.Drawing.Size(73, 21);
@@ -904,56 +967,28 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.chkTemperature);
-            this.groupBox3.Controls.Add(this.chkPressure);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.txtPressure);
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.txtState);
+            this.groupBox3.Controls.Add(this.label48);
+            this.groupBox3.Controls.Add(this.label47);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.txtMassFlow);
             this.groupBox3.Controls.Add(this.txtTemperature);
             this.groupBox3.Location = new System.Drawing.Point(6, 8);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(192, 135);
+            this.groupBox3.Size = new System.Drawing.Size(192, 168);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "汽水参数";
             // 
-            // chkTemperature
-            // 
-            this.chkTemperature.AutoSize = true;
-            this.chkTemperature.Checked = true;
-            this.chkTemperature.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkTemperature.Location = new System.Drawing.Point(10, 49);
-            this.chkTemperature.Name = "chkTemperature";
-            this.chkTemperature.Size = new System.Drawing.Size(48, 16);
-            this.chkTemperature.TabIndex = 6;
-            this.chkTemperature.TabStop = false;
-            this.chkTemperature.Text = "温度";
-            this.chkTemperature.UseVisualStyleBackColor = true;
-            this.chkTemperature.CheckedChanged += new System.EventHandler(this.chkTemperature_CheckedChanged);
-            // 
-            // chkPressure
-            // 
-            this.chkPressure.AutoSize = true;
-            this.chkPressure.Checked = true;
-            this.chkPressure.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPressure.Location = new System.Drawing.Point(10, 19);
-            this.chkPressure.Name = "chkPressure";
-            this.chkPressure.Size = new System.Drawing.Size(48, 16);
-            this.chkPressure.TabIndex = 6;
-            this.chkPressure.TabStop = false;
-            this.chkPressure.Text = "压力";
-            this.chkPressure.UseVisualStyleBackColor = true;
-            this.chkPressure.CheckedChanged += new System.EventHandler(this.chkPressure_CheckedChanged);
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(145, 81);
+            this.label20.Location = new System.Drawing.Point(145, 83);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(23, 12);
             this.label20.TabIndex = 5;
@@ -961,7 +996,7 @@
             // 
             // txtPressure
             // 
-            this.txtPressure.Location = new System.Drawing.Point(66, 17);
+            this.txtPressure.Location = new System.Drawing.Point(66, 19);
             this.txtPressure.Name = "txtPressure";
             this.txtPressure.Size = new System.Drawing.Size(73, 21);
             this.txtPressure.TabIndex = 0;
@@ -970,7 +1005,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(145, 51);
+            this.label19.Location = new System.Drawing.Point(145, 53);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(17, 12);
             this.label19.TabIndex = 5;
@@ -979,16 +1014,35 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(145, 21);
+            this.label18.Location = new System.Drawing.Point(145, 23);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(29, 12);
             this.label18.TabIndex = 4;
             this.label18.Text = "MPaA";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(10, 113);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(29, 12);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "区间";
+            // 
+            // txtState
+            // 
+            this.txtState.Location = new System.Drawing.Point(66, 109);
+            this.txtState.Name = "txtState";
+            this.txtState.ReadOnly = true;
+            this.txtState.Size = new System.Drawing.Size(73, 21);
+            this.txtState.TabIndex = 2;
+            this.txtState.TabStop = false;
+            this.txtState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 81);
+            this.label17.Location = new System.Drawing.Point(10, 83);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(53, 12);
             this.label17.TabIndex = 2;
@@ -996,7 +1050,7 @@
             // 
             // txtMassFlow
             // 
-            this.txtMassFlow.Location = new System.Drawing.Point(66, 77);
+            this.txtMassFlow.Location = new System.Drawing.Point(66, 79);
             this.txtMassFlow.Name = "txtMassFlow";
             this.txtMassFlow.Size = new System.Drawing.Size(73, 21);
             this.txtMassFlow.TabIndex = 2;
@@ -1004,7 +1058,7 @@
             // 
             // txtTemperature
             // 
-            this.txtTemperature.Location = new System.Drawing.Point(66, 47);
+            this.txtTemperature.Location = new System.Drawing.Point(66, 49);
             this.txtTemperature.Name = "txtTemperature";
             this.txtTemperature.Size = new System.Drawing.Size(73, 21);
             this.txtTemperature.TabIndex = 1;
@@ -1017,9 +1071,9 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(408, 298);
+            this.tabPage4.Size = new System.Drawing.Size(408, 356);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "杂项";
+            this.tabPage4.Text = "软件配置";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // chkDataSync
@@ -1046,30 +1100,115 @@
             this.chkTopMost.UseVisualStyleBackColor = true;
             this.chkTopMost.CheckedChanged += new System.EventHandler(this.chkTopMost_CheckedChanged);
             // 
-            // txtState
+            // label47
             // 
-            this.txtState.Location = new System.Drawing.Point(66, 107);
-            this.txtState.Name = "txtState";
-            this.txtState.ReadOnly = true;
-            this.txtState.Size = new System.Drawing.Size(73, 21);
-            this.txtState.TabIndex = 2;
-            this.txtState.TabStop = false;
-            this.txtState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(10, 23);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(29, 12);
+            this.label47.TabIndex = 2;
+            this.label47.Text = "压力";
             // 
-            // label15
+            // label48
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 111);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(29, 12);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "区间";
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(10, 53);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(29, 12);
+            this.label48.TabIndex = 2;
+            this.label48.Text = "温度";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label8);
+            this.groupBox7.Controls.Add(this.rioOperatingCondition);
+            this.groupBox7.Controls.Add(this.txtStandardFlow);
+            this.groupBox7.Controls.Add(this.label7);
+            this.groupBox7.Controls.Add(this.label5);
+            this.groupBox7.Controls.Add(this.label12);
+            this.groupBox7.Controls.Add(this.txtOperatingPressure);
+            this.groupBox7.Controls.Add(this.label13);
+            this.groupBox7.Controls.Add(this.rioStandardCondition);
+            this.groupBox7.Controls.Add(this.label9);
+            this.groupBox7.Controls.Add(this.txtStandardPressure);
+            this.groupBox7.Controls.Add(this.label10);
+            this.groupBox7.Controls.Add(this.label6);
+            this.groupBox7.Controls.Add(this.txtStandardTemperature);
+            this.groupBox7.Controls.Add(this.label11);
+            this.groupBox7.Controls.Add(this.label14);
+            this.groupBox7.Controls.Add(this.txtOperatingFlow);
+            this.groupBox7.Controls.Add(this.txtOperatingTemperature);
+            this.groupBox7.Location = new System.Drawing.Point(6, 9);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(208, 218);
+            this.groupBox7.TabIndex = 18;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "流量折算";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.cbxBolt);
+            this.groupBox8.Controls.Add(this.label50);
+            this.groupBox8.Controls.Add(this.label49);
+            this.groupBox8.Controls.Add(this.txtHoleSize);
+            this.groupBox8.Location = new System.Drawing.Point(6, 241);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(208, 81);
+            this.groupBox8.TabIndex = 1;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "预留螺栓孔";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(9, 25);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(53, 12);
+            this.label49.TabIndex = 0;
+            this.label49.Text = "螺栓规格";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(9, 56);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(53, 12);
+            this.label50.TabIndex = 0;
+            this.label50.Text = "开孔规格";
+            // 
+            // cbxBolt
+            // 
+            this.cbxBolt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxBolt.FormattingEnabled = true;
+            this.cbxBolt.Items.AddRange(new object[] {
+            "M12",
+            "M14",
+            "M16",
+            "M18",
+            "M20",
+            "M22",
+            "M24",
+            "M27"});
+            this.cbxBolt.Location = new System.Drawing.Point(89, 21);
+            this.cbxBolt.Name = "cbxBolt";
+            this.cbxBolt.Size = new System.Drawing.Size(109, 20);
+            this.cbxBolt.TabIndex = 20;
+            this.cbxBolt.SelectedIndexChanged += new System.EventHandler(this.cbxBolt_SelectedIndexChanged);
+            // 
+            // txtHoleSize
+            // 
+            this.txtHoleSize.Location = new System.Drawing.Point(89, 52);
+            this.txtHoleSize.Name = "txtHoleSize";
+            this.txtHoleSize.ReadOnly = true;
+            this.txtHoleSize.Size = new System.Drawing.Size(109, 21);
+            this.txtHoleSize.TabIndex = 0;
+            this.txtHoleSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 337);
+            this.ClientSize = new System.Drawing.Size(424, 381);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
@@ -1080,9 +1219,8 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1093,6 +1231,10 @@
             this.groupBox3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1128,8 +1270,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtVelocity;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.CheckBox chkTopMost;
         private System.Windows.Forms.CheckBox chkDataSync;
@@ -1172,8 +1314,6 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.TextBox txtViscosity3;
         private System.Windows.Forms.TextBox txtEnthalpy3;
-        private System.Windows.Forms.CheckBox chkTemperature;
-        private System.Windows.Forms.CheckBox chkPressure;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
@@ -1189,6 +1329,20 @@
         private System.Windows.Forms.TextBox txtEnthalpy2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtState;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtIsoIndex3;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox txtIsoIndex2;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtIsoIndex1;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.ComboBox cbxBolt;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TextBox txtHoleSize;
     }
 }
 

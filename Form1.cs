@@ -36,11 +36,15 @@ namespace ThermalMate
             bool.TryParse(_xmlHelper.GetOnlyInnerText("//Config/DataSync"), out isDataSync);
             chkDataSync.Checked = isDataSync;
 
-            //MessageBox.Show(_xmlHelper.GetOnlyInnerText("//Velocity/蒸汽管道"));
             var materials = _xmlHelper.GetElementNames("//Velocity/*").ToList();
             var velocities = _xmlHelper.GetInnerTexts("//Velocity/*").ToList();
             for (var i = 0; i < materials.Count; i++)
             {
+                if (materials[i].Contains("分隔线"))
+                {
+                    lstVelocity.Items.Add(new ListViewItem(new[] { "////////////////////", "////////" }));
+                    continue;
+                }
                 lstVelocity.Items.Add(new ListViewItem(new[] { materials[i], velocities[i] }));
             }
 
@@ -49,7 +53,6 @@ namespace ThermalMate
             {
                 lstVelocity.Items[i].BackColor = i % 2 == 0 ? Color.GreenYellow : Color.BurlyWood;
             }
-
         }
 
         private void tabPage1_Action()
@@ -75,6 +78,152 @@ namespace ThermalMate
         }
 
         private void tabPage2_Action()
+        {
+            // 清空编辑框
+            foreach (var g in tabPage2.Controls)
+            {
+                if (g is GroupBox)
+                {
+                    foreach (var txt in ((GroupBox)g).Controls)
+                    {
+                        if (txt is TextBox && ((TextBox)txt).ReadOnly)
+                        {
+                            ((TextBox)txt).Clear();
+                        }
+                    }
+                }
+            }
+
+            double massFlow, pressure, temperature, retValue=0.0;
+            var range = 0;
+            double.TryParse(txtMassFlow.Text, out massFlow);
+            double.TryParse(txtPressure.Text, out pressure);
+            double.TryParse(txtTemperature.Text, out temperature);
+
+            // 使用IFC97标准
+            SETSTD_WASP(97);
+
+            if (string.Empty != txtPressure.Text.Trim() && string.Empty != txtTemperature.Text.Trim())
+            {// 过热汽
+                PT2V(pressure, temperature, ref retValue, ref range);
+                var volumeFlow = massFlow * 1000 * retValue;
+                txtVolumeFlow1.Text = Math.Round(volumeFlow, 1).ToString();
+                txtDensity1.Text = Math.Round(1 / retValue, 3).ToString();
+
+                PT2H(pressure, temperature, ref retValue, ref range);
+                txtEnthalpy1.Text = Math.Round(retValue, 2).ToString();
+
+                PT2ETA(pressure, temperature, ref retValue, ref range);
+                txtViscosity1.Text = Math.Round(retValue * 1000, 3).ToString();
+
+                PT2KS(pressure, temperature, ref retValue, ref range);
+                txtIsoIndex1.Text = Math.Round(retValue, 3).ToString();
+
+                if (chkDataSync.Checked)
+                {
+                    // 数据同步
+                    txtVolumeFlow.Text = txtVolumeFlow1.Text;
+                    tabControl1.SelectedIndex = 0;
+                    txtDiameter.Clear();
+                    txtVelocity.Clear();
+                    if (rioDiameter.Checked)
+                    {
+                        txtDiameter.Focus();
+                    }
+                    else if (rioVelocity.Checked)
+                    {
+                        txtVelocity.Focus();
+                    }
+                }
+            }
+            else if (string.Empty != txtPressure.Text.Trim() && string.Empty ==txtTemperature.Text.Trim())
+            {
+                P2T(pressure, ref retValue, ref range);
+                txtTemperature.Text = Math.Round(retValue, 1).ToString();
+
+                // 饱和汽
+                P2VG(pressure, ref retValue, ref range);
+                var volumeFlow = massFlow * 1000 * retValue;
+                txtVolumeFlow2.Text = Math.Round(volumeFlow, 1).ToString();
+                txtDensity2.Text = Math.Round(1 / retValue, 3).ToString();
+
+                P2HG(pressure, ref retValue, ref range);
+                txtEnthalpy2.Text = Math.Round(retValue, 2).ToString();
+
+                P2ETAG(pressure, ref retValue, ref range);
+                txtViscosity2.Text = Math.Round(retValue * 1000, 3).ToString();
+
+                P2KSG(pressure, ref retValue, ref range);
+                txtIsoIndex2.Text = Math.Round(retValue, 3).ToString();
+
+                // 饱和水
+                P2VL(pressure, ref retValue, ref range);
+                volumeFlow = massFlow * 1000 * retValue;
+                txtVolumeFlow3.Text = Math.Round(volumeFlow, 1).ToString();
+                txtDensity3.Text = Math.Round(1 / retValue, 3).ToString();
+
+                P2HL(pressure, ref retValue, ref range);
+                txtEnthalpy3.Text = Math.Round(retValue, 2).ToString();
+
+                P2ETAL(pressure, ref retValue, ref range);
+                txtViscosity3.Text = Math.Round(retValue * 1000, 3).ToString();
+
+                P2KSL(pressure, ref retValue, ref range);
+                txtIsoIndex3.Text = Math.Round(retValue, 3).ToString();
+            }
+            else if (string.Empty == txtPressure.Text.Trim() && string.Empty != txtTemperature.Text.Trim())
+            {
+                T2P(temperature, ref retValue, ref range);
+                txtPressure.Text = Math.Round(retValue, 3).ToString();
+
+                // 饱和汽
+                T2VG(temperature, ref retValue, ref range);
+                var volumeFlow = massFlow * 1000 * retValue;
+                txtVolumeFlow2.Text = Math.Round(volumeFlow, 1).ToString();
+                txtDensity2.Text = Math.Round(1 / retValue, 3).ToString();
+
+                T2HG(temperature, ref retValue, ref range);
+                txtEnthalpy2.Text = Math.Round(retValue, 2).ToString();
+
+                T2ETAG(temperature, ref retValue, ref range);
+                txtViscosity2.Text = Math.Round(retValue * 1000, 3).ToString();
+
+                T2KSG(temperature, ref retValue, ref range);
+                txtIsoIndex2.Text = Math.Round(retValue, 3).ToString();
+
+                // 饱和水
+                T2VL(temperature, ref retValue, ref range);
+                volumeFlow = massFlow * 1000 * retValue;
+                txtVolumeFlow3.Text = Math.Round(volumeFlow, 1).ToString();
+                txtDensity3.Text = Math.Round(1 / retValue, 3).ToString();
+
+                T2HL(temperature, ref retValue, ref range);
+                txtEnthalpy3.Text = Math.Round(retValue, 2).ToString();
+
+                T2ETAL(temperature, ref retValue, ref range);
+                txtViscosity3.Text = Math.Round(retValue * 1000, 3).ToString();
+
+                T2KSL(temperature, ref retValue, ref range);
+                txtIsoIndex3.Text = Math.Round(retValue, 3).ToString();
+            }
+
+            // 区间判断
+            switch (range)
+            {
+                case 1:
+                    txtState.Text = "过冷区";
+                    break;
+                case 2:
+                    txtState.Text = "过热区";
+                    break;
+                case 4:
+                    txtState.Text = "饱和区";
+                    break;
+            }
+            
+        }
+
+        private void tabPage3_Action()
         {
             double op, ot, of, sp, st, sf;
             double.TryParse(txtOperatingPressure.Text, out op);
@@ -113,105 +262,6 @@ namespace ThermalMate
                     txtVelocity.Focus();
                 }
             }
-        }
-
-        private void tabPage3_Action()
-        {
-            // 清空编辑框
-            foreach (var group in tabPage3.Controls)
-            {
-                if (group is GroupBox)
-                {
-                    foreach (var txt in ((GroupBox)group).Controls)
-                    {
-                        if (txt is TextBox && ((TextBox)txt).ReadOnly)
-                        {
-                            ((TextBox)txt).Clear();
-                        }
-                    }
-                }
-            }
-
-            double massFlow, pressure, temperature, retValue=0.0;
-            var range = 0;
-            double.TryParse(txtMassFlow.Text, out massFlow);
-            double.TryParse(txtPressure.Text, out pressure);
-            double.TryParse(txtTemperature.Text, out temperature);
-
-            // 使用IFC97标准
-            SETSTD_WASP(97);
-
-            if (chkTemperature.Checked && chkPressure.Checked)
-            {// 过热汽
-                PT2V(pressure, temperature, ref retValue, ref range);
-                var volumeFlow = massFlow * 1000 * retValue;
-                txtVolumeFlow1.Text = Math.Round(volumeFlow, 1).ToString();
-                txtDensity1.Text = Math.Round(1 / retValue, 3).ToString();
-
-                PT2H(pressure, temperature, ref retValue, ref range);
-                txtEnthalpy1.Text = Math.Round(retValue, 2).ToString();
-
-                PT2ETA(pressure, temperature, ref retValue, ref range);
-                txtViscosity1.Text = Math.Round(retValue * 1000, 3).ToString();
-
-                if (chkDataSync.Checked)
-                {
-                    // 数据同步
-                    txtVolumeFlow.Text = txtVolumeFlow1.Text;
-                    tabControl1.SelectedIndex = 0;
-                    txtDiameter.Clear();
-                    txtVelocity.Clear();
-                    if (rioDiameter.Checked)
-                    {
-                        txtDiameter.Focus();
-                    }
-                    else if (rioVelocity.Checked)
-                    {
-                        txtVelocity.Focus();
-                    }
-                }
-            }
-            else if (!chkTemperature.Checked && chkPressure.Checked)
-            {
-                P2T(pressure, ref retValue, ref range);
-                txtTemperature.Text = Math.Round(retValue, 1).ToString();
-
-                // 饱和汽
-                P2VG(pressure, ref retValue, ref range);
-                var volumeFlow = massFlow * 1000 * retValue;
-                txtVolumeFlow2.Text = Math.Round(volumeFlow, 1).ToString();
-                txtDensity2.Text = Math.Round(1 / retValue, 3).ToString();
-
-                P2HG(pressure, ref retValue, ref range);
-                txtEnthalpy2.Text = Math.Round(retValue, 2).ToString();
-
-                P2ETAG(pressure, ref retValue, ref range);
-                txtViscosity2.Text = Math.Round(retValue * 1000, 3).ToString();
-
-                // 饱和水
-                P2VL(pressure, ref retValue, ref range);
-                volumeFlow = massFlow * 1000 * retValue;
-                txtVolumeFlow3.Text = Math.Round(volumeFlow, 1).ToString();
-                txtDensity3.Text = Math.Round(1 / retValue, 3).ToString();
-
-                P2HL(pressure, ref retValue, ref range);
-                txtEnthalpy3.Text = Math.Round(retValue, 2).ToString();
-
-                P2ETAL(pressure, ref retValue, ref range);
-                txtViscosity3.Text = Math.Round(retValue * 1000, 3).ToString();
-            }
-
-            // 区间判断
-            switch (range)
-            {
-                case 1:
-                    txtState.Text = "过冷水";
-                    break;
-                case 2:
-                    txtState.Text = "过热蒸汽";
-                    break;
-            }
-            
         }
 
         private void tabControl1_KeyDown(object sender, KeyEventArgs e)
@@ -258,6 +308,11 @@ namespace ThermalMate
             }
         }
 
+        private void cbxBolt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var bolt = cbxBolt.Text;
+            txtHoleSize.Text = _xmlHelper.GetOnlyInnerText("//BlotHole/" + bolt);
+        }
 
         #region 界面代码
         private void rioStandardCondition_CheckedChanged(object sender, EventArgs e)
@@ -319,17 +374,6 @@ namespace ThermalMate
             _xmlHelper.SetInnerText("//Config/DataSync", chkDataSync.Checked ? "true" : "false");
         }
 
-        private void chkPressure_CheckedChanged(object sender, EventArgs e)
-        {
-            txtPressure.ReadOnly = !chkPressure.Checked;
-        }
-
-        private void chkTemperature_CheckedChanged(object sender, EventArgs e)
-        {
-            txtTemperature.ReadOnly = !chkTemperature.Checked;
-        }
-
-
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl1.SelectedTab.TabIndex)
@@ -379,6 +423,5 @@ namespace ThermalMate
 
 
         #endregion
-
     }
 }
