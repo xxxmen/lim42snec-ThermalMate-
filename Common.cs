@@ -12,6 +12,12 @@ namespace ThermalMate
     public partial class Form1
     {
         private XmlHelper _xmlHelper;
+
+        private static void Copy2Clipboard(string context)
+        {
+            Clipboard.Clear();
+            Clipboard.SetData(DataFormats.Text, context);
+        }
         private void ReleaseResource(string filePath, string resourceName)
         {
             // 获取当前正在执行的程序集

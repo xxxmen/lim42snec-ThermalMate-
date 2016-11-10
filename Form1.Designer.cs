@@ -62,7 +62,6 @@
             this.txtVolumeFlow = new System.Windows.Forms.TextBox();
             this.txtDiameter = new System.Windows.Forms.TextBox();
             this.rioDiameter = new System.Windows.Forms.RadioButton();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -116,32 +115,56 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtState = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txtMassFlow = new System.Windows.Forms.TextBox();
             this.txtTemperature = new System.Windows.Forms.TextBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.chkDataSync = new System.Windows.Forms.CheckBox();
-            this.chkTopMost = new System.Windows.Forms.CheckBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.grpPipe = new System.Windows.Forms.GroupBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.cbxStandard = new System.Windows.Forms.ComboBox();
+            this.cbxSpecification = new System.Windows.Forms.ComboBox();
+            this.cbxProject = new System.Windows.Forms.ComboBox();
+            this.txtMaterial = new System.Windows.Forms.TextBox();
+            this.txtPw = new System.Windows.Forms.TextBox();
+            this.txtDi = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.cmbNominalDiameter = new System.Windows.Forms.ComboBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.txtThk = new System.Windows.Forms.TextBox();
+            this.txtDo = new System.Windows.Forms.TextBox();
+            this.txtSCH = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
+            this.cbxEquipmentType = new System.Windows.Forms.ComboBox();
             this.cbxBolt = new System.Windows.Forms.ComboBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
             this.txtHoleSize = new System.Windows.Forms.TextBox();
+            this.grpFlowConversion = new System.Windows.Forms.GroupBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.chkTopMost = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.grpPipe.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.grpFlowConversion.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // rioOperatingCondition
@@ -194,6 +217,7 @@
             this.txtOperatingFlow.Size = new System.Drawing.Size(75, 21);
             this.txtOperatingFlow.TabIndex = 3;
             this.txtOperatingFlow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtOperatingFlow.DoubleClick += new System.EventHandler(this.sendtoVolumeFlow_DoubleClick);
             // 
             // label7
             // 
@@ -474,18 +498,6 @@
             this.rioDiameter.UseVisualStyleBackColor = true;
             this.rioDiameter.CheckedChanged += new System.EventHandler(this.rioDiameter_CheckedChanged);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.groupBox8);
-            this.tabPage3.Controls.Add(this.groupBox7);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(408, 356);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "杂项功能";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox6);
@@ -606,6 +618,7 @@
             this.txtVolumeFlow3.TabIndex = 3;
             this.txtVolumeFlow3.TabStop = false;
             this.txtVolumeFlow3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVolumeFlow3.DoubleClick += new System.EventHandler(this.sendtoVolumeFlow_DoubleClick);
             // 
             // label36
             // 
@@ -761,6 +774,7 @@
             this.txtVolumeFlow2.TabIndex = 3;
             this.txtVolumeFlow2.TabStop = false;
             this.txtVolumeFlow2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVolumeFlow2.DoubleClick += new System.EventHandler(this.sendtoVolumeFlow_DoubleClick);
             // 
             // label35
             // 
@@ -916,6 +930,7 @@
             this.txtVolumeFlow1.TabIndex = 3;
             this.txtVolumeFlow1.TabStop = false;
             this.txtVolumeFlow1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVolumeFlow1.DoubleClick += new System.EventHandler(this.sendtoVolumeFlow_DoubleClick);
             // 
             // label16
             // 
@@ -1039,6 +1054,24 @@
             this.txtState.TabStop = false;
             this.txtState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(10, 53);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(29, 12);
+            this.label48.TabIndex = 2;
+            this.label48.Text = "温度";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(10, 23);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(29, 12);
+            this.label47.TabIndex = 2;
+            this.label47.Text = "压力";
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -1064,9 +1097,406 @@
             this.txtTemperature.TabIndex = 1;
             this.txtTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.grpPipe);
+            this.tabPage3.Controls.Add(this.groupBox8);
+            this.tabPage3.Controls.Add(this.grpFlowConversion);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(408, 356);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "杂项功能";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // grpPipe
+            // 
+            this.grpPipe.Controls.Add(this.label57);
+            this.grpPipe.Controls.Add(this.cbxStandard);
+            this.grpPipe.Controls.Add(this.cbxSpecification);
+            this.grpPipe.Controls.Add(this.cbxProject);
+            this.grpPipe.Controls.Add(this.txtMaterial);
+            this.grpPipe.Controls.Add(this.txtPw);
+            this.grpPipe.Controls.Add(this.txtDi);
+            this.grpPipe.Controls.Add(this.label58);
+            this.grpPipe.Controls.Add(this.label56);
+            this.grpPipe.Controls.Add(this.cmbNominalDiameter);
+            this.grpPipe.Controls.Add(this.label52);
+            this.grpPipe.Controls.Add(this.label53);
+            this.grpPipe.Controls.Add(this.label62);
+            this.grpPipe.Controls.Add(this.label54);
+            this.grpPipe.Controls.Add(this.label59);
+            this.grpPipe.Controls.Add(this.txtThk);
+            this.grpPipe.Controls.Add(this.txtDo);
+            this.grpPipe.Controls.Add(this.txtSCH);
+            this.grpPipe.Controls.Add(this.label60);
+            this.grpPipe.Controls.Add(this.label55);
+            this.grpPipe.Location = new System.Drawing.Point(220, 9);
+            this.grpPipe.Name = "grpPipe";
+            this.grpPipe.Size = new System.Drawing.Size(182, 340);
+            this.grpPipe.TabIndex = 28;
+            this.grpPipe.TabStop = false;
+            this.grpPipe.Text = "管子参数";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(9, 23);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(53, 12);
+            this.label57.TabIndex = 12;
+            this.label57.Text = "项目名称";
+            // 
+            // cbxStandard
+            // 
+            this.cbxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxStandard.FormattingEnabled = true;
+            this.cbxStandard.Items.AddRange(new object[] {
+            "SHT3405-1996",
+            "SHT3405-2012"});
+            this.cbxStandard.Location = new System.Drawing.Point(73, 83);
+            this.cbxStandard.Name = "cbxStandard";
+            this.cbxStandard.Size = new System.Drawing.Size(96, 20);
+            this.cbxStandard.TabIndex = 20;
+            this.cbxStandard.TabStop = false;
+            // 
+            // cbxSpecification
+            // 
+            this.cbxSpecification.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSpecification.FormattingEnabled = true;
+            this.cbxSpecification.Location = new System.Drawing.Point(73, 51);
+            this.cbxSpecification.Name = "cbxSpecification";
+            this.cbxSpecification.Size = new System.Drawing.Size(96, 20);
+            this.cbxSpecification.TabIndex = 20;
+            this.cbxSpecification.TabStop = false;
+            // 
+            // cbxProject
+            // 
+            this.cbxProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxProject.FormattingEnabled = true;
+            this.cbxProject.Location = new System.Drawing.Point(73, 19);
+            this.cbxProject.Name = "cbxProject";
+            this.cbxProject.Size = new System.Drawing.Size(96, 20);
+            this.cbxProject.TabIndex = 20;
+            this.cbxProject.TabStop = false;
+            this.cbxProject.SelectedIndexChanged += new System.EventHandler(this.cbxProject_SelectedIndexChanged);
+            // 
+            // txtMaterial
+            // 
+            this.txtMaterial.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtMaterial.ForeColor = System.Drawing.Color.Red;
+            this.txtMaterial.Location = new System.Drawing.Point(73, 307);
+            this.txtMaterial.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtMaterial.Name = "txtMaterial";
+            this.txtMaterial.ReadOnly = true;
+            this.txtMaterial.Size = new System.Drawing.Size(96, 21);
+            this.txtMaterial.TabIndex = 25;
+            this.txtMaterial.TabStop = false;
+            this.txtMaterial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtPw
+            // 
+            this.txtPw.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtPw.ForeColor = System.Drawing.Color.Red;
+            this.txtPw.Location = new System.Drawing.Point(73, 275);
+            this.txtPw.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtPw.Name = "txtPw";
+            this.txtPw.ReadOnly = true;
+            this.txtPw.Size = new System.Drawing.Size(96, 21);
+            this.txtPw.TabIndex = 25;
+            this.txtPw.TabStop = false;
+            this.txtPw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtDi
+            // 
+            this.txtDi.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtDi.ForeColor = System.Drawing.Color.Blue;
+            this.txtDi.Location = new System.Drawing.Point(73, 243);
+            this.txtDi.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtDi.Name = "txtDi";
+            this.txtDi.ReadOnly = true;
+            this.txtDi.Size = new System.Drawing.Size(96, 21);
+            this.txtDi.TabIndex = 26;
+            this.txtDi.TabStop = false;
+            this.txtDi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDi.DoubleClick += new System.EventHandler(this.sendtoDiameter_DoubleClick);
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(9, 151);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(29, 12);
+            this.label58.TabIndex = 11;
+            this.label58.Text = "外径";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(9, 183);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(23, 12);
+            this.label56.TabIndex = 13;
+            this.label56.Text = "SCH";
+            // 
+            // cmbNominalDiameter
+            // 
+            this.cmbNominalDiameter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmbNominalDiameter.FormattingEnabled = true;
+            this.cmbNominalDiameter.Items.AddRange(new object[] {
+            "10",
+            "15",
+            "20",
+            "25",
+            "(32)",
+            "40",
+            "50",
+            "(65)",
+            "80",
+            "100",
+            "(125)",
+            "150",
+            "200",
+            "250",
+            "300",
+            "350",
+            "400",
+            "450",
+            "500",
+            "550",
+            "600",
+            "650",
+            "700",
+            "750",
+            "800",
+            "850",
+            "900",
+            "950",
+            "1000",
+            "1100"});
+            this.cmbNominalDiameter.Location = new System.Drawing.Point(73, 115);
+            this.cmbNominalDiameter.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.cmbNominalDiameter.Name = "cmbNominalDiameter";
+            this.cmbNominalDiameter.Size = new System.Drawing.Size(96, 20);
+            this.cmbNominalDiameter.TabIndex = 19;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(9, 119);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(53, 12);
+            this.label52.TabIndex = 20;
+            this.label52.Text = "公称直径";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(9, 247);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(29, 12);
+            this.label53.TabIndex = 15;
+            this.label53.Text = "内径";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(9, 311);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(29, 12);
+            this.label62.TabIndex = 17;
+            this.label62.Text = "材质";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(9, 279);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(29, 12);
+            this.label54.TabIndex = 17;
+            this.label54.Text = "单重";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(9, 87);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(53, 12);
+            this.label59.TabIndex = 14;
+            this.label59.Text = "管道标准";
+            // 
+            // txtThk
+            // 
+            this.txtThk.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtThk.ForeColor = System.Drawing.Color.Red;
+            this.txtThk.Location = new System.Drawing.Point(73, 211);
+            this.txtThk.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtThk.Name = "txtThk";
+            this.txtThk.ReadOnly = true;
+            this.txtThk.Size = new System.Drawing.Size(96, 21);
+            this.txtThk.TabIndex = 24;
+            this.txtThk.TabStop = false;
+            this.txtThk.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtDo
+            // 
+            this.txtDo.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtDo.ForeColor = System.Drawing.Color.Red;
+            this.txtDo.Location = new System.Drawing.Point(73, 147);
+            this.txtDo.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtDo.Name = "txtDo";
+            this.txtDo.ReadOnly = true;
+            this.txtDo.Size = new System.Drawing.Size(96, 21);
+            this.txtDo.TabIndex = 22;
+            this.txtDo.TabStop = false;
+            this.txtDo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtSCH
+            // 
+            this.txtSCH.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtSCH.ForeColor = System.Drawing.Color.Red;
+            this.txtSCH.Location = new System.Drawing.Point(73, 179);
+            this.txtSCH.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtSCH.Name = "txtSCH";
+            this.txtSCH.ReadOnly = true;
+            this.txtSCH.Size = new System.Drawing.Size(96, 21);
+            this.txtSCH.TabIndex = 23;
+            this.txtSCH.TabStop = false;
+            this.txtSCH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(9, 55);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(53, 12);
+            this.label60.TabIndex = 10;
+            this.label60.Text = "材料等级";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(9, 215);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(29, 12);
+            this.label55.TabIndex = 18;
+            this.label55.Text = "壁厚";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.cbxEquipmentType);
+            this.groupBox8.Controls.Add(this.cbxBolt);
+            this.groupBox8.Controls.Add(this.label50);
+            this.groupBox8.Controls.Add(this.label51);
+            this.groupBox8.Controls.Add(this.label49);
+            this.groupBox8.Controls.Add(this.txtHoleSize);
+            this.groupBox8.Location = new System.Drawing.Point(6, 236);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(208, 113);
+            this.groupBox8.TabIndex = 1;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "预留螺栓孔";
+            // 
+            // cbxEquipmentType
+            // 
+            this.cbxEquipmentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEquipmentType.FormattingEnabled = true;
+            this.cbxEquipmentType.Items.AddRange(new object[] {
+            "不产生拉力的设备、卧式容器",
+            "产生拉力的卧式换热器和立式容器",
+            "高耸的塔、容器和振动较大设备"});
+            this.cbxEquipmentType.Location = new System.Drawing.Point(89, 50);
+            this.cbxEquipmentType.Name = "cbxEquipmentType";
+            this.cbxEquipmentType.Size = new System.Drawing.Size(109, 20);
+            this.cbxEquipmentType.TabIndex = 20;
+            // 
+            // cbxBolt
+            // 
+            this.cbxBolt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxBolt.FormattingEnabled = true;
+            this.cbxBolt.Items.AddRange(new object[] {
+            "M6",
+            "M8",
+            "M10",
+            "M12",
+            "M16",
+            "M20",
+            "M24",
+            "M30",
+            "M36",
+            "M42"});
+            this.cbxBolt.Location = new System.Drawing.Point(89, 19);
+            this.cbxBolt.Name = "cbxBolt";
+            this.cbxBolt.Size = new System.Drawing.Size(109, 20);
+            this.cbxBolt.TabIndex = 20;
+            this.cbxBolt.SelectedIndexChanged += new System.EventHandler(this.cbxBolt_SelectedIndexChanged);
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(9, 85);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(53, 12);
+            this.label50.TabIndex = 0;
+            this.label50.Text = "开孔规格";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(9, 54);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(53, 12);
+            this.label51.TabIndex = 0;
+            this.label51.Text = "设备类型";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(9, 23);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(53, 12);
+            this.label49.TabIndex = 0;
+            this.label49.Text = "螺栓规格";
+            // 
+            // txtHoleSize
+            // 
+            this.txtHoleSize.Location = new System.Drawing.Point(89, 81);
+            this.txtHoleSize.Name = "txtHoleSize";
+            this.txtHoleSize.ReadOnly = true;
+            this.txtHoleSize.Size = new System.Drawing.Size(109, 21);
+            this.txtHoleSize.TabIndex = 0;
+            this.txtHoleSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // grpFlowConversion
+            // 
+            this.grpFlowConversion.Controls.Add(this.label8);
+            this.grpFlowConversion.Controls.Add(this.rioOperatingCondition);
+            this.grpFlowConversion.Controls.Add(this.txtStandardFlow);
+            this.grpFlowConversion.Controls.Add(this.label7);
+            this.grpFlowConversion.Controls.Add(this.label5);
+            this.grpFlowConversion.Controls.Add(this.label12);
+            this.grpFlowConversion.Controls.Add(this.txtOperatingPressure);
+            this.grpFlowConversion.Controls.Add(this.label13);
+            this.grpFlowConversion.Controls.Add(this.rioStandardCondition);
+            this.grpFlowConversion.Controls.Add(this.label9);
+            this.grpFlowConversion.Controls.Add(this.txtStandardPressure);
+            this.grpFlowConversion.Controls.Add(this.label10);
+            this.grpFlowConversion.Controls.Add(this.label6);
+            this.grpFlowConversion.Controls.Add(this.txtStandardTemperature);
+            this.grpFlowConversion.Controls.Add(this.label11);
+            this.grpFlowConversion.Controls.Add(this.label14);
+            this.grpFlowConversion.Controls.Add(this.txtOperatingFlow);
+            this.grpFlowConversion.Controls.Add(this.txtOperatingTemperature);
+            this.grpFlowConversion.Location = new System.Drawing.Point(6, 9);
+            this.grpFlowConversion.Name = "grpFlowConversion";
+            this.grpFlowConversion.Size = new System.Drawing.Size(208, 218);
+            this.grpFlowConversion.TabIndex = 18;
+            this.grpFlowConversion.TabStop = false;
+            this.grpFlowConversion.Text = "流量折算";
+            // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.chkDataSync);
             this.tabPage4.Controls.Add(this.chkTopMost);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -1075,17 +1505,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "软件配置";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // chkDataSync
-            // 
-            this.chkDataSync.AutoSize = true;
-            this.chkDataSync.Location = new System.Drawing.Point(13, 38);
-            this.chkDataSync.Name = "chkDataSync";
-            this.chkDataSync.Size = new System.Drawing.Size(72, 16);
-            this.chkDataSync.TabIndex = 0;
-            this.chkDataSync.Text = "数据同步";
-            this.chkDataSync.UseVisualStyleBackColor = true;
-            this.chkDataSync.CheckedChanged += new System.EventHandler(this.chkDataSync_CheckedChanged);
             // 
             // chkTopMost
             // 
@@ -1100,115 +1519,11 @@
             this.chkTopMost.UseVisualStyleBackColor = true;
             this.chkTopMost.CheckedChanged += new System.EventHandler(this.chkTopMost_CheckedChanged);
             // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(10, 23);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(29, 12);
-            this.label47.TabIndex = 2;
-            this.label47.Text = "压力";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(10, 53);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(29, 12);
-            this.label48.TabIndex = 2;
-            this.label48.Text = "温度";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.label8);
-            this.groupBox7.Controls.Add(this.rioOperatingCondition);
-            this.groupBox7.Controls.Add(this.txtStandardFlow);
-            this.groupBox7.Controls.Add(this.label7);
-            this.groupBox7.Controls.Add(this.label5);
-            this.groupBox7.Controls.Add(this.label12);
-            this.groupBox7.Controls.Add(this.txtOperatingPressure);
-            this.groupBox7.Controls.Add(this.label13);
-            this.groupBox7.Controls.Add(this.rioStandardCondition);
-            this.groupBox7.Controls.Add(this.label9);
-            this.groupBox7.Controls.Add(this.txtStandardPressure);
-            this.groupBox7.Controls.Add(this.label10);
-            this.groupBox7.Controls.Add(this.label6);
-            this.groupBox7.Controls.Add(this.txtStandardTemperature);
-            this.groupBox7.Controls.Add(this.label11);
-            this.groupBox7.Controls.Add(this.label14);
-            this.groupBox7.Controls.Add(this.txtOperatingFlow);
-            this.groupBox7.Controls.Add(this.txtOperatingTemperature);
-            this.groupBox7.Location = new System.Drawing.Point(6, 9);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(208, 218);
-            this.groupBox7.TabIndex = 18;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "流量折算";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.cbxBolt);
-            this.groupBox8.Controls.Add(this.label50);
-            this.groupBox8.Controls.Add(this.label49);
-            this.groupBox8.Controls.Add(this.txtHoleSize);
-            this.groupBox8.Location = new System.Drawing.Point(6, 241);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(208, 81);
-            this.groupBox8.TabIndex = 1;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "预留螺栓孔";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(9, 25);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(53, 12);
-            this.label49.TabIndex = 0;
-            this.label49.Text = "螺栓规格";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(9, 56);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(53, 12);
-            this.label50.TabIndex = 0;
-            this.label50.Text = "开孔规格";
-            // 
-            // cbxBolt
-            // 
-            this.cbxBolt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxBolt.FormattingEnabled = true;
-            this.cbxBolt.Items.AddRange(new object[] {
-            "M12",
-            "M14",
-            "M16",
-            "M18",
-            "M20",
-            "M22",
-            "M24",
-            "M27"});
-            this.cbxBolt.Location = new System.Drawing.Point(89, 21);
-            this.cbxBolt.Name = "cbxBolt";
-            this.cbxBolt.Size = new System.Drawing.Size(109, 20);
-            this.cbxBolt.TabIndex = 20;
-            this.cbxBolt.SelectedIndexChanged += new System.EventHandler(this.cbxBolt_SelectedIndexChanged);
-            // 
-            // txtHoleSize
-            // 
-            this.txtHoleSize.Location = new System.Drawing.Point(89, 52);
-            this.txtHoleSize.Name = "txtHoleSize";
-            this.txtHoleSize.ReadOnly = true;
-            this.txtHoleSize.Size = new System.Drawing.Size(109, 21);
-            this.txtHoleSize.TabIndex = 0;
-            this.txtHoleSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 381);
+            this.ClientSize = new System.Drawing.Size(422, 381);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
@@ -1219,7 +1534,6 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -1229,12 +1543,15 @@
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.grpPipe.ResumeLayout(false);
+            this.grpPipe.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.grpFlowConversion.ResumeLayout(false);
+            this.grpFlowConversion.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1274,7 +1591,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.CheckBox chkTopMost;
-        private System.Windows.Forms.CheckBox chkDataSync;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lstVelocity;
@@ -1337,12 +1653,35 @@
         private System.Windows.Forms.TextBox txtIsoIndex1;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox grpFlowConversion;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.ComboBox cbxBolt;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.TextBox txtHoleSize;
+        private System.Windows.Forms.ComboBox cbxEquipmentType;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.GroupBox grpPipe;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TextBox txtPw;
+        private System.Windows.Forms.TextBox txtDi;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.ComboBox cmbNominalDiameter;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.TextBox txtThk;
+        private System.Windows.Forms.TextBox txtDo;
+        private System.Windows.Forms.TextBox txtSCH;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.ComboBox cbxStandard;
+        private System.Windows.Forms.ComboBox cbxSpecification;
+        private System.Windows.Forms.ComboBox cbxProject;
+        private System.Windows.Forms.TextBox txtMaterial;
+        private System.Windows.Forms.Label label62;
     }
 }
 

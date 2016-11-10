@@ -1,49 +1,858 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+
 <ThermalMate>
-  <Config>
-    <TopMost>true</TopMost>
-    <DataSync>false</DataSync>
-  </Config>
-  <Velocity>
-	<蒸汽></蒸汽>
-    <主蒸汽>40~60</主蒸汽>
-	<过热蒸汽>35~60</过热蒸汽>
-	<饱和蒸汽>30~50</饱和蒸汽>
-	<湿蒸汽>20~35</湿蒸汽>
-	<减温减压器一次蒸汽>60~90</减温减压器一次蒸汽>
-	<分隔线></分隔线>
-	<高压给水>2~6</高压给水>
-	<中压给水>2~3.5</中压给水>
-	<低压给水>0.5~3</低压给水>
-	<凝结水泵入口>0.5~1</凝结水泵入口>
-	<凝结水泵出口>2~3.5</凝结水泵出口>
-	<疏水泵入口>0.5~1</疏水泵入口>
-	<疏水泵出口>1.5~3</疏水泵出口>
-	<疏水调节阀入口>1~2</疏水调节阀入口>
-	<疏水调节阀出口>20~100</疏水调节阀出口>
-	<分隔线></分隔线>
-	<生水化学水工业水等></生水化学水工业水等>
-	<离心泵入口>0.5~1.5</离心泵入口>
-	<离心泵出口>1.5~3</离心泵出口>
-	<其他压力水管道>1.5~3</其他压力水管道>
-	<自溢流等无压排水>≤1</自溢流等无压排水>
-	<分隔线></分隔线>
-	<装置内仪表风>10~15</装置内仪表风>
-	<装置内工厂风>8~15</装置内工厂风>
-	<厂区内仪表风>10~12</厂区内仪表风>
-	<厂区内工厂风>8~10</厂区内工厂风>
-	<氮气>10~25</氮气>
-	<燃料气>10~12</燃料气>	
-  </Velocity>
+	<Config>
+		<TopMoSt>true</TopMoSt>
+		<Project>大连福佳</Project>
+		<Specification>A1A</Specification>
+		<StandardName>SHT3405-2012</StandardName>
+		<Clipboard>txtInfo</Clipboard>
+	</Config>
   
-  <BlotHole>
-	<M12>140×140×350(h)</M12>
-	<M14>140×140×350(h)</M14>
-	<M16>140×140×400(h)</M16>
-	<M18>160×160×430(h)</M18>
-	<M20>160×160×450(h)</M20>
-	<M22>160×160×500(h)</M22>
-	<M24>180×180×550(h)</M24>
-	<M27>180×180×600(h)</M27>
+	<Velocity>
+		<蒸汽></蒸汽>
+		<主蒸汽>40~60</主蒸汽>
+		<过热蒸汽>35~60</过热蒸汽>
+		<饱和蒸汽>30~50</饱和蒸汽>
+		<湿蒸汽>20~35</湿蒸汽>
+		<减温减压器一次蒸汽>60~90</减温减压器一次蒸汽>
+		<分隔线></分隔线>
+		<高压给水>2~6</高压给水>
+		<中压给水>2~3.5</中压给水>
+		<低压给水>0.5~3</低压给水>
+		<凝结水泵入口>0.5~1</凝结水泵入口>
+		<凝结水泵出口>2~3.5</凝结水泵出口>
+		<疏水泵入口>0.5~1</疏水泵入口>
+		<疏水泵出口>1.5~3</疏水泵出口>
+		<疏水调节阀入口>1~2</疏水调节阀入口>
+		<疏水调节阀出口>20~100</疏水调节阀出口>
+		<分隔线></分隔线>
+		<生水化学水工业水等></生水化学水工业水等>
+		<离心泵入口>0.5~1.5</离心泵入口>
+		<离心泵出口>1.5~3</离心泵出口>
+		<其他压力水管道>1.5~3</其他压力水管道>
+		<自溢流等无压排水>≤1</自溢流等无压排水>
+		<分隔线></分隔线>
+		<装置内仪表风>10~15</装置内仪表风>
+		<装置内工厂风>8~15</装置内工厂风>
+		<厂区内仪表风>10~12</厂区内仪表风>
+		<厂区内工厂风>8~10</厂区内工厂风>
+		<氮气>10~25</氮气>
+		<燃料气>10~12</燃料气>	
+	</Velocity>
+  
+	<BlotHole>
+		<M6  TYPE="不产生拉力的设备、卧式容器">100×100×220(h)</M6>  
+		<M8  TYPE="不产生拉力的设备、卧式容器">100×100×250(h)</M8>
+		<M10 TYPE="不产生拉力的设备、卧式容器">100×100×280(h)</M10>
+		<M12 TYPE="不产生拉力的设备、卧式容器">100×100×310(h)</M12>
+		<M16 TYPE="不产生拉力的设备、卧式容器">100×100×370(h)</M16>
+		<M20 TYPE="不产生拉力的设备、卧式容器">110×110×430(h)</M20>
+		<M24 TYPE="不产生拉力的设备、卧式容器">120×120×490(h)</M24>
+		<M30 TYPE="不产生拉力的设备、卧式容器">150×150×580(h)</M30>
+		<M36 TYPE="不产生拉力的设备、卧式容器"></M36>
+		<M42 TYPE="不产生拉力的设备、卧式容器"></M42>
+		
+		<M6  TYPE="产生拉力的卧式换热器和立式容器"></M6>  
+		<M8  TYPE="产生拉力的卧式换热器和立式容器">100×100×330(h)</M8>
+		<M10 TYPE="产生拉力的卧式换热器和立式容器">100×100×370(h)</M10>
+		<M12 TYPE="产生拉力的卧式换热器和立式容器">100×100×450(h)</M12>
+		<M16 TYPE="产生拉力的卧式换热器和立式容器">100×100×530(h)</M16>
+		<M20 TYPE="产生拉力的卧式换热器和立式容器">110×110×610(h)</M20>
+		<M24 TYPE="产生拉力的卧式换热器和立式容器">120×120×730(h)</M24>
+		<M30 TYPE="产生拉力的卧式换热器和立式容器">150×150×1100(h)</M30>
+		<M36 TYPE="产生拉力的卧式换热器和立式容器">180×180×1200(h)</M36>
+		<M42 TYPE="产生拉力的卧式换热器和立式容器">200×200×1350(h)</M42>
+		
+		<M6  TYPE="高耸的塔、容器和振动较大设备"></M6>  
+		<M8  TYPE="高耸的塔、容器和振动较大设备">100×100</M8>
+		<M10 TYPE="高耸的塔、容器和振动较大设备">100×100×430</M10>
+		<M12 TYPE="高耸的塔、容器和振动较大设备">100×100×530</M12>
+		<M16 TYPE="高耸的塔、容器和振动较大设备">100×100×630</M16>
+		<M20 TYPE="高耸的塔、容器和振动较大设备">110×110×730</M20>
+		<M24 TYPE="高耸的塔、容器和振动较大设备">120×120×880</M24>
+		<M30 TYPE="高耸的塔、容器和振动较大设备">150×150×1250</M30>
+		<M36 TYPE="高耸的塔、容器和振动较大设备">180×180×1400</M36>
+		<M42 TYPE="高耸的塔、容器和振动较大设备">200×200×1570</M42>
   </BlotHole>
+  
+	<Standard Name = "SHT3405-1996">
+        <Pipe DN = "10" NPS = "3/8" DO = "17">
+            <SCH THK = "1.2" PW = "0.47">5S</SCH>
+            <SCH THK = "1.6" PW = "0.62">10S</SCH>
+            <SCH THK = "2.0" PW = "0.75">20S</SCH>
+            <SCH THK = "2.5" PW = "0.91">40S</SCH>
+            <SCH THK = "3.2" PW = "1.11">80S</SCH>
+            <SCH THK = "2.5" PW = "0.89">40</SCH>
+            <SCH THK = "3.5" PW = "1.17">80</SCH>
+        </Pipe>
+        <Pipe DN = "15" NPS = "4/8" DO = "22">
+            <SCH THK = "1.6" PW = "0.82">5S</SCH>
+            <SCH THK = "2.0" PW = "1.00">10S</SCH>
+            <SCH THK = "2.5" PW = "1.22">20S</SCH>
+            <SCH THK = "3.0" PW = "1.43">40S</SCH>
+            <SCH THK = "4.0" PW = "1.80">80S</SCH>
+            <SCH THK = "3.0" PW = "1.41">40</SCH>
+            <SCH THK = "4.0" PW = "1.78">80</SCH>
+            <SCH THK = "5.0" PW = "2.10">160</SCH>
+            <SCH THK = "7.5" PW = "2.68">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "20" NPS = "6/8" DO = "27">
+            <SCH THK = "1.6" PW = "1.02">5S</SCH>
+            <SCH THK = "2.0" PW = "1.25">10S</SCH>
+            <SCH THK = "2.5" PW = "1.53">20S</SCH>
+            <SCH THK = "3.0" PW = "1.80">40S</SCH>
+            <SCH THK = "4.0" PW = "2.30">80S</SCH>
+            <SCH THK = "3.0" PW = "1.78">40</SCH>
+            <SCH THK = "4.0" PW = "2.27">80</SCH>
+            <SCH THK = "5.5" PW = "2.92">160</SCH>
+            <SCH THK = "8.0" PW = "3.75">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "25" NPS = "1" DO = "34">
+            <SCH THK = "1.6" PW = "1.30">5S</SCH>
+            <SCH THK = "2.8" PW = "2.19">10S</SCH>
+            <SCH THK = "3.0" PW = "2.33">20S</SCH>
+            <SCH THK = "3.5" PW = "2.67">40S</SCH>
+            <SCH THK = "4.5" PW = "3.32">80S</SCH>
+            <SCH THK = "3.5" PW = "2.63">40</SCH>
+            <SCH THK = "4.5" PW = "3.27">80</SCH>
+            <SCH THK = "6.5" PW = "4.41">160</SCH>
+            <SCH THK = "9.0" PW = "5.55">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "32" NPS = "10/8" DO = "42">
+            <SCH THK = "1.6" PW = "1.62">5S</SCH>
+            <SCH THK = "2.8" PW = "2.75">10S</SCH>
+            <SCH THK = "3.0" PW = "2.93">20S</SCH>
+            <SCH THK = "3.5" PW = "3.37">40S</SCH>
+            <SCH THK = "5.0" PW = "4.63">80S</SCH>
+            <SCH THK = "3.5" PW = "3.33">40</SCH>
+            <SCH THK = "5.0" PW = "4.56">80</SCH>
+            <SCH THK = "6.5" PW = "5.69">160</SCH>
+            <SCH THK = "10.0" PW = "7.89">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "40" NPS = "12/8" DO = "48">
+            <SCH THK = "1.6" PW = "1.86">5S</SCH>
+            <SCH THK = "2.8" PW = "3.17">10S</SCH>
+            <SCH THK = "3.0" PW = "3.38">20S</SCH>
+            <SCH THK = "4.0" PW = "4.41">40S</SCH>
+            <SCH THK = "5.0" PW = "5.38">80S</SCH>
+            <SCH THK = "4.0" PW = "4.34">40</SCH>
+            <SCH THK = "5.0" PW = "5.30">80</SCH>
+            <SCH THK = "7.0" PW = "7.08">160</SCH>
+            <SCH THK = "10.0" PW = "9.37">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "50" NPS = "2" DO = "60">
+            <SCH THK = "1.6" PW = "2.34">5S</SCH>
+            <SCH THK = "2.8" PW = "4.01">10S</SCH>
+            <SCH THK = "3.5" PW = "4.95">20S</SCH>
+            <SCH THK = "4.0" PW = "5.61">40S</SCH>
+            <SCH THK = "5.5" PW = "7.50">80S</SCH>
+            <SCH THK = "3.5" PW = "4.88">20</SCH>
+            <SCH THK = "4.0" PW = "5.52">40</SCH>
+            <SCH THK = "5.0" PW = "6.78">60</SCH>
+            <SCH THK = "5.5" PW = "7.39">80</SCH>
+            <SCH THK = "7.0" PW = "9.15">120</SCH>
+            <SCH THK = "8.5" PW = "10.79">160</SCH>
+            <SCH THK = "11.0" PW = "13.29">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "65" NPS = "20/8" DO = "76">
+            <SCH THK = "2.0" PW = "3.70">5S</SCH>
+            <SCH THK = "3.0" PW = "5.48">10S</SCH>
+            <SCH THK = "3.5" PW = "6.35">20S</SCH>
+            <SCH THK = "5.0" PW = "8.89">40S</SCH>
+            <SCH THK = "7.0" PW = "12.09">80S</SCH>
+            <SCH THK = "4.5" PW = "7.93">20</SCH>
+            <SCH THK = "5.0" PW = "8.75">40</SCH>
+            <SCH THK = "6.0" PW = "10.36">60</SCH>
+            <SCH THK = "7.0" PW = "11.91">80</SCH>
+            <SCH THK = "8.0" PW = "13.42">120</SCH>
+            <SCH THK = "9.5" PW = "15.58">160</SCH>
+            <SCH THK = "14.0" PW = "21.40">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "80" NPS = "3" DO = "89">
+            <SCH THK = "2.0" PW = "4.36">5S</SCH>
+            <SCH THK = "3.0" PW = "6.46">10S</SCH>
+            <SCH THK = "3.5" PW = "8.51">20S</SCH>
+            <SCH THK = "5.0" PW = "11.50">40S</SCH>
+            <SCH THK = "7.0" PW = "15.30">80S</SCH>
+            <SCH THK = "4.5" PW = "9.38">20</SCH>
+            <SCH THK = "5.5" PW = "11.33">40</SCH>
+            <SCH THK = "6.5" PW = "13.22">60</SCH>
+            <SCH THK = "7.5" PW = "15.07">80</SCH>
+            <SCH THK = "9.0" PW = "17.76">120</SCH>
+            <SCH THK = "11.0" PW = "21.16">160</SCH>
+            <SCH THK = "15.0" PW = "27.37">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "100" NPS = "4" DO = "114">
+            <SCH THK = "2.0" PW = "5.61">5S</SCH>
+            <SCH THK = "3.0" PW = "8.33">10S</SCH>
+            <SCH THK = "4.0" PW = "11.01">20S</SCH>
+            <SCH THK = "6.0" PW = "16.22">40S</SCH>
+            <SCH THK = "8.5" PW = "22.45">80S</SCH>
+            <SCH THK = "5.0" PW = "13.44">20</SCH>
+            <SCH THK = "6.0" PW = "15.98">40</SCH>
+            <SCH THK = "7.0" PW = "18.47">60</SCH>
+            <SCH THK = "8.5" PW = "22.11">80</SCH>
+            <SCH THK = "11.0" PW = "27.94">120</SCH>
+            <SCH THK = "14.0" PW = "34.52">160</SCH>
+            <SCH THK = "17.0" PW = "40.66">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "125" NPS = "5" DO = "140">
+            <SCH THK = "2.8" PW = "9.62">5S</SCH>
+            <SCH THK = "3.5" PW = "11.96">10S</SCH>
+            <SCH THK = "5.0" PW = "16.90">20S</SCH>
+            <SCH THK = "6.5" PW = "21.72">40S</SCH>
+            <SCH THK = "9.5" PW = "31.03">80S</SCH>
+            <SCH THK = "5.0" PW = "16.65">20</SCH>
+            <SCH THK = "6.5" PW = "21.40">40</SCH>
+            <SCH THK = "8.0" PW = "26.04">60</SCH>
+            <SCH THK = "9.5" PW = "30.57">80</SCH>
+            <SCH THK = "13.0" PW = "40.71">120</SCH>
+            <SCH THK = "16.0" PW = "48.93">160</SCH>
+            <SCH THK = "19.0" PW = "56.69">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "150" NPS = "6" DO = "168">
+            <SCH THK = "2.8" PW = "11.58">5S</SCH>
+            <SCH THK = "3.5" PW = "14.41">10S</SCH>
+            <SCH THK = "5.0" PW = "20.40">20S</SCH>
+            <SCH THK = "7.0" PW = "28.21">40S</SCH>
+            <SCH THK = "11.0" PW = "43.23">80S</SCH>
+            <SCH THK = "5.5" PW = "20.04">20</SCH>
+            <SCH THK = "6.5" PW = "25.89">30</SCH>
+            <SCH THK = "7.0" PW = "27.79">40</SCH>
+            <SCH THK = "9.5" PW = "37.13">60</SCH>
+            <SCH THK = "11.0" PW = "42.59">80</SCH>
+            <SCH THK = "14.0" PW = "53.17">120</SCH>
+            <SCH THK = "18.0" PW = "66.58">160</SCH>
+            <SCH THK = "22.0" PW = "79.21">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "200" NPS = "8" DO = "219">
+            <SCH THK = "2.8" PW = "15.15">5S</SCH>
+            <SCH THK = "4.0" PW = "21.53">10S</SCH>
+            <SCH THK = "6.5" PW = "34.57">20S</SCH>
+            <SCH THK = "8.0" PW = "42.25">40S</SCH>
+            <SCH THK = "13.0" PW = "67.03">80S</SCH>
+            <SCH THK = "6.5" PW = "34.06">20</SCH>
+            <SCH THK = "7.0" PW = "36.60">30</SCH>
+            <SCH THK = "8.0" PW = "41.63">40</SCH>
+            <SCH THK = "10.0" PW = "51.54">60</SCH>
+            <SCH THK = "13.0" PW = "66.04">80</SCH>
+            <SCH THK = "15.0" PW = "75.46">100</SCH>
+            <SCH THK = "18.0" PW = "89.22">120</SCH>
+            <SCH THK = "20.0" PW = "98.15">140</SCH>
+            <SCH THK = "24.0" PW = "115.41">160</SCH>
+            <SCH THK = "23.0" PW = "111.17">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "250" NPS = "10" DO = "273">
+            <SCH THK = "3.5" PW = "23.61">5S</SCH>
+            <SCH THK = "4.0" PW = "26.93">10S</SCH>
+            <SCH THK = "6.5" PW = "43.36">20S</SCH>
+            <SCH THK = "9.5" PW = "62.66">40S</SCH>
+            <SCH THK = "15.0" PW = "96.87">80S</SCH>
+            <SCH THK = "6.5" PW = "42.72">20</SCH>
+            <SCH THK = "8.0" PW = "52.28">30</SCH>
+            <SCH THK = "9.5" PW = "61.73">40</SCH>
+            <SCH THK = "13.0" PW = "83.35">60</SCH>
+            <SCH THK = "15.0" PW = "95.43">80</SCH>
+            <SCH THK = "18.0" PW = "113.19">100</SCH>
+            <SCH THK = "22.0" PW = "136.17">120</SCH>
+            <SCH THK = "25.0" PW = "152.89">140</SCH>
+            <SCH THK = "28.0" PW = "169.17">160</SCH>
+            <SCH THK = "25.0" PW = "152.89">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "300" NPS = "12" DO = "325">
+            <SCH THK = "4.0" PW = "32.13">5S</SCH>
+            <SCH THK = "4.5" PW = "36.10">10S</SCH>
+            <SCH THK = "6.5" PW = "51.82">20S</SCH>
+            <SCH THK = "9.5" PW = "75.02">40S</SCH>
+            <SCH THK = "17.0" PW = "131.06">80S</SCH>
+            <SCH THK = "6.5" PW = "51.05">20</SCH>
+            <SCH THK = "8.5" PW = "66.34">30</SCH>
+            <SCH THK = "10.0" PW = "77.68">40</SCH>
+            <SCH THK = "14.0" PW = "107.37">60</SCH>
+            <SCH THK = "17.0" PW = "129.12">80</SCH>
+            <SCH THK = "22.0" PW = "164.38">100</SCH>
+            <SCH THK = "25.0" PW = "184.95">120</SCH>
+            <SCH THK = "28.0" PW = "205.07">140</SCH>
+            <SCH THK = "34.0" PW = "244.00">160</SCH>
+            <SCH THK = "26.0" PW = "191.71">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "350" NPS = "14" DO = "356">
+            <SCH THK = "4.0" PW = "35.24">5S</SCH>
+            <SCH THK = "5.0" PW = "43.93">10S</SCH>
+            <SCH THK = "8.0" PW = "68.65">20</SCH>
+            <SCH THK = "9.5" PW = "81.17">30</SCH>
+            <SCH THK = "11.0" PW = "93.58">40</SCH>
+            <SCH THK = "15.0" PW = "126.14">60</SCH>
+            <SCH THK = "19.0" PW = "157.90">80</SCH>
+            <SCH THK = "24.0" PW = "196.49">100</SCH>
+            <SCH THK = "28.0" PW = "226.48">120</SCH>
+            <SCH THK = "32.0" PW = "255.67">140</SCH>
+            <SCH THK = "36.0" PW = "284.08">160</SCH>
+        </Pipe>
+        <Pipe DN = "400" NPS = "16" DO = "406">
+            <SCH THK = "4.5" PW = "45.22">5S</SCH>
+            <SCH THK = "5.0" PW = "50.18">10S</SCH>
+            <SCH THK = "8.0" PW = "78.52">20</SCH>
+            <SCH THK = "9.5" PW = "92.89">30</SCH>
+            <SCH THK = "13.0" PW = "125.99">40</SCH>
+            <SCH THK = "17.0" PW = "163.08">60</SCH>
+            <SCH THK = "22.0" PW = "208.33">80</SCH>
+            <SCH THK = "26.0" PW = "243.64">100</SCH>
+            <SCH THK = "32.0" PW = "295.13">120</SCH>
+            <SCH THK = "36.0" PW = "328.47">140</SCH>
+            <SCH THK = "40.0" PW = "361.02">160</SCH>
+        </Pipe>
+        <Pipe DN = "450" NPS = "18" DO = "457">
+            <SCH THK = "8.0" PW = "88.58">20</SCH>
+            <SCH THK = "11.0" PW = "120.98">30</SCH>
+            <SCH THK = "14.0" PW = "152.94">40</SCH>
+            <SCH THK = "19.0" PW = "205.22">60</SCH>
+            <SCH THK = "24.0" PW = "256.27">80</SCH>
+            <SCH THK = "30.0" PW = "315.89">100</SCH>
+            <SCH THK = "35.0" PW = "364.23">120</SCH>
+            <SCH THK = "40.0" PW = "411.33">140</SCH>
+            <SCH THK = "45.0" PW = "457.20">160</SCH>
+        </Pipe>
+        <Pipe DN = "500" NPS = "20" DO = "508">
+            <SCH THK = "9.5" PW = "116.78">20</SCH>
+            <SCH THK = "13.0" PW = "158.69">30</SCH>
+            <SCH THK = "15.0" PW = "182.36">40</SCH>
+            <SCH THK = "20.0" PW = "240.68">60</SCH>
+            <SCH THK = "26.0" PW = "309.04">80</SCH>
+            <SCH THK = "32.0" PW = "375.62">100</SCH>
+            <SCH THK = "38.0" PW = "440.43">120</SCH>
+            <SCH THK = "45.0" PW = "513.79">140</SCH>
+            <SCH THK = "50.0" PW = "564.71">160</SCH>
+        </Pipe>
+        <Pipe DN = "550" NPS = "22" DO = "559">
+            <SCH THK = "9.5" PW = "128.73">20</SCH>
+            <SCH THK = "13.0" PW = "175.04">30</SCH>
+            <SCH THK = "17.0" PW = "227.22">40</SCH>
+            <SCH THK = "22.0" PW = "291.33">60</SCH>
+            <SCH THK = "28.0" PW = "366.64">80</SCH>
+            <SCH THK = "35.0" PW = "452.26">100</SCH>
+            <SCH THK = "42.0" PW = "535.47">120</SCH>
+            <SCH THK = "48.0" PW = "604.86">140</SCH>
+            <SCH THK = "54.0" PW = "672.48">160</SCH>
+        </Pipe>
+        <Pipe DN = "600" NPS = "24" DO = "610">
+            <SCH THK = "9.5" PW = "140.68">20</SCH>
+            <SCH THK = "14.0" PW = "205.76">30</SCH>
+            <SCH THK = "18.0" PW = "262.78">40</SCH>
+            <SCH THK = "25.0" PW = "360.65">60</SCH>
+            <SCH THK = "32.0" PW = "456.11">80</SCH>
+            <SCH THK = "38.0" PW = "536.01">100</SCH>
+            <SCH THK = "45.0" PW = "626.98">120</SCH>
+            <SCH THK = "52.0" PW = "715.53">140</SCH>
+            <SCH THK = "60.0" PW = "813.78">160</SCH>
+        </Pipe>
+        <Pipe DN = "650" NPS = "26" DO = "660"></Pipe>
+        <Pipe DN = "700" NPS = "28" DO = "711"></Pipe>
+        <Pipe DN = "750" NPS = "30" DO = "762"></Pipe>
+        <Pipe DN = "800" NPS = "32" DO = "813"></Pipe>
+        <Pipe DN = "850" NPS = "34" DO = "864"></Pipe>
+        <Pipe DN = "900" NPS = "36" DO = "914"></Pipe>
+        <Pipe DN = "950" NPS = "38" DO = "965"></Pipe>
+        <Pipe DN = "1000" NPS = "40" DO = "1016"></Pipe>
+        <Pipe DN = "1050" NPS = "42" DO = "1067"></Pipe>
+        <Pipe DN = "1100" NPS = "44" DO = "1118"></Pipe>
+        <Pipe DN = "1150" NPS = "46" DO = "1168"></Pipe>
+        <Pipe DN = "1200" NPS = "48" DO = "1219"></Pipe>
+    </Standard> 
+	
+    <Standard Name = "SHT3405-2012">
+		<Pipe DN = "10" NPS = "3/8" DO = "17.1">
+			<SCH THK = "1.65" PW = "0.63">10S</SCH>
+			<SCH THK = "2.31" PW = "0.84">40S</SCH>
+			<SCH THK = "3.2" PW = "1.1">80S</SCH>
+            <SCH THK = "1.65" PW = "0.63">10</SCH>
+            <SCH THK = "1.85" PW = "0.7">30</SCH>
+            <SCH THK = "2.31" PW = "0.84">40</SCH>
+            <SCH THK = "3.2" PW = "1.1">80</SCH>
+            <SCH THK = "2.31" PW = "0.84">STD</SCH>
+            <SCH THK = "3.2" PW = "1.1">XS</SCH>
+        </Pipe>
+        <Pipe DN = "15" NPS = "4/8" DO = "21.3">
+			<SCH THK = "1.65" PW = "0.8">5S</SCH>
+			<SCH THK = "2.11" PW = "1">10S</SCH>
+			<SCH THK = "2.77" PW = "1.27">40S</SCH>
+			<SCH THK = "3.73" PW = "1.62">80S</SCH>
+            <SCH THK = "2.11" PW = "1">10</SCH>
+            <SCH THK = "2.41" PW = "1.12">30</SCH>
+            <SCH THK = "2.77" PW = "1.27">40</SCH>
+            <SCH THK = "3.73" PW = "1.62">80</SCH>
+            <SCH THK = "4.78" PW = "1.95">160</SCH>
+            <SCH THK = "2.77" PW = "1.27">STD</SCH>
+            <SCH THK = "3.73" PW = "1.62">XS</SCH>
+            <SCH THK = "7.47" PW = "2.55">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "20" NPS = "6/8" DO = "26.7">
+			<SCH THK = "1.65" PW = "1.02">5S</SCH>
+			<SCH THK = "2.11" PW = "1.28">10S</SCH>
+			<SCH THK = "2.87" PW = "1.69">40S</SCH>
+			<SCH THK = "3.91" PW = "2.2">80S</SCH>
+            <SCH THK = "2.11" PW = "1.28">10</SCH>
+            <SCH THK = "2.41" PW = "1.44">30</SCH>
+            <SCH THK = "2.87" PW = "1.69">40</SCH>
+            <SCH THK = "3.91" PW = "2.2">80</SCH>
+            <SCH THK = "5.56" PW = "2.9">160</SCH>
+            <SCH THK = "2.87" PW = "1.69">STD</SCH>
+            <SCH THK = "3.91" PW = "2.2">XS</SCH>
+            <SCH THK = "7.82" PW = "3.64">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "25" NPS = "1" DO = "33.4">
+			<SCH THK = "1.65" PW = "1.29">5S</SCH>
+			<SCH THK = "2.77" PW = "2.09">10S</SCH>
+			<SCH THK = "3.38" PW = "2.5">40S</SCH>
+			<SCH THK = "4.55" PW = "3.24">80S</SCH>
+            <SCH THK = "2.77" PW = "2.09">10</SCH>
+            <SCH THK = "2.9" PW = "2.18">30</SCH>
+            <SCH THK = "3.38" PW = "2.5">40</SCH>
+            <SCH THK = "4.55" PW = "3.24">80</SCH>
+            <SCH THK = "6.35" PW = "4.24">160</SCH>
+            <SCH THK = "3.38" PW = "2.5">STD</SCH>
+            <SCH THK = "4.55" PW = "3.24">XS</SCH>
+            <SCH THK = "9.09" PW = "5.45">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "32" NPS = "10/8" DO = "42.2">
+			<SCH THK = "1.65" PW = "1.65">5S</SCH>
+			<SCH THK = "2.77" PW = "2.69">10S</SCH>
+			<SCH THK = "3.56" PW = "3.39">40S</SCH>
+			<SCH THK = "4.85" PW = "4.47">80S</SCH>
+            <SCH THK = "2.77" PW = "2.69">10</SCH>
+            <SCH THK = "2.97" PW = "2.87">30</SCH>
+            <SCH THK = "3.56" PW = "3.39">40</SCH>
+            <SCH THK = "4.85" PW = "4.47">80</SCH>
+            <SCH THK = "6.35" PW = "5.61">160</SCH>
+            <SCH THK = "3.56" PW = "3.39">STD</SCH>
+            <SCH THK = "4.85" PW = "4.47">XS</SCH>
+            <SCH THK = "9.7" PW = "7.77">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "40" NPS = "12/8" DO = "48.3">
+			<SCH THK = "1.65" PW = "1.9">5S</SCH>
+			<SCH THK = "2.77" PW = "3.11">10S</SCH>
+			<SCH THK = "3.68" PW = "4.05">40S</SCH>
+			<SCH THK = "5.08" PW = "5.41">80S</SCH>
+            <SCH THK = "2.77" PW = "3.11">10</SCH>
+            <SCH THK = "3.18" PW = "3.53">30</SCH>
+            <SCH THK = "3.68" PW = "4.05">40</SCH>
+            <SCH THK = "5.08" PW = "5.41">80</SCH>
+            <SCH THK = "7.14" PW = "7.25">160</SCH>
+            <SCH THK = "3.68" PW = "4.05">STD</SCH>
+            <SCH THK = "5.08" PW = "5.41">XS</SCH>
+            <SCH THK = "10.15" PW = "9.55">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "50" NPS = "2" DO = "60.3">
+			<SCH THK = "1.65" PW = "2.39">5S</SCH>
+			<SCH THK = "2.77" PW = "3.93">10S</SCH>
+			<SCH THK = "3.91" PW = "5.44">40S</SCH>
+			<SCH THK = "5.54" PW = "7.48">80S</SCH>
+            <SCH THK = "2.77" PW = "3.93">10</SCH>
+            <SCH THK = "3.18" PW = "4.48">30</SCH>
+            <SCH THK = "3.91" PW = "5.44">40</SCH>
+            <SCH THK = "5.54" PW = "7.48">80</SCH>
+            <SCH THK = "8.74" PW = "11.11">160</SCH>
+            <SCH THK = "3.91" PW = "5.44">STD</SCH>
+            <SCH THK = "5.54" PW = "7.48">XS</SCH>
+            <SCH THK = "11.07" PW = "13.44">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "65" NPS = "20/8" DO = "73">
+			<SCH THK = "2.11" PW = "3.69">5S</SCH>
+			<SCH THK = "3.05" PW = "5.26">10S</SCH>
+			<SCH THK = "5.16" PW = "8.63">40S</SCH>
+			<SCH THK = "7.01" PW = "11.41">80S</SCH>
+            <SCH THK = "3.05" PW = "5.26">10</SCH>
+            <SCH THK = "4.78" PW = "8.04">30</SCH>
+            <SCH THK = "5.16" PW = "8.63">40</SCH>
+            <SCH THK = "7.01" PW = "11.41">80</SCH>
+            <SCH THK = "9.53" PW = "14.92">160</SCH>
+            <SCH THK = "5.16" PW = "8.63">STD</SCH>
+            <SCH THK = "7.01" PW = "11.41">XS</SCH>
+            <SCH THK = "14.02" PW = "20.39">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "80" NPS = "3" DO = "88.9">
+			<SCH THK = "2.11" PW = "4.52">5S</SCH>
+			<SCH THK = "3.05" PW = "6.46">10S</SCH>
+			<SCH THK = "5.49" PW = "11.29">40S</SCH>
+			<SCH THK = "7.62" PW = "15.27">80S</SCH>
+            <SCH THK = "3.05" PW = "6.46">10</SCH>
+            <SCH THK = "4.78" PW = "9.92">30</SCH>
+            <SCH THK = "5.49" PW = "11.29">40</SCH>
+            <SCH THK = "7.62" PW = "15.27">80</SCH>
+            <SCH THK = "11.13" PW = "21.35">160</SCH>
+            <SCH THK = "5.49" PW = "11.29">STD</SCH>
+            <SCH THK = "7.62" PW = "15.27">XS</SCH>
+            <SCH THK = "15.24" PW = "27.68">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "100" NPS = "4" DO = "114.3">
+			<SCH THK = "2.11" PW = "5.84">5S</SCH>
+			<SCH THK = "3.05" PW = "8.37">10S</SCH>
+			<SCH THK = "6.02" PW = "16.08">40S</SCH>
+			<SCH THK = "8.56" PW = "22.32">80S</SCH>
+            <SCH THK = "3.05" PW = "8.37">10</SCH>
+            <SCH THK = "4.78" PW = "12.91">30</SCH>
+            <SCH THK = "6.02" PW = "16.08">40</SCH>
+            <SCH THK = "8.56" PW = "22.32">80</SCH>
+            <SCH THK = "11.13" PW = "28.32">120</SCH>
+            <SCH THK = "13.49" PW = "33.54">160</SCH>
+            <SCH THK = "6.02" PW = "16.08">STD</SCH>
+            <SCH THK = "8.56" PW = "22.32">XS</SCH>
+            <SCH THK = "17.12" PW = "41.03">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "125" NPS = "5" DO = "141.3">
+			<SCH THK = "2.77" PW = "9.46">5S</SCH>
+			<SCH THK = "3.4" PW = "11.56">10S</SCH>
+			<SCH THK = "6.55" PW = "21.77">40S</SCH>
+			<SCH THK = "9.53" PW = "30.97">80S</SCH>
+            <SCH THK = "3.4" PW = "11.56">10</SCH>
+            <SCH THK = "6.55" PW = "21.77">40</SCH>
+            <SCH THK = "9.53" PW = "30.97">80</SCH>
+            <SCH THK = "12.7" PW = "40.28">120</SCH>
+            <SCH THK = "15.88" PW = "49.12">160</SCH>
+            <SCH THK = "6.55" PW = "21.77">STD</SCH>
+            <SCH THK = "9.53" PW = "30.97">XS</SCH>
+            <SCH THK = "19.05" PW = "57.43">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "150" NPS = "6" DO = "168.3">
+			<SCH THK = "2.77" PW = "11.31">5S</SCH>
+			<SCH THK = "3.4" PW = "13.83">10S</SCH>
+			<SCH THK = "7.11" PW = "28.26">40S</SCH>
+			<SCH THK = "10.97" PW = "42.56">80S</SCH>
+            <SCH THK = "3.4" PW = "13.83">10</SCH>
+            <SCH THK = "7.11" PW = "28.26">40</SCH>
+            <SCH THK = "10.97" PW = "42.56">80</SCH>
+            <SCH THK = "14.27" PW = "54.21">120</SCH>
+            <SCH THK = "18.26" PW = "67.57">160</SCH>
+            <SCH THK = "7.11" PW = "28.26">STD</SCH>
+            <SCH THK = "10.97" PW = "42.56">XS</SCH>
+            <SCH THK = "21.95" PW = "79.22">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "200" NPS = "8" DO = "219.1">
+			<SCH THK = "2.77" PW = "14.78">5S</SCH>
+			<SCH THK = "3.76" PW = "19.97">10S</SCH>
+			<SCH THK = "8.18" PW = "42.55">40S</SCH>
+			<SCH THK = "12.7" PW = "64.64">80S</SCH>
+            <SCH THK = "3.76" PW = "19.97">10</SCH>
+            <SCH THK = "6.35" PW = "33.32">20</SCH>
+            <SCH THK = "7.04" PW = "36.82">30</SCH>
+            <SCH THK = "8.18" PW = "42.55">40</SCH>
+            <SCH THK = "10.31" PW = "53.09">60</SCH>
+            <SCH THK = "12.7" PW = "64.64">80</SCH>
+            <SCH THK = "15.09" PW = "75.92">100</SCH>
+            <SCH THK = "18.26" PW = "90.44">120</SCH>
+            <SCH THK = "20.62" PW = "100.93">140</SCH>
+            <SCH THK = "23.01" PW = "111.27">160</SCH>
+            <SCH THK = "8.18" PW = "42.55">STD</SCH>
+            <SCH THK = "12.7" PW = "64.64">XS</SCH>
+            <SCH THK = "22.23" PW = "107.93">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "250" NPS = "10" DO = "273">
+			<SCH THK = "3.4" PW = "22.61">5S</SCH>
+			<SCH THK = "4.19" PW = "27.79">10S</SCH>
+			<SCH THK = "9.27" PW = "60.31">40S</SCH>
+			<SCH THK = "12.7" PW = "81.56">80S</SCH>
+            <SCH THK = "4.19" PW = "27.78">10</SCH>
+            <SCH THK = "6.35" PW = "41.76">20</SCH>
+            <SCH THK = "7.8" PW = "51.01">30</SCH>
+            <SCH THK = "9.27" PW = "60.29">40</SCH>
+            <SCH THK = "12.7" PW = "81.53">60</SCH>
+            <SCH THK = "15.09" PW = "95.98">80</SCH>
+            <SCH THK = "18.26" PW = "114.71">100</SCH>
+            <SCH THK = "21.44" PW = "133.01">120</SCH>
+            <SCH THK = "25.4" PW = "155.1">140</SCH>
+            <SCH THK = "28.58" PW = "172.27">160</SCH>
+            <SCH THK = "9.27" PW = "60.29">STD</SCH>
+            <SCH THK = "12.7" PW = "81.53">XS</SCH>
+            <SCH THK = "25.4" PW = "155.1">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "300" NPS = "12" DO = "323.8">
+			<SCH THK = "3.96" PW = "31.25">5S</SCH>
+			<SCH THK = "4.57" PW = "35.99">10S</SCH>
+			<SCH THK = "9.53" PW = "73.88">40S</SCH>
+			<SCH THK = "12.7" PW = "97.47">80S</SCH>
+            <SCH THK = "4.57" PW = "35.98">10</SCH>
+            <SCH THK = "6.35" PW = "49.71">20</SCH>
+            <SCH THK = "8.38" PW = "65.19">30</SCH>
+            <SCH THK = "10.31" PW = "79.71">40</SCH>
+            <SCH THK = "14.27" PW = "108.93">60</SCH>
+            <SCH THK = "17.48" PW = "132.05">80</SCH>
+            <SCH THK = "21.44" PW = "159.87">100</SCH>
+            <SCH THK = "25.4" PW = "186.92">120</SCH>
+            <SCH THK = "28.58" PW = "208.08">140</SCH>
+            <SCH THK = "33.32" PW = "238.69">160</SCH>
+            <SCH THK = "9.53" PW = "73.86">STD</SCH>
+            <SCH THK = "12.7" PW = "97.44">XS</SCH>
+            <SCH THK = "25.4" PW = "186.92">XXS</SCH>
+        </Pipe>
+        <Pipe DN = "350" NPS = "14" DO = "355.6">
+			<SCH THK = "3.96" PW = "34.34">5S</SCH>
+			<SCH THK = "4.78" PW = "41.36">10S</SCH>
+			<SCH THK = "9.53" PW = "81.33">40S</SCH>
+			<SCH THK = "12.7" PW = "107.4">80S</SCH>
+            <SCH THK = "6.35" PW = "54.69">10</SCH>
+            <SCH THK = "7.92" PW = "67.91">20</SCH>
+            <SCH THK = "9.53" PW = "81.33">30</SCH>
+            <SCH THK = "11.13" PW = "94.55">40</SCH>
+            <SCH THK = "15.09" PW = "126.72">60</SCH>
+            <SCH THK = "19.05" PW = "158.11">80</SCH>
+            <SCH THK = "23.83" PW = "194.98">100</SCH>
+            <SCH THK = "27.79" PW = "224.66">120</SCH>
+            <SCH THK = "31.75" PW = "253.58">140</SCH>
+            <SCH THK = "35.71" PW = "281.72">160</SCH>
+            <SCH THK = "9.53" PW = "81.33">STD</SCH>
+            <SCH THK = "12.7" PW = "107.4">XS</SCH>
+        </Pipe>
+        <Pipe DN = "400" NPS = "16" DO = "406.4">
+			<SCH THK = "4.19" PW = "41.56">5S</SCH>
+			<SCH THK = "4.78" PW = "47.34">10S</SCH>
+			<SCH THK = "9.53" PW = "93.27">40S</SCH>
+			<SCH THK = "12.7" PW = "123.31">80S</SCH>
+            <SCH THK = "6.35" PW = "62.65">10</SCH>
+            <SCH THK = "7.92" PW = "77.83">20</SCH>
+            <SCH THK = "9.53" PW = "93.27">30</SCH>
+            <SCH THK = "12.7" PW = "123.31">40</SCH>
+            <SCH THK = "16.66" PW = "160.13">60</SCH>
+            <SCH THK = "21.44" PW = "203.54">80</SCH>
+            <SCH THK = "26.19" PW = "245.57">100</SCH>
+            <SCH THK = "30.96" PW = "286.66">120</SCH>
+            <SCH THK = "36.53" PW = "333.21">140</SCH>
+            <SCH THK = "40.49" PW = "365.38">160</SCH>
+            <SCH THK = "9.53" PW = "93.27">STD</SCH>
+            <SCH THK = "12.7" PW = "123.31">XS</SCH>
+        </Pipe>
+        <Pipe DN = "450" NPS = "18" DO = "457">
+			<SCH THK = "4.19" PW = "46.79">5S</SCH>
+			<SCH THK = "4.78" PW = "53.31">10S</SCH>
+			<SCH THK = "9.53" PW = "106.74">40S</SCH>
+			<SCH THK = "12.7" PW = "141.23">80S</SCH>
+            <SCH THK = "6.35" PW = "70.57">10</SCH>
+            <SCH THK = "7.92" PW = "87.71">20</SCH>
+            <SCH THK = "11.13" PW = "122.38">30</SCH>
+            <SCH THK = "14.27" PW = "155.81">40</SCH>
+            <SCH THK = "19.05" PW = "205.75">60</SCH>
+            <SCH THK = "23.83" PW = "254.57">80</SCH>
+            <SCH THK = "29.36" PW = "309.64">100</SCH>
+            <SCH THK = "34.93" PW = "363.58">120</SCH>
+            <SCH THK = "39.67" PW = "408.28">140</SCH>
+            <SCH THK = "45.24" PW = "459.39">160</SCH>
+            <SCH THK = "9.53" PW = "105.17">STD</SCH>
+            <SCH THK = "12.7" PW = "139.16">XS</SCH>
+        </Pipe>
+		<Pipe DN = "500" NPS = "20" DO = "508">
+			<SCH THK = "4.78" PW = "59.32">5S</SCH>
+			<SCH THK = "5.54" PW = "68.65">10S</SCH>
+			<SCH THK = "9.53" PW = "117.15">40S</SCH>
+			<SCH THK = "12.7" PW = "155.13">80S</SCH>
+            <SCH THK = "6.35" PW = "78.56">10</SCH>
+            <SCH THK = "9.53" PW = "117.15">20</SCH>
+            <SCH THK = "12.7" PW = "155.13">30</SCH>
+            <SCH THK = "15.09" PW = "183.43">40</SCH>
+            <SCH THK = "20.62" PW = "247.84">60</SCH>
+            <SCH THK = "26.19" PW = "311.19">80</SCH>
+            <SCH THK = "32.54" PW = "381.55">100</SCH>
+            <SCH THK = "38.1" PW = "441.52">120</SCH>
+            <SCH THK = "44.45" PW = "508.15">140</SCH>
+            <SCH THK = "50.01" PW = "564.85">160</SCH>
+            <SCH THK = "9.53" PW = "117.15">STD</SCH>
+            <SCH THK = "12.7" PW = "155.13">XS</SCH>
+        </Pipe>
+		<Pipe DN = "550" NPS = "22" DO = "559">
+			<SCH THK = "4.78" PW = "65.33">5S</SCH>
+			<SCH THK = "5.54" PW = "75.62">10S</SCH>
+            <SCH THK = "6.35" PW = "86.55">10</SCH>
+            <SCH THK = "9.53" PW = "129.14">20</SCH>
+            <SCH THK = "12.7" PW = "171.1">30</SCH>
+            <SCH THK = "22.23" PW = "294.27">60</SCH>
+            <SCH THK = "28.58" PW = "373.85">80</SCH>
+            <SCH THK = "34.93" PW = "451.45">100</SCH>
+            <SCH THK = "41.28" PW = "527.05">120</SCH>
+            <SCH THK = "47.63" PW = "600.67">140</SCH>
+            <SCH THK = "53.98" PW = "672.3">160</SCH>
+            <SCH THK = "9.53" PW = "129.14">STD</SCH>
+            <SCH THK = "12.7" PW = "171.1">XS</SCH>
+        </Pipe>
+        <Pipe DN = "600" NPS = "24" DO = "610">
+			<SCH THK = "5.54" PW = "82.58">5S</SCH>
+			<SCH THK = "6.35" PW = "94.53">10S</SCH>
+			<SCH THK = "9.53" PW = "141.12">40S</SCH>
+			<SCH THK = "12.7" PW = "187.07">80S</SCH>
+            <SCH THK = "6.35" PW = "94.53">10</SCH>
+            <SCH THK = "9.53" PW = "141.12">20</SCH>
+            <SCH THK = "14.27" PW = "209.65">30</SCH>
+            <SCH THK = "17.48" PW = "255.43">40</SCH>
+            <SCH THK = "24.61" PW = "355.28">60</SCH>
+            <SCH THK = "30.96" PW = "442.11">80</SCH>
+            <SCH THK = "38.89" PW = "547.74">100</SCH>
+            <SCH THK = "46.02" PW = "640.07">120</SCH>
+            <SCH THK = "52.37" PW = "720.19">140</SCH>
+            <SCH THK = "59.54" PW = "808.27">160</SCH>
+            <SCH THK = "9.53" PW = "141.12">STD</SCH>
+            <SCH THK = "12.7" PW = "187.07">XS</SCH>
+        </Pipe>
+        <Pipe DN = "650" NPS = "26" DO = "660">
+			<SCH THK = "7.92" PW = "127.36">10</SCH>
+            <SCH THK = "12.7" PW = "202.74">20</SCH>
+            <SCH THK = "9.53" PW = "152.88">STD</SCH>
+            <SCH THK = "12.7" PW = "202.74">XS</SCH>
+		</Pipe>
+        <Pipe DN = "700" NPS = "28" DO = "711">
+			<SCH THK = "7.92" PW = "137.32">10</SCH>
+            <SCH THK = "12.7" PW = "218.71">20</SCH>
+            <SCH THK = "15.88" PW = "272.23">30</SCH>
+            <SCH THK = "9.53" PW = "164.86">STD</SCH>
+            <SCH THK = "12.7" PW = "218.71">XS</SCH>
+		</Pipe>
+        <Pipe DN = "750" NPS = "30" DO = "762">
+			<SCH THK = "6.35" PW = "118.34">5S</SCH>
+			<SCH THK = "7.92" PW = "147.29">10S</SCH>
+			<SCH THK = "7.92" PW = "147.29">10</SCH>
+            <SCH THK = "12.7" PW = "234.68">20</SCH>
+            <SCH THK = "15.88" PW = "292.2">30</SCH>
+            <SCH THK = "9.53" PW = "176.85">STD</SCH>
+            <SCH THK = "12.7" PW = "234.68">XS</SCH>
+		</Pipe>
+        <Pipe DN = "800" NPS = "32" DO = "813">
+			<SCH THK = "7.92" PW = "157.25">10</SCH>
+            <SCH THK = "12.7" PW = "250.65">20</SCH>
+            <SCH THK = "15.88" PW = "312.17">30</SCH>
+            <SCH THK = "17.48" PW = "342.94">40</SCH>
+            <SCH THK = "9.53" PW = "188.83">STD</SCH>
+            <SCH THK = "12.7" PW = "250.65">XS</SCH>
+		</Pipe>
+        <Pipe DN = "850" NPS = "34" DO = "864">
+			<SCH THK = "7.92" PW = "167.21">10</SCH>
+            <SCH THK = "12.7" PW = "266.63">20</SCH>
+            <SCH THK = "15.88" PW = "332.14">30</SCH>
+            <SCH THK = "17.48" PW = "364.92">40</SCH>
+            <SCH THK = "9.53" PW = "200.82">STD</SCH>
+            <SCH THK = "12.7" PW = "266.63">XS</SCH>
+		</Pipe>
+        <Pipe DN = "900" NPS = "36" DO = "914">
+			<SCH THK = "7.92" PW = "176.97">10</SCH>
+            <SCH THK = "12.7" PW = "282.29">20</SCH>
+            <SCH THK = "15.88" PW = "351.73">30</SCH>
+            <SCH THK = "19.05" PW = "420.45">40</SCH>
+            <SCH THK = "9.53" PW = "212.57">STD</SCH>
+            <SCH THK = "12.7" PW = "282.29">XS</SCH>
+		</Pipe>
+        <Pipe DN = "950" NPS = "38" DO = "965"></Pipe>
+        <Pipe DN = "1000" NPS = "40" DO = "1016"></Pipe>
+        <Pipe DN = "1050" NPS = "42" DO = "1067"></Pipe>
+        <Pipe DN = "1100" NPS = "44" DO = "1118"></Pipe>
+        <Pipe DN = "1150" NPS = "46" DO = "1168"></Pipe>
+        <Pipe DN = "1200" NPS = "48" DO = "1219"></Pipe>
+    </Standard>
+	
+    <Project Name = "演示项目">
+	    <A1X>
+            <DN THK = "3.5">15</DN>
+            <DN THK = "3.5">20</DN>
+            <DN THK = "4.0">25</DN>
+            <DN THK = "4.0">32</DN>
+            <DN THK = "4.5">40</DN>
+            <DN THK = "4.5">50</DN>
+            <DN THK = "4.5">65</DN>
+            <DN THK = "5.0">80</DN>
+        </A1X>
+        <A1A>
+            <DN THK = "SCH80">15</DN>
+            <DN THK = "SCH80">20</DN>
+            <DN THK = "SCH80">25</DN>
+            <DN THK = "SCH80">32</DN>
+            <DN THK = "SCH80">40</DN>
+            <DN THK = "SCH40">50</DN>
+            <DN THK = "SCH40">65</DN>
+            <DN THK = "SCH40">80</DN>
+            <DN THK = "SCH40">100</DN>
+            <DN THK = "SCH40">125</DN>
+            <DN THK = "SCH40">150</DN>
+            <DN THK = "SCH20">200</DN>
+            <DN THK = "SCH20">250</DN>
+            <DN THK = "SCH20">300</DN>
+            <DN THK = "SCH20">350</DN>
+            <DN THK = "SCH20">400</DN>
+            <DN THK = "SCH20">450</DN>
+            <DN THK = "8.0">500</DN>
+            <DN THK = "8.0">550</DN>
+            <DN THK = "8.0">600</DN>
+        </A1A>
+    </Project>
+	
+    <Project Name = "大连福佳">
+        <A1X>
+            <DN THK = "3.5" MATERIAL="Q235B镀锌">15</DN>
+            <DN THK = "3.5" MATERIAL="Q235B镀锌">20</DN>
+            <DN THK = "4.0" MATERIAL="Q235B镀锌">25</DN>
+            <DN THK = "4.0" MATERIAL="Q235B镀锌">32</DN>
+            <DN THK = "4.5" MATERIAL="Q235B镀锌">40</DN>
+            <DN THK = "4.5" MATERIAL="Q235B镀锌">50</DN>
+            <DN THK = "4.5" MATERIAL="Q235B镀锌">65</DN>
+            <DN THK = "5.0" MATERIAL="Q235B镀锌">80</DN>
+        </A1X>
+        <A1A>
+            <DN THK = "SCH80" MATERIAL="20#">15</DN>
+            <DN THK = "SCH80" MATERIAL="20#">20</DN>
+            <DN THK = "SCH80" MATERIAL="20#">25</DN>
+            <DN THK = "SCH80" MATERIAL="20#">32</DN>
+            <DN THK = "SCH80" MATERIAL="20#">40</DN>
+            <DN THK = "SCH40" MATERIAL="20#">50</DN>
+            <DN THK = "SCH40" MATERIAL="20#">65</DN>
+            <DN THK = "SCH40" MATERIAL="20#">80</DN>
+            <DN THK = "SCH40" MATERIAL="20#">100</DN>
+            <DN THK = "SCH40" MATERIAL="20#">125</DN>
+            <DN THK = "SCH40" MATERIAL="20#">150</DN>
+            <DN THK = "SCH20" MATERIAL="20#">200</DN>
+            <DN THK = "SCH20" MATERIAL="20#">250</DN>
+            <DN THK = "SCH20" MATERIAL="20#">300</DN>
+            <DN THK = "SCH20" MATERIAL="20#">350</DN>
+            <DN THK = "SCH20" MATERIAL="Q235B">400</DN>
+            <DN THK = "SCH20" MATERIAL="Q235B">450</DN>
+            <DN THK = "8.0" MATERIAL="Q235B">500</DN>
+            <DN THK = "8.0" MATERIAL="Q235B">550</DN>
+            <DN THK = "10.0" MATERIAL="Q235B">600</DN>
+            <DN THK = "10.0" MATERIAL="Q235B">650</DN>
+            <DN THK = "10.0" MATERIAL="Q235B">700</DN>
+            <DN THK = "10.0" MATERIAL="Q235B">750</DN>
+            <DN THK = "10.0" MATERIAL="Q235B">800</DN>
+            <DN THK = "10.0" MATERIAL="Q235B">850</DN>
+            <DN THK = "10.0" MATERIAL="Q235B">900</DN>
+            <DN THK = "10.0" MATERIAL="Q235B">950</DN>
+            <DN THK = "10.0" MATERIAL="Q235B">1000</DN>
+            <DN THK = "12.0" MATERIAL="Q235B">1100</DN>
+            <DN THK = "12.0" MATERIAL="Q235B">1150</DN>
+            <DN THK = "12.0" MATERIAL="Q235B">1200</DN>
+        </A1A>
+        <A1C>
+		    <DN THK = "SCH40S" MATERIAL="304">15</DN>
+            <DN THK = "SCH40S" MATERIAL="304">20</DN>
+            <DN THK = "SCH40S" MATERIAL="304">25</DN>
+            <DN THK = "SCH40S" MATERIAL="304">32</DN>
+            <DN THK = "SCH40S" MATERIAL="304">40</DN>
+            <DN THK = "SCH10S" MATERIAL="304">50</DN>
+            <DN THK = "SCH10S" MATERIAL="304">65</DN>
+            <DN THK = "SCH10S" MATERIAL="304">80</DN>
+            <DN THK = "SCH10S" MATERIAL="304">100</DN>
+            <DN THK = "SCH10S" MATERIAL="304">125</DN>
+            <DN THK = "SCH10S" MATERIAL="304">150</DN>
+            <DN THK = "SCH10S" MATERIAL="304">200</DN>
+        </A1C>
+        <B1A>
+            <DN THK = "SCH80">15</DN>
+            <DN THK = "SCH80">20</DN>
+            <DN THK = "SCH80">25</DN>
+            <DN THK = "SCH80">32</DN>
+            <DN THK = "SCH80">40</DN>
+            <DN THK = "SCH40">50</DN>
+            <DN THK = "SCH40">65</DN>
+            <DN THK = "SCH40">80</DN>
+            <DN THK = "SCH40">100</DN>
+            <DN THK = "SCH40">125</DN>
+            <DN THK = "SCH40">150</DN>
+            <DN THK = "SCH20">200</DN>
+            <DN THK = "SCH20">250</DN>
+            <DN THK = "SCH20">300</DN>
+        </B1A>
+    </Project>
+	
 </ThermalMate>

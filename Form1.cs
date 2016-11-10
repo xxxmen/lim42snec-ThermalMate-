@@ -21,31 +21,29 @@ namespace ThermalMate
             ReleaseResource("ThermalMate.xml", "ThermalMate.ThermalMate.xml");
             ReleaseResource("UEwasp.dll", "ThermalMate.UEwasp.dll");
 
-            LoadDefaultConfig();
+            LoadConfig();
         }
 
-        public void LoadDefaultConfig()
+        public void LoadConfig()
         {
             _xmlHelper = new XmlHelper(@"ThermalMate.xml");
+
             bool isTopMost;
             bool.TryParse(_xmlHelper.GetOnlyInnerText("//Config/TopMost"), out isTopMost);
             TopMost = isTopMost;
             chkTopMost.Checked = isTopMost;
 
-            bool isDataSync;
-            bool.TryParse(_xmlHelper.GetOnlyInnerText("//Config/DataSync"), out isDataSync);
-            chkDataSync.Checked = isDataSync;
-
-            var materials = _xmlHelper.GetElementNames("//Velocity/*").ToList();
+            var mediums = _xmlHelper.GetElementNames("//Velocity/*").ToList();
             var velocities = _xmlHelper.GetInnerTexts("//Velocity/*").ToList();
-            for (var i = 0; i < materials.Count; i++)
+            for (var i = 0; i < mediums.Count; i++)
             {
-                if (materials[i].Contains("分隔线"))
+                if (mediums[i].Contains("分隔线"))
                 {
                     lstVelocity.Items.Add(new ListViewItem(new[] { "////////////////////", "////////" }));
                     continue;
                 }
-                lstVelocity.Items.Add(new ListViewItem(new[] { materials[i], velocities[i] }));
+
+                lstVelocity.Items.Add(new ListViewItem(new[] { mediums[i], velocities[i] }));
             }
 
             // 隔行换色
@@ -53,14 +51,22 @@ namespace ThermalMate
             {
                 lstVelocity.Items[i].BackColor = i % 2 == 0 ? Color.GreenYellow : Color.BurlyWood;
             }
+
+            cbxEquipmentType.SelectedIndex = 0;
+
+            // 读取项目名
+            var projects =_xmlHelper.GetAttributeValues("//Project/@Name");
+            projects.ToList().ForEach(x => cbxProject.Items.Add(x));
+            cbxProject.Text = _xmlHelper.GetOnlyInnerText("//Config/Project");
+            cbxSpecification.Text = _xmlHelper.GetOnlyInnerText("//Config/Specification");
+            cbxStandard.Text = _xmlHelper.GetOnlyInnerText("//Config/StandardName");
         }
 
-        private void tabPage1_Action()
+        private void tabPage1_Diameter()
         {
-            int diameter;
-            double volumeFlow, velocity;
+            double diameter, volumeFlow, velocity;
             // 传递string.empty不会报异常
-            int.TryParse(txtDiameter.Text, out diameter);
+            double.TryParse(txtDiameter.Text, out diameter);
             double.TryParse(txtVolumeFlow.Text, out volumeFlow);
             double.TryParse(txtVelocity.Text, out velocity);
 
@@ -77,14 +83,14 @@ namespace ThermalMate
             }
         }
 
-        private void tabPage2_Action()
+        private void tabPage2_Steam()
         {
-            // 清空编辑框
-            foreach (var g in tabPage2.Controls)
+            //// 清空编辑框
+            foreach (var grp in tabPage2.Controls)
             {
-                if (g is GroupBox)
+                if (grp is GroupBox)
                 {
-                    foreach (var txt in ((GroupBox)g).Controls)
+                    foreach (var txt in ((GroupBox)grp).Controls)
                     {
                         if (txt is TextBox && ((TextBox)txt).ReadOnly)
                         {
@@ -119,22 +125,6 @@ namespace ThermalMate
                 PT2KS(pressure, temperature, ref retValue, ref range);
                 txtIsoIndex1.Text = Math.Round(retValue, 3).ToString();
 
-                if (chkDataSync.Checked)
-                {
-                    // 数据同步
-                    txtVolumeFlow.Text = txtVolumeFlow1.Text;
-                    tabControl1.SelectedIndex = 0;
-                    txtDiameter.Clear();
-                    txtVelocity.Clear();
-                    if (rioDiameter.Checked)
-                    {
-                        txtDiameter.Focus();
-                    }
-                    else if (rioVelocity.Checked)
-                    {
-                        txtVelocity.Focus();
-                    }
-                }
             }
             else if (string.Empty != txtPressure.Text.Trim() && string.Empty ==txtTemperature.Text.Trim())
             {
@@ -220,11 +210,95 @@ namespace ThermalMate
                     txtState.Text = "饱和区";
                     break;
             }
-            
         }
 
-        private void tabPage3_Action()
+        private void tabPage3_Misc()
         {
+            // 管道等级查询
+            if ("grpPipe" == ActiveControl.Parent.Name)
+            {
+                // 清空编辑框
+                foreach (var control in grpPipe.Controls.OfType<TextBox>())
+                {
+                    (control).Clear();
+                }
+
+                var dn = cmbNominalDiameter.Text.Replace("(", "").Replace(")", "");
+                var standardName = cbxStandard.Text;
+
+                try
+                {
+                    // 获取外径
+                    var xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/@DO", standardName, dn);
+                    var Do = _xmlHelper.GetOnlyAttributeValue(xPath);
+                    txtDo.Text = Do;
+
+                    // 获取壁厚
+                    xPath = string.Format("//Project[@Name='{0}']/{1}/*[text()='{2}']/@THK",
+                        cbxProject.Text,
+                        cbxSpecification.Text,
+                        dn);
+                    var thk = _xmlHelper.GetOnlyAttributeValue(xPath);
+                    txtSCH.Text = thk;
+
+                    // 材质
+                    xPath = string.Format("//Project[@Name='{0}']/{1}/*[text()='{2}']/@MATERIAL",
+                        cbxProject.Text,
+                        cbxSpecification.Text,
+                        dn);
+                    txtMaterial.Text = _xmlHelper.GetOnlyAttributeValue(xPath);
+
+                    if (thk.Contains("SCH"))
+                    {
+                        var sch = thk.Replace("SCH", string.Empty);
+
+                        // 壁厚
+                        xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/*[text()='{2}']/@THK", standardName, dn, sch);
+                        thk = _xmlHelper.GetOnlyAttributeValue(xPath);
+
+                        // 单重
+                        xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/*[text()='{2}']/@PW", standardName, dn, sch);
+                        var pw = _xmlHelper.GetOnlyAttributeValue(xPath);
+                        txtPw.Text = pw;
+                    }
+                    txtThk.Text = thk;
+
+                    // 计算内径
+                    if (standardName.Contains("1996"))
+                    {
+                        var nDo = int.Parse(Do);
+                        var dThk = double.Parse(thk);
+                        var nDi = Convert.ToInt32(nDo - 2 * dThk);
+                        txtDi.Text = nDi + "";
+                    }
+                    else
+                    {
+                        var dDo = double.Parse(Do);
+                        var dThk = double.Parse(thk);
+                        var dDi = Convert.ToDouble(dDo - 2 * dThk);
+                        txtDi.Text = dDi + "";
+                    }
+
+                    Copy2Clipboard(Do + "×" + thk);
+                }
+                catch (Exception ex)
+                {
+                    // 清空编辑框
+                    foreach (var ctl in groupBox2.Controls.OfType<TextBox>())
+                    {
+                        (ctl).Clear();
+                    }
+                    //MessageBox.Show("查询失败", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message);
+                }
+
+                cmbNominalDiameter.Focus();
+                cmbNominalDiameter.SelectAll();
+
+                return;
+            }
+
+            // 流量折算
             double op, ot, of, sp, st, sf;
             double.TryParse(txtOperatingPressure.Text, out op);
             double.TryParse(txtOperatingTemperature.Text, out ot);
@@ -246,22 +320,6 @@ namespace ThermalMate
                 txtStandardFlow.Text = flow.ToString();
             }
 
-            if (chkDataSync.Checked)
-            {
-                // 数据同步
-                txtVolumeFlow.Text = txtOperatingFlow.Text;
-                tabControl1.SelectedIndex = 0;
-                txtDiameter.Clear();
-                txtVelocity.Clear();
-                if (rioDiameter.Checked)
-                {
-                    txtDiameter.Focus();
-                }
-                else if (rioVelocity.Checked)
-                {
-                    txtVelocity.Focus();
-                }
-            }
         }
 
         private void tabControl1_KeyDown(object sender, KeyEventArgs e)
@@ -272,15 +330,15 @@ namespace ThermalMate
                     switch (tabControl1.SelectedIndex)
                     {
                         case 0:
-                            tabPage1_Action();
+                            tabPage1_Diameter();
                             e.Handled = true;
                             break;
                         case 1:
-                            tabPage2_Action();
+                            tabPage2_Steam();
                             e.Handled = true;
                             break;
                         case 2:
-                            tabPage3_Action();
+                            tabPage3_Misc();
                             e.Handled = true;
                             break;
                     }
@@ -310,8 +368,47 @@ namespace ThermalMate
 
         private void cbxBolt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var bolt = cbxBolt.Text;
-            txtHoleSize.Text = _xmlHelper.GetOnlyInnerText("//BlotHole/" + bolt);
+            var xpath = string.Format("//BlotHole/{0}[@TYPE='{1}']", cbxBolt.Text, cbxEquipmentType.Text);
+            txtHoleSize.Text = _xmlHelper.GetOnlyInnerText(xpath);
+        }
+
+        private void cbxProject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // 读取项目包含的管道等级
+            cbxSpecification.Items.Clear();
+            cbxSpecification.ResetText();
+            var xPath = string.Format("//Project[@Name='{0}']/*", cbxProject.Text);
+            var specs =_xmlHelper.GetElementNames(xPath);
+            specs.ToList().ForEach(x => cbxSpecification.Items.Add(x));
+        }
+
+        private void sendtoVolumeFlow_DoubleClick(object sender, EventArgs e)
+        {
+            var txt = (TextBox) sender;
+            if (null == txt) return;
+            txtVolumeFlow.Text = txt.Text;
+            tabControl1.SelectedIndex = 0;
+            txtDiameter.Clear();
+            txtVelocity.Clear();
+            if (rioDiameter.Checked)
+            {
+                txtDiameter.Focus();
+            }
+            else if (rioVelocity.Checked)
+            {
+                txtVelocity.Focus();
+            }
+        }
+
+        private void sendtoDiameter_DoubleClick(object sender, EventArgs e)
+        {
+            var txt = (TextBox)sender;
+            if (null == txt) return;
+            txtDiameter.Clear();
+            txtVelocity.Clear();
+            rioDiameter.Checked = true;
+            txtDiameter.Text = txt.Text;
+            tabControl1.SelectedIndex = 0;
         }
 
         #region 界面代码
@@ -367,11 +464,6 @@ namespace ThermalMate
                 _xmlHelper.SetInnerText("//Config/TopMost", "false");
                 TopMost = false;
             }
-        }
-
-        private void chkDataSync_CheckedChanged(object sender, EventArgs e)
-        {
-            _xmlHelper.SetInnerText("//Config/DataSync", chkDataSync.Checked ? "true" : "false");
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
