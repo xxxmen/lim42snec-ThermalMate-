@@ -62,6 +62,37 @@ namespace ThermalMate
             cbxStandard.Text = _xmlHelper.GetOnlyInnerText("//Config/StandardName");
         }
 
+        private void tabControl1_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    switch (tabControl1.SelectedIndex)
+                    {
+                        case 0:
+                            tabPage1_Diameter();
+                            e.Handled = true;
+                            break;
+                        case 1:
+                            tabPage2_Steam();
+                            e.Handled = true;
+                            break;
+                        case 2:
+                            tabPage3_Misc();
+                            e.Handled = true;
+                            break;
+                    }
+                    break;
+                case Keys.Escape:
+                    var box = ActiveControl as TextBox;
+                    if (box != null)
+                    {
+                        box.Clear();
+                    }
+                    break;
+            }
+        }
+
         private void tabPage1_Diameter()
         {
             double diameter, volumeFlow, velocity;
@@ -85,12 +116,13 @@ namespace ThermalMate
 
         private void tabPage2_Steam()
         {
-            //// 清空编辑框
-            foreach (var grp in tabPage2.Controls)
+            // 清空编辑框
+            foreach (var control in tabPage2.Controls)
             {
-                if (grp is GroupBox)
+                var gbx = control as GroupBox;
+                if (gbx != null)
                 {
-                    foreach (var txt in ((GroupBox)grp).Controls)
+                    foreach (var txt in gbx.Controls)
                     {
                         if (txt is TextBox && ((TextBox)txt).ReadOnly)
                         {
@@ -109,7 +141,7 @@ namespace ThermalMate
             // 使用IFC97标准
             SETSTD_WASP(97);
 
-            if (string.Empty != txtPressure.Text.Trim() && string.Empty != txtTemperature.Text.Trim())
+            if (chkPressure.Checked && chkTemperature.Checked)
             {// 过热汽
                 PT2V(pressure, temperature, ref retValue, ref range);
                 var volumeFlow = massFlow * 1000 * retValue;
@@ -126,7 +158,7 @@ namespace ThermalMate
                 txtIsoIndex1.Text = Math.Round(retValue, 3).ToString();
 
             }
-            else if (string.Empty != txtPressure.Text.Trim() && string.Empty ==txtTemperature.Text.Trim())
+            else if (chkPressure.Checked && !chkTemperature.Checked)
             {
                 P2T(pressure, ref retValue, ref range);
                 txtTemperature.Text = Math.Round(retValue, 1).ToString();
@@ -161,7 +193,7 @@ namespace ThermalMate
                 P2KSL(pressure, ref retValue, ref range);
                 txtIsoIndex3.Text = Math.Round(retValue, 3).ToString();
             }
-            else if (string.Empty == txtPressure.Text.Trim() && string.Empty != txtTemperature.Text.Trim())
+            else if (!chkPressure.Checked && chkTemperature.Checked)
             {
                 T2P(temperature, ref retValue, ref range);
                 txtPressure.Text = Math.Round(retValue, 3).ToString();
@@ -201,13 +233,13 @@ namespace ThermalMate
             switch (range)
             {
                 case 1:
-                    txtState.Text = "过冷区";
+                    txtState.Text = @"过冷区";
                     break;
                 case 2:
-                    txtState.Text = "过热区";
+                    txtState.Text = @"过热区";
                     break;
                 case 4:
-                    txtState.Text = "饱和区";
+                    txtState.Text = @"饱和区";
                     break;
             }
         }
@@ -319,57 +351,18 @@ namespace ThermalMate
                 flow = Math.Round(flow, 1);
                 txtStandardFlow.Text = flow.ToString();
             }
-
-        }
-
-        private void tabControl1_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Enter:
-                    switch (tabControl1.SelectedIndex)
-                    {
-                        case 0:
-                            tabPage1_Diameter();
-                            e.Handled = true;
-                            break;
-                        case 1:
-                            tabPage2_Steam();
-                            e.Handled = true;
-                            break;
-                        case 2:
-                            tabPage3_Misc();
-                            e.Handled = true;
-                            break;
-                    }
-
-                    break;
-                case Keys.Escape:
-                    var box = ActiveControl as TextBox;
-                    if (box != null)
-                    {
-                        box.Clear();
-                    }
-                    break;
-                //case Keys.Right:
-                //    if (tabControl1.SelectedIndex >= tabControl1.TabCount)
-                //    {
-                //        tabControl1.SelectedIndex = 0;
-
-                //    }
-                //    tabControl1.SelectedIndex += 1;
-                //    MessageBox.Show(tabControl1.SelectedIndex.ToString());
-                //    break;
-                //case Keys.Left:
-                //    tabControl1.SelectedIndex -= 1;
-                //    break;
-            }
         }
 
         private void cbxBolt_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtHoleSize.Text = string.Empty;
             var xpath = string.Format("//BlotHole/{0}[@TYPE='{1}']", cbxBolt.Text, cbxEquipmentType.Text);
             txtHoleSize.Text = _xmlHelper.GetOnlyInnerText(xpath);
+        }
+
+        private void cbxEquipmentType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbxProject_SelectedIndexChanged(null, null);
         }
 
         private void cbxProject_SelectedIndexChanged(object sender, EventArgs e)
@@ -380,35 +373,6 @@ namespace ThermalMate
             var xPath = string.Format("//Project[@Name='{0}']/*", cbxProject.Text);
             var specs =_xmlHelper.GetElementNames(xPath);
             specs.ToList().ForEach(x => cbxSpecification.Items.Add(x));
-        }
-
-        private void sendtoVolumeFlow_DoubleClick(object sender, EventArgs e)
-        {
-            var txt = (TextBox) sender;
-            if (null == txt) return;
-            txtVolumeFlow.Text = txt.Text;
-            tabControl1.SelectedIndex = 0;
-            txtDiameter.Clear();
-            txtVelocity.Clear();
-            if (rioDiameter.Checked)
-            {
-                txtDiameter.Focus();
-            }
-            else if (rioVelocity.Checked)
-            {
-                txtVelocity.Focus();
-            }
-        }
-
-        private void sendtoDiameter_DoubleClick(object sender, EventArgs e)
-        {
-            var txt = (TextBox)sender;
-            if (null == txt) return;
-            txtDiameter.Clear();
-            txtVelocity.Clear();
-            rioDiameter.Checked = true;
-            txtDiameter.Text = txt.Text;
-            tabControl1.SelectedIndex = 0;
         }
 
         #region 界面代码
@@ -452,6 +416,16 @@ namespace ThermalMate
             }
         }
 
+        private void chkPressure_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPressure.ReadOnly = !txtPressure.ReadOnly;
+        }
+
+        private void chkTemperature_CheckedChanged(object sender, EventArgs e)
+        {
+            txtTemperature.ReadOnly = !txtTemperature.ReadOnly;
+        }
+
         private void chkTopMost_CheckedChanged(object sender, EventArgs e)
         {
             if (chkTopMost.Checked)
@@ -481,6 +455,36 @@ namespace ThermalMate
                     break;
             }
         }
+
+        private void sendtoDiameter_DoubleClick(object sender, EventArgs e)
+        {
+            var txt = (TextBox)sender;
+            if (null == txt) return;
+            txtDiameter.Clear();
+            txtVelocity.Clear();
+            rioDiameter.Checked = true;
+            txtDiameter.Text = txt.Text;
+            tabControl1.SelectedIndex = 0;
+        }
+
+        private void sendtoVolumeFlow_DoubleClick(object sender, EventArgs e)
+        {
+            var txt = (TextBox) sender;
+            if (null == txt) return;
+            txtVolumeFlow.Text = txt.Text;
+            tabControl1.SelectedIndex = 0;
+            txtDiameter.Clear();
+            txtVelocity.Clear();
+            if (rioDiameter.Checked)
+            {
+                txtDiameter.Focus();
+            }
+            else if (rioVelocity.Checked)
+            {
+                txtVelocity.Focus();
+            }
+        }
+
         #endregion
 
         #region 计算代码

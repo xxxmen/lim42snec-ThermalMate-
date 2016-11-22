@@ -49,8 +49,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lstVelocity = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -109,14 +109,14 @@
             this.txtViscosity1 = new System.Windows.Forms.TextBox();
             this.txtEnthalpy1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkTemperature = new System.Windows.Forms.CheckBox();
+            this.chkPressure = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtPressure = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtState = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txtMassFlow = new System.Windows.Forms.TextBox();
             this.txtTemperature = new System.Windows.Forms.TextBox();
@@ -982,14 +982,14 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.chkTemperature);
+            this.groupBox3.Controls.Add(this.chkPressure);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.txtPressure);
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.txtState);
-            this.groupBox3.Controls.Add(this.label48);
-            this.groupBox3.Controls.Add(this.label47);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.txtMassFlow);
             this.groupBox3.Controls.Add(this.txtTemperature);
@@ -999,6 +999,32 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "汽水参数";
+            // 
+            // chkTemperature
+            // 
+            this.chkTemperature.AutoSize = true;
+            this.chkTemperature.Checked = true;
+            this.chkTemperature.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTemperature.Location = new System.Drawing.Point(10, 51);
+            this.chkTemperature.Name = "chkTemperature";
+            this.chkTemperature.Size = new System.Drawing.Size(48, 16);
+            this.chkTemperature.TabIndex = 6;
+            this.chkTemperature.Text = "温度";
+            this.chkTemperature.UseVisualStyleBackColor = true;
+            this.chkTemperature.CheckedChanged += new System.EventHandler(this.chkTemperature_CheckedChanged);
+            // 
+            // chkPressure
+            // 
+            this.chkPressure.AutoSize = true;
+            this.chkPressure.Checked = true;
+            this.chkPressure.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPressure.Location = new System.Drawing.Point(10, 21);
+            this.chkPressure.Name = "chkPressure";
+            this.chkPressure.Size = new System.Drawing.Size(48, 16);
+            this.chkPressure.TabIndex = 6;
+            this.chkPressure.Text = "压力";
+            this.chkPressure.UseVisualStyleBackColor = true;
+            this.chkPressure.CheckedChanged += new System.EventHandler(this.chkPressure_CheckedChanged);
             // 
             // label20
             // 
@@ -1053,24 +1079,6 @@
             this.txtState.TabIndex = 2;
             this.txtState.TabStop = false;
             this.txtState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(10, 53);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(29, 12);
-            this.label48.TabIndex = 2;
-            this.label48.Text = "温度";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(10, 23);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(29, 12);
-            this.label47.TabIndex = 2;
-            this.label47.Text = "压力";
             // 
             // label17
             // 
@@ -1410,6 +1418,7 @@
             this.cbxEquipmentType.Name = "cbxEquipmentType";
             this.cbxEquipmentType.Size = new System.Drawing.Size(109, 20);
             this.cbxEquipmentType.TabIndex = 20;
+            this.cbxEquipmentType.SelectedIndexChanged += new System.EventHandler(this.cbxEquipmentType_SelectedIndexChanged);
             // 
             // cbxBolt
             // 
@@ -1651,8 +1660,6 @@
         private System.Windows.Forms.TextBox txtIsoIndex2;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtIsoIndex1;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label47;
         private System.Windows.Forms.GroupBox grpFlowConversion;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.ComboBox cbxBolt;
@@ -1682,6 +1689,8 @@
         private System.Windows.Forms.ComboBox cbxProject;
         private System.Windows.Forms.TextBox txtMaterial;
         private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.CheckBox chkTemperature;
+        private System.Windows.Forms.CheckBox chkPressure;
     }
 }
 
