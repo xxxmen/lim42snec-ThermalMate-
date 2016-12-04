@@ -2,11 +2,10 @@
 
 <ThermalMate>
 	<Config>
-		<TopMoSt>true</TopMoSt>
+		<TopMost>true</TopMost>
 		<Project>大连福佳</Project>
 		<Specification>A1A</Specification>
 		<StandardName>SHT3405-2012</StandardName>
-		<Clipboard>txtInfo</Clipboard>
 	</Config>
   
 	<Velocity>

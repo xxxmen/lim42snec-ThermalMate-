@@ -2,36 +2,33 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using ThermalMate.Class;
 
 namespace ThermalMate
 {
     public partial class Form1 : Form
     {
+        private readonly XmlHelper _xmlHelper;
+
         public Form1()
         {
             InitializeComponent();
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Text = string.Format("{0}  V{1}   Code by hangch",
+            Text = string.Format("{0}  V{1}   【Code by hangch】",
                 Application.ProductName,
                 Application.ProductVersion);
+            
+            Common.ReleaseResource("ThermalMate.Resource.ThermalMate.xml", "ThermalMate.xml");
+            Common.ReleaseResource("ThermalMate.Resource.UEwasp.dll", "UEwasp.dll");
 
-            ReleaseResource("ThermalMate.xml", "ThermalMate.ThermalMate.xml");
-            ReleaseResource("UEwasp.dll", "ThermalMate.UEwasp.dll");
+            _xmlHelper = new XmlHelper(@"ThermalMate.xml");
 
             LoadConfig();
         }
 
         public void LoadConfig()
         {
-            _xmlHelper = new XmlHelper(@"ThermalMate.xml");
-
-            bool isTopMost;
-            bool.TryParse(_xmlHelper.GetOnlyInnerText("//Config/TopMost"), out isTopMost);
-            TopMost = isTopMost;
-            chkTopMost.Checked = isTopMost;
+            chkTopMost.Checked = TopMost = Convert.ToBoolean(_xmlHelper.GetOnlyInnerText("//Config/TopMost"));
 
             var mediums = _xmlHelper.GetElementNames("//Velocity/*").ToList();
             var velocities = _xmlHelper.GetInnerTexts("//Velocity/*").ToList();
@@ -42,190 +39,178 @@ namespace ThermalMate
                     lstVelocity.Items.Add(new ListViewItem(new[] { "////////////////////", "////////" }));
                     continue;
                 }
-
                 lstVelocity.Items.Add(new ListViewItem(new[] { mediums[i], velocities[i] }));
             }
 
             // 隔行换色
             for (var i = 0; i < lstVelocity.Items.Count; i++)
             {
-                lstVelocity.Items[i].BackColor = i % 2 == 0 ? Color.GreenYellow : Color.BurlyWood;
+                if (i % 2 == 0)
+                {
+                    lstVelocity.Items[i].BackColor =Color.BurlyWood;
+                }
             }
-
-            cbxEquipmentType.SelectedIndex = 0;
-
+            
             // 读取项目名
-            var projects =_xmlHelper.GetAttributeValues("//Project/@Name");
-            projects.ToList().ForEach(x => cbxProject.Items.Add(x));
+            cbxProject.DataSource = _xmlHelper.GetAttributeValues("//Project/@Name").ToList();
             cbxProject.Text = _xmlHelper.GetOnlyInnerText("//Config/Project");
             cbxSpecification.Text = _xmlHelper.GetOnlyInnerText("//Config/Specification");
-            cbxStandard.Text = _xmlHelper.GetOnlyInnerText("//Config/StandardName");
+            cbxStandardName.Text = _xmlHelper.GetOnlyInnerText("//Config/StandardName");
         }
 
-        private void tabControl1_KeyDown(object sender, KeyEventArgs e)
+        private void tabControl_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    switch (tabControl1.SelectedIndex)
+                    switch (tabControl.SelectedIndex)
                     {
                         case 0:
-                            tabPage1_Diameter();
+                            Page_Diameter();
                             e.Handled = true;
                             break;
                         case 1:
-                            tabPage2_Steam();
+                            Page_Steam();
                             e.Handled = true;
                             break;
                         case 2:
-                            tabPage3_Misc();
+                            // TODO
+                            break;
+                        case 3:
+                            Page_Misc();
                             e.Handled = true;
                             break;
                     }
                     break;
                 case Keys.Escape:
-                    var box = ActiveControl as TextBox;
-                    if (box != null)
+                    if (ActiveControl is TextBox)
                     {
-                        box.Clear();
+                        ((TextBox)ActiveControl).Clear();
                     }
+                    e.Handled = true;
                     break;
             }
         }
 
-        private void tabPage1_Diameter()
+        private void Page_Diameter()
         {
-            double diameter, volumeFlow, velocity;
-            // 传递string.empty不会报异常
-            double.TryParse(txtDiameter.Text, out diameter);
-            double.TryParse(txtVolumeFlow.Text, out volumeFlow);
-            double.TryParse(txtVelocity.Text, out velocity);
-
             if (rioDiameter.Checked)
             {
-                velocity = Diameter2Velocity(volumeFlow, diameter);
-                velocity = Math.Round(velocity, 1);
-                txtVelocity.Text = velocity.ToString();
+                var volumeFlow = Convert.ToDouble(txtVolumeFlow.Text);
+                var diameter = Convert.ToDouble(txtDiameter.Text);
+                var velocity = Diameter2Velocity(volumeFlow, diameter);
+                txtVelocity.Text = Math.Round(velocity, 1).ToString();
             }
             else if (rioVelocity.Checked)
             {
-                diameter = Velocity2Diameter(volumeFlow, velocity);
+                var volumeFlow = Convert.ToDouble(txtVolumeFlow.Text);
+                var velocity = Convert.ToDouble(txtVelocity.Text);
+                var diameter = Velocity2Diameter(volumeFlow, velocity);
                 txtDiameter.Text = diameter.ToString();
             }
         }
 
-        private void tabPage2_Steam()
+        private void Page_Steam()
         {
             // 清空编辑框
-            foreach (var control in tabPage2.Controls)
-            {
-                var gbx = control as GroupBox;
-                if (gbx != null)
-                {
-                    foreach (var txt in gbx.Controls)
-                    {
-                        if (txt is TextBox && ((TextBox)txt).ReadOnly)
-                        {
-                            ((TextBox)txt).Clear();
-                        }
-                    }
-                }
-            }
+            Common.ClearGroupTextControl(grpSaturatedSteam);
+            Common.ClearGroupTextControl(grpSuperheatedSteam);
+            Common.ClearGroupTextControl(grpSaturatedWater);
 
-            double massFlow, pressure, temperature, retValue=0.0;
+            double massFlow, pressure, temperature, retValue = 0.0;
             var range = 0;
             double.TryParse(txtMassFlow.Text, out massFlow);
             double.TryParse(txtPressure.Text, out pressure);
             double.TryParse(txtTemperature.Text, out temperature);
 
             // 使用IFC97标准
-            SETSTD_WASP(97);
+            Steam.SETSTD_WASP(97);
 
             if (chkPressure.Checked && chkTemperature.Checked)
             {// 过热汽
-                PT2V(pressure, temperature, ref retValue, ref range);
+                Steam.PT2V(pressure, temperature, ref retValue, ref range);
                 var volumeFlow = massFlow * 1000 * retValue;
                 txtVolumeFlow1.Text = Math.Round(volumeFlow, 1).ToString();
                 txtDensity1.Text = Math.Round(1 / retValue, 3).ToString();
 
-                PT2H(pressure, temperature, ref retValue, ref range);
+                Steam.PT2H(pressure, temperature, ref retValue, ref range);
                 txtEnthalpy1.Text = Math.Round(retValue, 2).ToString();
 
-                PT2ETA(pressure, temperature, ref retValue, ref range);
+                Steam.PT2ETA(pressure, temperature, ref retValue, ref range);
                 txtViscosity1.Text = Math.Round(retValue * 1000, 3).ToString();
 
-                PT2KS(pressure, temperature, ref retValue, ref range);
+                Steam.PT2KS(pressure, temperature, ref retValue, ref range);
                 txtIsoIndex1.Text = Math.Round(retValue, 3).ToString();
 
             }
             else if (chkPressure.Checked && !chkTemperature.Checked)
             {
-                P2T(pressure, ref retValue, ref range);
+                Steam.P2T(pressure, ref retValue, ref range);
                 txtTemperature.Text = Math.Round(retValue, 1).ToString();
 
                 // 饱和汽
-                P2VG(pressure, ref retValue, ref range);
+                Steam.P2VG(pressure, ref retValue, ref range);
                 var volumeFlow = massFlow * 1000 * retValue;
                 txtVolumeFlow2.Text = Math.Round(volumeFlow, 1).ToString();
                 txtDensity2.Text = Math.Round(1 / retValue, 3).ToString();
 
-                P2HG(pressure, ref retValue, ref range);
+                Steam.P2HG(pressure, ref retValue, ref range);
                 txtEnthalpy2.Text = Math.Round(retValue, 2).ToString();
 
-                P2ETAG(pressure, ref retValue, ref range);
+                Steam.P2ETAG(pressure, ref retValue, ref range);
                 txtViscosity2.Text = Math.Round(retValue * 1000, 3).ToString();
 
-                P2KSG(pressure, ref retValue, ref range);
+                Steam.P2KSG(pressure, ref retValue, ref range);
                 txtIsoIndex2.Text = Math.Round(retValue, 3).ToString();
 
                 // 饱和水
-                P2VL(pressure, ref retValue, ref range);
+                Steam.P2VL(pressure, ref retValue, ref range);
                 volumeFlow = massFlow * 1000 * retValue;
                 txtVolumeFlow3.Text = Math.Round(volumeFlow, 1).ToString();
                 txtDensity3.Text = Math.Round(1 / retValue, 3).ToString();
 
-                P2HL(pressure, ref retValue, ref range);
+                Steam.P2HL(pressure, ref retValue, ref range);
                 txtEnthalpy3.Text = Math.Round(retValue, 2).ToString();
 
-                P2ETAL(pressure, ref retValue, ref range);
+                Steam.P2ETAL(pressure, ref retValue, ref range);
                 txtViscosity3.Text = Math.Round(retValue * 1000, 3).ToString();
 
-                P2KSL(pressure, ref retValue, ref range);
+                Steam.P2KSL(pressure, ref retValue, ref range);
                 txtIsoIndex3.Text = Math.Round(retValue, 3).ToString();
             }
             else if (!chkPressure.Checked && chkTemperature.Checked)
             {
-                T2P(temperature, ref retValue, ref range);
+                Steam.T2P(temperature, ref retValue, ref range);
                 txtPressure.Text = Math.Round(retValue, 3).ToString();
 
                 // 饱和汽
-                T2VG(temperature, ref retValue, ref range);
+                Steam.T2VG(temperature, ref retValue, ref range);
                 var volumeFlow = massFlow * 1000 * retValue;
                 txtVolumeFlow2.Text = Math.Round(volumeFlow, 1).ToString();
                 txtDensity2.Text = Math.Round(1 / retValue, 3).ToString();
 
-                T2HG(temperature, ref retValue, ref range);
+                Steam.T2HG(temperature, ref retValue, ref range);
                 txtEnthalpy2.Text = Math.Round(retValue, 2).ToString();
 
-                T2ETAG(temperature, ref retValue, ref range);
+                Steam.T2ETAG(temperature, ref retValue, ref range);
                 txtViscosity2.Text = Math.Round(retValue * 1000, 3).ToString();
 
-                T2KSG(temperature, ref retValue, ref range);
+                Steam.T2KSG(temperature, ref retValue, ref range);
                 txtIsoIndex2.Text = Math.Round(retValue, 3).ToString();
 
                 // 饱和水
-                T2VL(temperature, ref retValue, ref range);
+                Steam.T2VL(temperature, ref retValue, ref range);
                 volumeFlow = massFlow * 1000 * retValue;
                 txtVolumeFlow3.Text = Math.Round(volumeFlow, 1).ToString();
                 txtDensity3.Text = Math.Round(1 / retValue, 3).ToString();
 
-                T2HL(temperature, ref retValue, ref range);
+                Steam.T2HL(temperature, ref retValue, ref range);
                 txtEnthalpy3.Text = Math.Round(retValue, 2).ToString();
 
-                T2ETAL(temperature, ref retValue, ref range);
+                Steam.T2ETAL(temperature, ref retValue, ref range);
                 txtViscosity3.Text = Math.Round(retValue * 1000, 3).ToString();
 
-                T2KSL(temperature, ref retValue, ref range);
+                Steam.T2KSL(temperature, ref retValue, ref range);
                 txtIsoIndex3.Text = Math.Round(retValue, 3).ToString();
             }
 
@@ -244,19 +229,15 @@ namespace ThermalMate
             }
         }
 
-        private void tabPage3_Misc()
+        private void Page_Misc()
         {
             // 管道等级查询
-            if ("grpPipe" == ActiveControl.Parent.Name)
+            if (cmbNominalDiameter.Focused || cbxProject.Focused || cbxSpecification.Focused || cbxStandardName.Focused)   
             {
-                // 清空编辑框
-                foreach (var control in grpPipe.Controls.OfType<TextBox>())
-                {
-                    (control).Clear();
-                }
+                Common.ClearGroupTextControl(grpPipe);
 
                 var dn = cmbNominalDiameter.Text.Replace("(", "").Replace(")", "");
-                var standardName = cbxStandard.Text;
+                var standardName = cbxStandardName.Text;
 
                 try
                 {
@@ -296,9 +277,9 @@ namespace ThermalMate
                     txtThk.Text = thk;
 
                     // 计算内径
-                    if (standardName.Contains("1996"))
+                    if ("SHT3405-2012" == cbxStandardName.Text.Trim())
                     {
-                        var nDo = int.Parse(Do);
+                        var nDo = double.Parse(Do);
                         var dThk = double.Parse(thk);
                         var nDi = Convert.ToInt32(nDo - 2 * dThk);
                         txtDi.Text = nDi + "";
@@ -311,7 +292,7 @@ namespace ThermalMate
                         txtDi.Text = dDi + "";
                     }
 
-                    Copy2Clipboard(Do + "×" + thk);
+                    Common.SetClipboard(Do + "×" + thk);
                 }
                 catch (Exception ex)
                 {
@@ -353,16 +334,11 @@ namespace ThermalMate
             }
         }
 
-        private void cbxBolt_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbxBoltSpec_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtHoleSize.Text = string.Empty;
-            var xpath = string.Format("//BlotHole/{0}[@TYPE='{1}']", cbxBolt.Text, cbxEquipmentType.Text);
+            var xpath = string.Format("//BlotHole/{0}[@TYPE='{1}']", cbxBoltSpec.Text, cbxEquipmentType.Text);
             txtHoleSize.Text = _xmlHelper.GetOnlyInnerText(xpath);
-        }
-
-        private void cbxEquipmentType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbxProject_SelectedIndexChanged(null, null);
         }
 
         private void cbxProject_SelectedIndexChanged(object sender, EventArgs e)
@@ -371,8 +347,14 @@ namespace ThermalMate
             cbxSpecification.Items.Clear();
             cbxSpecification.ResetText();
             var xPath = string.Format("//Project[@Name='{0}']/*", cbxProject.Text);
-            var specs =_xmlHelper.GetElementNames(xPath);
+            var specs = _xmlHelper.GetElementNames(xPath);
             specs.ToList().ForEach(x => cbxSpecification.Items.Add(x));
+        }
+
+        private void btnSaveConfig_Click(object sender, EventArgs e)
+        {
+
+            _xmlHelper.SetInnerText("//Config/TopMost", chkTopMost.Checked.ToString());
         }
 
         #region 界面代码
@@ -428,21 +410,12 @@ namespace ThermalMate
 
         private void chkTopMost_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkTopMost.Checked)
-            {
-                _xmlHelper.SetInnerText("//Config/TopMost", "true");
-                TopMost = true;
-            }
-            else
-            {
-                _xmlHelper.SetInnerText("//Config/TopMost", "false");
-                TopMost = false;
-            }
+            TopMost = chkTopMost.Checked;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (tabControl1.SelectedTab.TabIndex)
+            switch (tabControl.SelectedTab.TabIndex)
             {
                 case 0:
                     txtVolumeFlow.Focus();
@@ -464,15 +437,15 @@ namespace ThermalMate
             txtVelocity.Clear();
             rioDiameter.Checked = true;
             txtDiameter.Text = txt.Text;
-            tabControl1.SelectedIndex = 0;
+            tabControl.SelectedIndex = 0;
         }
 
         private void sendtoVolumeFlow_DoubleClick(object sender, EventArgs e)
         {
-            var txt = (TextBox) sender;
+            var txt = (TextBox)sender;
             if (null == txt) return;
             txtVolumeFlow.Text = txt.Text;
-            tabControl1.SelectedIndex = 0;
+            tabControl.SelectedIndex = 0;
             txtDiameter.Clear();
             txtVelocity.Clear();
             if (rioDiameter.Checked)
@@ -519,5 +492,11 @@ namespace ThermalMate
 
 
         #endregion
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
