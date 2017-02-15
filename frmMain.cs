@@ -470,7 +470,7 @@ namespace ThermalMate
             }
         }
 
-        private void btnCoal_Click(object sender, EventArgs e)
+        private void btnConvertCoal_Click(object sender, EventArgs e)
         {
             double moistureA, ashA, volatileA, carbonA;
             double.TryParse(txtMoisture1.Text, out moistureA);
@@ -579,11 +579,33 @@ namespace ThermalMate
                 carbonB = carbonA * ratio;
             }
 
-            txtMoisture2.Text = moistureB.ToString("F1");
-            txtAsh2.Text = ashB.ToString("F1");
-            txtVolatile2.Text = volatileB.ToString("F1");
-            txtCarbon2.Text = carbonB.ToString("F1");
+            txtMoisture2.Text = moistureB.ToString("F2");
+            txtAsh2.Text = ashB.ToString("F2");
+            txtVolatile2.Text = volatileB.ToString("F2");
+            txtCarbon2.Text = carbonB.ToString("F2");
             txtRatio.Text = ratio.ToString("F3");
+        }
+
+        private void btnClassifyCoal_Click(object sender, EventArgs e)
+        {
+            double vdaf;
+            double.TryParse(txtVdaf.Text, out vdaf);
+            if (vdaf > 0 && vdaf <= 10)
+            {
+                lblCoalRank.Text = "无烟煤";
+            }
+            else if (vdaf > 10 && vdaf <= 37)
+            {
+                lblCoalRank.Text = "烟煤";
+            }
+            else if (vdaf > 37)
+            {
+                lblCoalRank.Text = "烟煤/褐煤";
+            }
+            else
+            {
+                lblCoalRank.Text = "未分类";
+            }
         }
 
         private void btnFlow_Click(object sender, EventArgs e)

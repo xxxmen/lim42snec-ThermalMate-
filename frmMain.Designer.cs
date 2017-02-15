@@ -127,8 +127,13 @@
             this.txtTemperature = new System.Windows.Forms.TextBox();
             this.pagePipe = new System.Windows.Forms.TabPage();
             this.pageCoal = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.txtVdaf = new System.Windows.Forms.TextBox();
+            this.btnClassifyCoal = new System.Windows.Forms.Button();
+            this.lblCoalRank = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
-            this.btnCoal = new System.Windows.Forms.Button();
+            this.btnConvertCoal = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbxGroundMass2 = new System.Windows.Forms.ComboBox();
             this.txtCarbon2 = new System.Windows.Forms.TextBox();
@@ -146,7 +151,6 @@
             this.txtVolatile1 = new System.Windows.Forms.TextBox();
             this.txtAsh1 = new System.Windows.Forms.TextBox();
             this.txtMoisture1 = new System.Windows.Forms.TextBox();
-            this.label67 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
@@ -194,6 +198,7 @@
             this.pageConfig = new System.Windows.Forms.TabPage();
             this.chkTopMost = new System.Windows.Forms.CheckBox();
             this.btnSaveConfig = new System.Windows.Forms.Button();
+            this.label67 = new System.Windows.Forms.Label();
             this.tabMain.SuspendLayout();
             this.pageDiameter.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -203,6 +208,7 @@
             this.grpSuperheatedSteam.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.pageCoal.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.pageMisc.SuspendLayout();
@@ -1213,8 +1219,9 @@
             // 
             // pageCoal
             // 
+            this.pageCoal.Controls.Add(this.groupBox7);
             this.pageCoal.Controls.Add(this.btnClear);
-            this.pageCoal.Controls.Add(this.btnCoal);
+            this.pageCoal.Controls.Add(this.btnConvertCoal);
             this.pageCoal.Controls.Add(this.groupBox4);
             this.pageCoal.Controls.Add(this.groupBox5);
             this.pageCoal.Controls.Add(this.label70);
@@ -1226,9 +1233,64 @@
             this.pageCoal.Text = "煤炭相关";
             this.pageCoal.UseVisualStyleBackColor = true;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label75);
+            this.groupBox7.Controls.Add(this.txtVdaf);
+            this.groupBox7.Controls.Add(this.btnClassifyCoal);
+            this.groupBox7.Controls.Add(this.lblCoalRank);
+            this.groupBox7.Location = new System.Drawing.Point(9, 205);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(388, 45);
+            this.groupBox7.TabIndex = 15;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "煤炭分类";
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(8, 22);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(137, 12);
+            this.label75.TabIndex = 11;
+            this.label75.Text = "干燥无灰基挥发分(Vdaf)";
+            // 
+            // txtVdaf
+            // 
+            this.txtVdaf.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtVdaf.Location = new System.Drawing.Point(152, 18);
+            this.txtVdaf.Name = "txtVdaf";
+            this.txtVdaf.Size = new System.Drawing.Size(86, 21);
+            this.txtVdaf.TabIndex = 10;
+            this.txtVdaf.TabStop = false;
+            this.txtVdaf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnClassifyCoal
+            // 
+            this.btnClassifyCoal.Location = new System.Drawing.Point(304, 17);
+            this.btnClassifyCoal.Name = "btnClassifyCoal";
+            this.btnClassifyCoal.Size = new System.Drawing.Size(77, 22);
+            this.btnClassifyCoal.TabIndex = 13;
+            this.btnClassifyCoal.TabStop = false;
+            this.btnClassifyCoal.Text = "划  分";
+            this.btnClassifyCoal.UseVisualStyleBackColor = true;
+            this.btnClassifyCoal.Click += new System.EventHandler(this.btnClassifyCoal_Click);
+            // 
+            // lblCoalRank
+            // 
+            this.lblCoalRank.AutoSize = true;
+            this.lblCoalRank.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblCoalRank.ForeColor = System.Drawing.Color.Blue;
+            this.lblCoalRank.Location = new System.Drawing.Point(242, 22);
+            this.lblCoalRank.Name = "lblCoalRank";
+            this.lblCoalRank.Size = new System.Drawing.Size(44, 12);
+            this.lblCoalRank.TabIndex = 2;
+            this.lblCoalRank.Text = "未分类";
+            this.lblCoalRank.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(315, 175);
+            this.btnClear.Location = new System.Drawing.Point(313, 175);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(80, 22);
             this.btnClear.TabIndex = 14;
@@ -1237,16 +1299,16 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnCoalClear_Click);
             // 
-            // btnCoal
+            // btnConvertCoal
             // 
-            this.btnCoal.Location = new System.Drawing.Point(209, 175);
-            this.btnCoal.Name = "btnCoal";
-            this.btnCoal.Size = new System.Drawing.Size(80, 22);
-            this.btnCoal.TabIndex = 13;
-            this.btnCoal.TabStop = false;
-            this.btnCoal.Text = "换  算";
-            this.btnCoal.UseVisualStyleBackColor = true;
-            this.btnCoal.Click += new System.EventHandler(this.btnCoal_Click);
+            this.btnConvertCoal.Location = new System.Drawing.Point(209, 175);
+            this.btnConvertCoal.Name = "btnConvertCoal";
+            this.btnConvertCoal.Size = new System.Drawing.Size(80, 22);
+            this.btnConvertCoal.TabIndex = 13;
+            this.btnConvertCoal.TabStop = false;
+            this.btnConvertCoal.Text = "换  算";
+            this.btnConvertCoal.UseVisualStyleBackColor = true;
+            this.btnConvertCoal.Click += new System.EventHandler(this.btnConvertCoal_Click);
             // 
             // groupBox4
             // 
@@ -1433,15 +1495,6 @@
             this.txtMoisture1.Size = new System.Drawing.Size(104, 21);
             this.txtMoisture1.TabIndex = 1;
             this.txtMoisture1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(8, 25);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(29, 12);
-            this.label67.TabIndex = 2;
-            this.label67.Text = "基质";
             // 
             // label68
             // 
@@ -2017,6 +2070,15 @@
             this.btnSaveConfig.UseVisualStyleBackColor = true;
             this.btnSaveConfig.Click += new System.EventHandler(this.btnSaveConfig_Click);
             // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(8, 25);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(29, 12);
+            this.label67.TabIndex = 2;
+            this.label67.Text = "基质";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2045,6 +2107,8 @@
             this.groupBox3.PerformLayout();
             this.pageCoal.ResumeLayout(false);
             this.pageCoal.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -2179,7 +2243,7 @@
         private System.Windows.Forms.Button btnSaveConfig;
         private System.Windows.Forms.TabPage pageCoal;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnCoal;
+        private System.Windows.Forms.Button btnConvertCoal;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cbxGroundMass2;
         private System.Windows.Forms.TextBox txtCarbon2;
@@ -2197,7 +2261,7 @@
         private System.Windows.Forms.TextBox txtVolatile1;
         private System.Windows.Forms.TextBox txtAsh1;
         private System.Windows.Forms.TextBox txtMoisture1;
-        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label lblCoalRank;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Label label48;
@@ -2229,6 +2293,11 @@
         private System.Windows.Forms.Button btnFlow;
         private System.Windows.Forms.Button btnPipeClear;
         private System.Windows.Forms.Button btnPipe;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.TextBox txtVdaf;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button btnClassifyCoal;
+        private System.Windows.Forms.Label label67;
     }
 }
 
