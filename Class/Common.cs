@@ -13,14 +13,6 @@ namespace ThermalMate.Class
             Clipboard.SetData(DataFormats.Text, context);
         }
 
-        public static void ClearGroupTextControl(Control groupbox)
-        {
-            foreach (var control in groupbox.Controls.OfType<TextBox>())
-            {
-                control.Clear();
-            }
-        }
-
         public static void StreamToFile(Stream stream, string filePath, bool isOverlay)
         {
             // 将流读取到字节数组

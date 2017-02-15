@@ -25,8 +25,8 @@ namespace ThermalMate
             var instance = GetRunningInstance();
             if (instance == null)
             {
-                var title = string.Format("XNote Ver{0}   『C0der by hangch』", Application.ProductVersion);
-                Application.Run(new Form1 { Text = title });
+                var title = string.Format("XNote Ver{0}   『 C0de by hangch 』", Application.ProductVersion);
+                Application.Run(new FrmMain { Text = title });
             }
             else
             {
