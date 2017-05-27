@@ -50,8 +50,8 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.pageDiameter = new System.Windows.Forms.TabPage();
             this.lstVelocity = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDiameterClear = new System.Windows.Forms.Button();
@@ -151,6 +151,7 @@
             this.txtVolatile1 = new System.Windows.Forms.TextBox();
             this.txtAsh1 = new System.Windows.Forms.TextBox();
             this.txtMoisture1 = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
@@ -198,7 +199,7 @@
             this.pageConfig = new System.Windows.Forms.TabPage();
             this.chkTopMost = new System.Windows.Forms.CheckBox();
             this.btnSaveConfig = new System.Windows.Forms.Button();
-            this.label67 = new System.Windows.Forms.Label();
+            this.btnBrowseCurrentDirectory = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.pageDiameter.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -422,10 +423,10 @@
             this.lstVelocity.FullRowSelect = true;
             this.lstVelocity.GridLines = true;
             this.lstVelocity.LabelWrap = false;
-            this.lstVelocity.Location = new System.Drawing.Point(190, 14);
+            this.lstVelocity.Location = new System.Drawing.Point(178, 14);
             this.lstVelocity.MultiSelect = false;
             this.lstVelocity.Name = "lstVelocity";
-            this.lstVelocity.Size = new System.Drawing.Size(213, 336);
+            this.lstVelocity.Size = new System.Drawing.Size(225, 336);
             this.lstVelocity.TabIndex = 5;
             this.lstVelocity.UseCompatibleStateImageBehavior = false;
             this.lstVelocity.View = System.Windows.Forms.View.Details;
@@ -433,18 +434,19 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "物料";
-            this.columnHeader1.Width = 130;
+            this.columnHeader1.Width = 116;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "流速";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 86;
             // 
             // groupBox2
             // 
             this.groupBox2.Location = new System.Drawing.Point(6, 159);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(178, 191);
+            this.groupBox2.Size = new System.Drawing.Size(166, 191);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "烟风道";
@@ -464,7 +466,7 @@
             this.groupBox1.Controls.Add(this.rioDiameter);
             this.groupBox1.Location = new System.Drawing.Point(6, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(178, 145);
+            this.groupBox1.Size = new System.Drawing.Size(166, 145);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "汽水管道";
@@ -472,9 +474,9 @@
             // btnDiameterClear
             // 
             this.btnDiameterClear.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnDiameterClear.Location = new System.Drawing.Point(96, 114);
+            this.btnDiameterClear.Location = new System.Drawing.Point(91, 116);
             this.btnDiameterClear.Name = "btnDiameterClear";
-            this.btnDiameterClear.Size = new System.Drawing.Size(72, 22);
+            this.btnDiameterClear.Size = new System.Drawing.Size(65, 22);
             this.btnDiameterClear.TabIndex = 9;
             this.btnDiameterClear.Text = "清  空";
             this.btnDiameterClear.UseVisualStyleBackColor = true;
@@ -483,9 +485,9 @@
             // btnDiameter
             // 
             this.btnDiameter.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnDiameter.Location = new System.Drawing.Point(10, 115);
+            this.btnDiameter.Location = new System.Drawing.Point(9, 116);
             this.btnDiameter.Name = "btnDiameter";
-            this.btnDiameter.Size = new System.Drawing.Size(72, 22);
+            this.btnDiameter.Size = new System.Drawing.Size(65, 22);
             this.btnDiameter.TabIndex = 8;
             this.btnDiameter.Text = "计  算";
             this.btnDiameter.UseVisualStyleBackColor = true;
@@ -494,7 +496,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 26);
+            this.label1.Location = new System.Drawing.Point(6, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
@@ -504,7 +506,7 @@
             // 
             this.rioVelocity.AutoSize = true;
             this.rioVelocity.Checked = true;
-            this.rioVelocity.Location = new System.Drawing.Point(8, 56);
+            this.rioVelocity.Location = new System.Drawing.Point(6, 56);
             this.rioVelocity.Name = "rioVelocity";
             this.rioVelocity.Size = new System.Drawing.Size(47, 16);
             this.rioVelocity.TabIndex = 3;
@@ -517,14 +519,14 @@
             // 
             this.txtVelocity.Location = new System.Drawing.Point(61, 54);
             this.txtVelocity.Name = "txtVelocity";
-            this.txtVelocity.Size = new System.Drawing.Size(77, 21);
+            this.txtVelocity.Size = new System.Drawing.Size(70, 21);
             this.txtVelocity.TabIndex = 1;
             this.txtVelocity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(143, 26);
+            this.label2.Location = new System.Drawing.Point(135, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 2;
@@ -533,7 +535,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(143, 58);
+            this.label3.Location = new System.Drawing.Point(135, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 12);
             this.label3.TabIndex = 2;
@@ -542,7 +544,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(143, 88);
+            this.label4.Location = new System.Drawing.Point(135, 88);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 12);
             this.label4.TabIndex = 2;
@@ -552,7 +554,7 @@
             // 
             this.txtVolumeFlow.Location = new System.Drawing.Point(61, 22);
             this.txtVolumeFlow.Name = "txtVolumeFlow";
-            this.txtVolumeFlow.Size = new System.Drawing.Size(77, 21);
+            this.txtVolumeFlow.Size = new System.Drawing.Size(70, 21);
             this.txtVolumeFlow.TabIndex = 0;
             this.txtVolumeFlow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -561,14 +563,14 @@
             this.txtDiameter.Location = new System.Drawing.Point(61, 84);
             this.txtDiameter.Name = "txtDiameter";
             this.txtDiameter.ReadOnly = true;
-            this.txtDiameter.Size = new System.Drawing.Size(77, 21);
+            this.txtDiameter.Size = new System.Drawing.Size(70, 21);
             this.txtDiameter.TabIndex = 2;
             this.txtDiameter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // rioDiameter
             // 
             this.rioDiameter.AutoSize = true;
-            this.rioDiameter.Location = new System.Drawing.Point(8, 86);
+            this.rioDiameter.Location = new System.Drawing.Point(6, 86);
             this.rioDiameter.Name = "rioDiameter";
             this.rioDiameter.Size = new System.Drawing.Size(47, 16);
             this.rioDiameter.TabIndex = 3;
@@ -1496,6 +1498,15 @@
             this.txtMoisture1.TabIndex = 1;
             this.txtMoisture1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(8, 25);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(29, 12);
+            this.label67.TabIndex = 2;
+            this.label67.Text = "基质";
+            // 
             // label68
             // 
             this.label68.AutoSize = true;
@@ -2037,6 +2048,7 @@
             // 
             // pageConfig
             // 
+            this.pageConfig.Controls.Add(this.btnBrowseCurrentDirectory);
             this.pageConfig.Controls.Add(this.chkTopMost);
             this.pageConfig.Controls.Add(this.btnSaveConfig);
             this.pageConfig.Location = new System.Drawing.Point(4, 22);
@@ -2062,7 +2074,7 @@
             // 
             // btnSaveConfig
             // 
-            this.btnSaveConfig.Location = new System.Drawing.Point(6, 323);
+            this.btnSaveConfig.Location = new System.Drawing.Point(102, 323);
             this.btnSaveConfig.Name = "btnSaveConfig";
             this.btnSaveConfig.Size = new System.Drawing.Size(75, 23);
             this.btnSaveConfig.TabIndex = 1;
@@ -2070,14 +2082,15 @@
             this.btnSaveConfig.UseVisualStyleBackColor = true;
             this.btnSaveConfig.Click += new System.EventHandler(this.btnSaveConfig_Click);
             // 
-            // label67
+            // btnBrowseCurrentDirectory
             // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(8, 25);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(29, 12);
-            this.label67.TabIndex = 2;
-            this.label67.Text = "基质";
+            this.btnBrowseCurrentDirectory.Location = new System.Drawing.Point(9, 323);
+            this.btnBrowseCurrentDirectory.Name = "btnBrowseCurrentDirectory";
+            this.btnBrowseCurrentDirectory.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowseCurrentDirectory.TabIndex = 2;
+            this.btnBrowseCurrentDirectory.Text = "打开目录";
+            this.btnBrowseCurrentDirectory.UseVisualStyleBackColor = true;
+            this.btnBrowseCurrentDirectory.Click += new System.EventHandler(this.btnBrowseCurrentDirectory_Click);
             // 
             // FrmMain
             // 
@@ -2298,6 +2311,7 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnClassifyCoal;
         private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Button btnBrowseCurrentDirectory;
     }
 }
 

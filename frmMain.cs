@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -39,13 +40,15 @@ namespace ThermalMate
             }
 
             // 隔行换色
-            for (var i = 0; i < lstVelocity.Items.Count; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    lstVelocity.Items[i].BackColor = Color.BurlyWood;
-                }
-            }
+            // 2017-05-27
+            // 眼睛看着累，暂时取消
+            //for (var i = 0; i < lstVelocity.Items.Count; i++)
+            //{
+            //    if (i % 2 == 0)
+            //    {
+            //        lstVelocity.Items[i].BackColor = Color.BurlyWood;
+            //    }
+            //}
 
             // 读取项目名
             cbxProject.DataSource = _xmlHelper.GetAttributeValues("//Project/@Name").ToList();
@@ -725,6 +728,11 @@ namespace ThermalMate
             txtHoleSize.Text = string.Empty;
             var xpath = string.Format("//BlotHole/{0}[@TYPE='{1}']", cbxBoltSpec.Text, cbxEquipmentType.Text);
             txtHoleSize.Text = _xmlHelper.GetOnlyInnerText(xpath);
+        }
+
+        private void btnBrowseCurrentDirectory_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", Environment.CurrentDirectory);
         }
 
         private void btnSaveConfig_Click(object sender, EventArgs e)
