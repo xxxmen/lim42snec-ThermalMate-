@@ -7,11 +7,11 @@ using ThermalMate.Class;
 
 namespace ThermalMate
 {
-    public partial class FrmMain : Form
+    public partial class ForMain : Form
     {
         private readonly XmlHelper _xmlHelper;
 
-        public FrmMain()
+        public ForMain()
         {
             InitializeComponent();
 
@@ -258,18 +258,21 @@ namespace ThermalMate
             txtViscosity1.Clear();
             txtIsoIndex1.Clear();
             txtVolumeFlow1.Clear();
+            txtTotalEnthalpy1.Clear();
 
             txtDensity2.Clear();
             txtEnthalpy2.Clear();
             txtViscosity2.Clear();
             txtIsoIndex2.Clear();
             txtVolumeFlow2.Clear();
+            txtTotalEnthalpy2.Clear();
 
             txtDensity3.Clear();
             txtEnthalpy3.Clear();
             txtViscosity3.Clear();
             txtIsoIndex3.Clear();
             txtVolumeFlow3.Clear();
+            txtTotalEnthalpy3.Clear();
         }
 
         private void sendtoDiameter_DoubleClick(object sender, EventArgs e)
@@ -379,6 +382,8 @@ namespace ThermalMate
 
                 Steam.PT2H(pressure, temperature, ref retValue, ref range);
                 txtEnthalpy1.Text = Math.Round(retValue, 2).ToString();
+                var totalEnthalpy1 = Math.Round(retValue, 2) * massFlow * 1000;
+                txtTotalEnthalpy1.Text = totalEnthalpy1.ToString();
 
                 Steam.PT2ETA(pressure, temperature, ref retValue, ref range);
                 txtViscosity1.Text = Math.Round(retValue * 1000, 3).ToString();
@@ -400,12 +405,16 @@ namespace ThermalMate
 
                 Steam.P2HG(pressure, ref retValue, ref range);
                 txtEnthalpy2.Text = Math.Round(retValue, 2).ToString();
+                var totalEnthalpy2 = Math.Round(retValue, 2)*massFlow*1000;
+                txtTotalEnthalpy2.Text = totalEnthalpy2.ToString();
 
                 Steam.P2ETAG(pressure, ref retValue, ref range);
                 txtViscosity2.Text = Math.Round(retValue * 1000, 3).ToString();
 
                 Steam.P2KSG(pressure, ref retValue, ref range);
                 txtIsoIndex2.Text = Math.Round(retValue, 3).ToString();
+
+               
 
                 // 饱和水
                 Steam.P2VL(pressure, ref retValue, ref range);
@@ -415,6 +424,8 @@ namespace ThermalMate
 
                 Steam.P2HL(pressure, ref retValue, ref range);
                 txtEnthalpy3.Text = Math.Round(retValue, 2).ToString();
+                var totalEnthalpy3 = Math.Round(retValue, 2) * massFlow * 1000;
+                txtTotalEnthalpy3.Text = totalEnthalpy3.ToString();
 
                 Steam.P2ETAL(pressure, ref retValue, ref range);
                 txtViscosity3.Text = Math.Round(retValue * 1000, 3).ToString();
@@ -462,13 +473,13 @@ namespace ThermalMate
             switch (range)
             {
                 case 1:
-                    txtState.Text = "过冷区";
+                    txtState.Text = @"过冷区";
                     break;
                 case 2:
-                    txtState.Text = "过热区";
+                    txtState.Text = @"过热区";
                     break;
                 case 4:
-                    txtState.Text = "饱和区";
+                    txtState.Text = @"饱和区";
                     break;
             }
         }
@@ -740,6 +751,13 @@ namespace ThermalMate
             _xmlHelper.SetInnerText("//Config/TopMost", chkTopMost.Checked.ToString());
         }
 
+        private void btnOpenCalculator_Click(object sender, EventArgs e)
+        {
+            Process.Start("calc");
+        }
+
         #endregion
+
+        
     }
 }
