@@ -47,8 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\Common.cs" />
-    <Compile Include="Class\Steam.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Steam.cs" />
     <Compile Include="ForMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,7 +79,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Class\XMLHelper.cs" />
+    <Compile Include="XMLHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ThermalMate.ico" />
