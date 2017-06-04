@@ -3,15 +3,15 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using ThermalMate.Class;
+
 
 namespace ThermalMate
 {
-    public partial class ForMain : Form
+    public partial class MainForm : Form
     {
         private readonly XmlHelper _xmlHelper;
 
-        public ForMain()
+        public MainForm()
         {
             InitializeComponent();
 
@@ -259,26 +259,26 @@ namespace ThermalMate
             double.TryParse(txtSectionHeight.Text, out sectionHeight);
             double.TryParse(txtSectionWidth.Text, out sectionWidth);
 
-            
-                if (rioDiameter.Checked)
-                {
-                    flowVelocity = flowRate / 3600 / (0.785 * innerDiameter * innerDiameter / 1000000);
-                    txtFlowVelocity.Text = Math.Round(flowVelocity, 1) + string.Empty;
-                }
-                else if (rioVelocity.Checked)
-                {
-                    innerDiameter = 18.81 * Math.Sqrt(flowRate / flowVelocity);
-                    txtInnerDiameter.Text = Math.Round(innerDiameter, 1)+ string.Empty;
-                }
-           
+
+            if (rioDiameter.Checked)
+            {
+                flowVelocity = flowRate / 3600 / (0.785 * innerDiameter * innerDiameter / 1000000);
+                txtFlowVelocity.Text = Math.Round(flowVelocity, 1) + string.Empty;
+            }
+            else if (rioVelocity.Checked)
+            {
+                innerDiameter = 18.81 * Math.Sqrt(flowRate / flowVelocity);
+                txtInnerDiameter.Text = Math.Round(innerDiameter, 1) + string.Empty;
+            }
+
 
             // 风管
             var sectionArea = sectionHeight * sectionWidth;
             var gasVelocity = gasAmount / 3600 / sectionArea;
             txtGasVelocity.Text = Math.Round(gasVelocity, 1) + string.Empty;
-            
 
-           
+
+
         }
 
         private void SteamProperty()
@@ -479,7 +479,8 @@ namespace ThermalMate
                     txtDi.Text = dDi + "";
                 }
 
-                Common.SetClipboard(Do + "×" + thk);
+                Clipboard.Clear();
+                Clipboard.SetData(DataFormats.Text, Do + "×" + thk);
             }
             catch (Exception ex)
             {

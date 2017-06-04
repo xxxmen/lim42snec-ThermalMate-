@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace ThermalMate.Class
+namespace ThermalMate
 {
     static class Steam
     {

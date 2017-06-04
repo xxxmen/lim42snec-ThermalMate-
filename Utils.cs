@@ -1,18 +1,11 @@
 ﻿using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Windows.Forms;
 
-namespace ThermalMate.Class
+
+namespace ThermalMate
 {
     static class Common
     {
-        public static void SetClipboard(string context)
-        {
-            Clipboard.Clear();
-            Clipboard.SetData(DataFormats.Text, context);
-        }
-
         public static void StreamToFile(Stream stream, string filePath, bool isOverlay)
         {
             // 将流读取到字节数组
