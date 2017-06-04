@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-
 namespace ThermalMate
 {
     public partial class MainForm : Form
@@ -15,8 +14,8 @@ namespace ThermalMate
         {
             InitializeComponent();
 
-            Common.ReleaseResource("ThermalMate.Resource.ThermalMate.xml", "ThermalMate.xml");
-            Common.ReleaseResource("ThermalMate.Resource.UEwasp.dll", "UEwasp.dll");
+            Utils.ReleaseResource("ThermalMate.Resource.ThermalMate.xml", "ThermalMate.xml");
+            Utils.ReleaseResource("ThermalMate.Resource.UEwasp.dll", "UEwasp.dll");
 
             _xmlHelper = new XmlHelper(@"ThermalMate.xml");
 
@@ -40,11 +39,10 @@ namespace ThermalMate
             cbxSpecification.Text = _xmlHelper.GetOnlyInnerText("//Config/Specification");
             cbxStandardName.Text = _xmlHelper.GetOnlyInnerText("//Config/StandardName");
 
-            cbxSpecification.SelectedIndexChanged += cmbNominalDiameter_SelectedIndexChanged;
         }
 
         #region 界面
-        private void resetControls(Control container)
+        private static void ResetControls(Control container)
         {
             foreach (Control c in container.Controls)
             {
@@ -57,7 +55,7 @@ namespace ThermalMate
                 {
                     ((ComboBox)c).SelectedIndex = -1;
                 }
-                resetControls(c);
+                ResetControls(c);
             }
         }
 
@@ -113,70 +111,70 @@ namespace ThermalMate
         private void cbxGroundMass_SelectedIndexChanged(object sender, EventArgs e)
         {
             // 重置控件背景色
-            txtMoisture1.BackColor = SystemColors.Control;
-            txtMoisture2.BackColor = SystemColors.Control;
-            txtAsh1.BackColor = SystemColors.Control;
-            txtAsh2.BackColor = SystemColors.Control;
-            txtVolatile1.BackColor = SystemColors.Control;
-            txtVolatile2.BackColor = SystemColors.Control;
-            txtCarbon1.BackColor = SystemColors.Control;
-            txtCarbon2.BackColor = SystemColors.Control;
+            txtMoisture1.BackColor = SystemColors.Window;
+            txtMoisture2.BackColor = SystemColors.Window;
+            txtAsh1.BackColor = SystemColors.Window;
+            txtAsh2.BackColor = SystemColors.Window;
+            txtVolatile1.BackColor = SystemColors.Window;
+            txtVolatile2.BackColor = SystemColors.Window;
+            txtCarbon1.BackColor = SystemColors.Window;
+            txtCarbon2.BackColor = SystemColors.Window;
 
             var groundmassA = cbxGroundMass1.Text;
             var groundmassB = cbxGroundMass2.Text;
             if (@"收到基(ar)" == groundmassA && @"空气干燥基(ad)" == groundmassB)
             {// 收到基->
-                txtMoisture1.BackColor = Color.Coral;
-                txtMoisture2.BackColor = Color.Coral;
+                txtMoisture1.BackColor = Color.Pink;
+                txtMoisture2.BackColor = Color.Pink;
             }
             else if (@"收到基(ar)" == groundmassA && @"干燥基(d)" == groundmassB)
             {
-                txtMoisture1.BackColor = Color.Coral;
+                txtMoisture1.BackColor = Color.Pink;
             }
             else if (@"收到基(ar)" == groundmassA && @"干燥无灰基(daf)" == groundmassB)
             {
-                txtMoisture1.BackColor = Color.Coral;
-                txtAsh1.BackColor = Color.Coral;
+                txtMoisture1.BackColor = Color.Pink;
+                txtAsh1.BackColor = Color.Pink;
             }
             else if (@"空气干燥基(ad)" == groundmassA && @"收到基(ar)" == groundmassB)
             {// 空气干燥基->
-                txtMoisture1.BackColor = Color.Coral;
-                txtMoisture2.BackColor = Color.Coral;
+                txtMoisture1.BackColor = Color.Pink;
+                txtMoisture2.BackColor = Color.Pink;
             }
             else if (@"空气干燥基(ad)" == groundmassA && @"干燥基(d)" == groundmassB)
             {
-                txtMoisture1.BackColor = Color.Coral;
+                txtMoisture1.BackColor = Color.Pink;
             }
             else if (@"空气干燥基(ad)" == groundmassA && @"干燥无灰基(daf)" == groundmassB)
             {
-                txtMoisture1.BackColor = Color.Coral;
-                txtAsh1.BackColor = Color.Coral;
+                txtMoisture1.BackColor = Color.Pink;
+                txtAsh1.BackColor = Color.Pink;
             }
             else if (@"干燥基(d)" == groundmassA && @"收到基(ar)" == groundmassB)
             {// 干燥基->
-                txtMoisture2.BackColor = Color.Coral;
+                txtMoisture2.BackColor = Color.Pink;
             }
             else if (@"干燥基(d)" == groundmassA && @"空气干燥基(ad)" == groundmassB)
             {
-                txtMoisture2.BackColor = Color.Coral;
+                txtMoisture2.BackColor = Color.Pink;
             }
             else if (@"干燥基(d)" == groundmassA && @"干燥无灰基(daf)" == groundmassB)
             {
-                txtAsh1.BackColor = Color.Coral;
+                txtAsh1.BackColor = Color.Pink;
             }
             else if (@"干燥无灰基(daf)" == groundmassA && @"收到基(ar)" == groundmassB)
             {// 干燥无灰基->
-                txtMoisture2.BackColor = Color.Coral;
-                txtAsh2.BackColor = Color.Coral;
+                txtMoisture2.BackColor = Color.Pink;
+                txtAsh2.BackColor = Color.Pink;
             }
             else if (@"干燥无灰基(daf)" == groundmassA && @"空气干燥基(ad)" == groundmassB)
             {
-                txtMoisture2.BackColor = Color.Coral;
-                txtAsh2.BackColor = Color.Coral;
+                txtMoisture2.BackColor = Color.Pink;
+                txtAsh2.BackColor = Color.Pink;
             }
             else if (@"干燥无灰基(daf)" == groundmassA && @"干燥基(d)" == groundmassB)
             {
-                txtAsh2.BackColor = Color.Coral;
+                txtAsh2.BackColor = Color.Pink;
             }
         }
 
@@ -205,6 +203,31 @@ namespace ThermalMate
             TopMost = chkTopMost.Checked;
         }
 
+        private void btnBrowseCurrentDirectory_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", Environment.CurrentDirectory);
+        }
+
+        private void btnSaveConfig_Click(object sender, EventArgs e)
+        {
+            Process.Start("notepad++", "ThermalMate.xml");
+        }
+
+        private void btnOpenCalculator_Click(object sender, EventArgs e)
+        {
+            Process.Start("calc");
+        }
+
+        private void cbxProject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // 读取项目包含的管道等级
+            cbxSpecification.Items.Clear();
+            cbxSpecification.ResetText();
+            var xPath = string.Format("//Project[@Name='{0}']/*", cbxProject.Text);
+            var specs = _xmlHelper.GetElementNames(xPath);
+            specs.ToList().ForEach(x => cbxSpecification.Items.Add(x));
+        }
+
         private void ForMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -212,25 +235,30 @@ namespace ThermalMate
                 switch (tabMain.SelectedTab.Text)
                 {
                     case @"管径计算":
-                        PipeDiameter();
-                        break;
-                    case @"汽水性质":
-                        SteamProperty();
+                        CalculatePipeDiameter(null, null);
+                        CalculateDuctSection(null, null);
+                        CalculateEquivalentInnerDiameter(null, null);
                         break;
                     case @"管道特性":
-                        PipeCharacteristic();
+                        QueryPipeSpecification(null, null);
+                        CalculatePipeCharacteristic(null, null);
+                        break;
+                    case @"汽水性质":
+                        QuerySteamProperty(null, null);
                         break;
                     case @"煤炭相关":
-                        Coal();
+                        ConvertCoalGroundMass(null, null);
+                        DistinguishCoalRank(null, null);
                         break;
                     case @"杂项功能":
-                        Misc();
+                        ConvertFlowRate(null, null);
+                        QueryBoltHole(null, null);
                         break;
                 }
             }
             else if (e.KeyCode == Keys.D && ModifierKeys == Keys.Alt)
             {
-                resetControls(tabMain.SelectedTab);
+                ResetControls(tabMain.SelectedTab);
                 e.Handled = true;
             }
             else if (e.KeyCode == Keys.Escape && ActiveControl is TextBox)
@@ -246,19 +274,12 @@ namespace ThermalMate
         #endregion
 
         #region 业务逻辑
-
-        private void PipeDiameter()
+        private void CalculatePipeDiameter(object sender, EventArgs e)
         {
             double flowRate, innerDiameter, flowVelocity;
             double.TryParse(txtFlowRate.Text, out flowRate);
             double.TryParse(txtInnerDiameter.Text, out innerDiameter);
             double.TryParse(txtFlowVelocity.Text, out flowVelocity);
-
-            double gasAmount, sectionHeight, sectionWidth;
-            double.TryParse(txtGasAmount.Text, out gasAmount);
-            double.TryParse(txtSectionHeight.Text, out sectionHeight);
-            double.TryParse(txtSectionWidth.Text, out sectionWidth);
-
 
             if (rioDiameter.Checked)
             {
@@ -271,17 +292,216 @@ namespace ThermalMate
                 txtInnerDiameter.Text = Math.Round(innerDiameter, 1) + string.Empty;
             }
 
+        }
 
-            // 风管
+        private void CalculateEquivalentInnerDiameter(object sender, EventArgs e)
+        {
+            double innerDiameter1, innerDiameter2, innerDiameter3, equivalentInnerDiameter;
+            double.TryParse(txtInnerDiameter1.Text, out innerDiameter1);
+            double.TryParse(txtInnerDiameter2.Text, out innerDiameter2);
+            double.TryParse(txtInnerDiameter3.Text, out innerDiameter3);
+            double.TryParse(txtEquivalentInnerDiameter.Text, out equivalentInnerDiameter);
+
+            equivalentInnerDiameter =
+                Math.Sqrt(innerDiameter1 * innerDiameter1 + innerDiameter2 * innerDiameter2 + innerDiameter3 * innerDiameter3);
+            equivalentInnerDiameter = Math.Round(equivalentInnerDiameter, 1);
+            txtEquivalentInnerDiameter.Text = equivalentInnerDiameter + string.Empty;
+        }
+
+        private void CalculateDuctSection(object sender, EventArgs e)
+        {
+            double gasAmount, sectionHeight, sectionWidth;
+            double.TryParse(txtGasAmount.Text, out gasAmount);
+            double.TryParse(txtSectionHeight.Text, out sectionHeight);
+            double.TryParse(txtSectionWidth.Text, out sectionWidth);
+
             var sectionArea = sectionHeight * sectionWidth;
             var gasVelocity = gasAmount / 3600 / sectionArea;
             txtGasVelocity.Text = Math.Round(gasVelocity, 1) + string.Empty;
-
-
-
         }
 
-        private void SteamProperty()
+        private void CalculatePipeCharacteristic(object sender, EventArgs e)
+        {
+            if (txtOutDiameter.Text == string.Empty)
+            {
+                return;
+            }
+
+            double outDiameter, insulationThickness, pipeThickness, 
+                insulationDensity, materialDensity,designTemperature, concentratedLoad;
+            double.TryParse(txtInsulationThickness.Text, out insulationThickness);
+            double.TryParse(txtPipeThickness.Text, out pipeThickness);
+            double.TryParse(txtOutDiameter.Text, out outDiameter);
+            double.TryParse(txtInsulationDensity.Text, out insulationDensity);
+            double.TryParse(txtMaterialDensity.Text, out materialDensity);
+            double.TryParse(txtDesignTemperature.Text, out designTemperature);
+            double.TryParse(txtConcentratedLoad.Text, out concentratedLoad);
+            outDiameter /= 1000; insulationThickness /= 1000; pipeThickness /= 1000;
+
+            var jackerArea = 3.14 * (outDiameter + insulationThickness * 2);
+            var paintArea = 3.14 * outDiameter;
+            var insulationVolume = 3.14 / 4 * (Math.Pow(outDiameter + insulationThickness * 2, 2) - Math.Pow(outDiameter, 2));
+            var factor = 0.02466;
+            if (cbxPipeMaterial.Text.Contains("304") || cbxPipeMaterial.Text.Contains("316"))
+            {
+                factor *= 1.015;
+            }
+            var pipeWeight = factor * 1000000 * pipeThickness * (outDiameter - pipeThickness);
+            var materialWeight = materialDensity * 3.14 / 4 * Math.Pow(outDiameter - pipeThickness * 2, 2);
+            var waterWeight = 1000 * 3.14 / 4 * Math.Pow(outDiameter - pipeThickness * 2, 2);
+            var insulationWeight = insulationVolume * insulationDensity;
+            var testingLoad = pipeWeight + waterWeight + insulationWeight;
+            var operatingLoad = pipeWeight + insulationWeight + materialWeight;
+            var innerDiameter = outDiameter - 2*pipeThickness;
+
+           
+            // 截面惯性矩
+            var moment = 3.14 / 64 * (Math.Pow(outDiameter, 4) - Math.Pow(innerDiameter, 4)) *100000000;
+            // 弹性模量
+            double modulus = 0;
+            if (cbxPipeMaterial.Text.Contains("20"))
+            {
+                modulus = Utils.LineInterpolationModulus(Utils.Modulus20, designTemperature) * 1000;
+            }
+            else if (cbxPipeMaterial.Text.Contains("12Cr"))
+            {
+                modulus = Utils.LineInterpolationModulus(Utils.Modulus12Cr, designTemperature) * 1000;
+            }
+            else if (cbxPipeMaterial.Text.Contains("15Cr"))
+            {
+                modulus = Utils.LineInterpolationModulus(Utils.Modulus15Cr, designTemperature) * 1000;
+            }
+            else if (cbxPipeMaterial.Text.Contains("235"))
+            {
+                modulus = Utils.LineInterpolationModulus(Utils.Modulus235, designTemperature) * 1000;
+            }
+            else if (cbxPipeMaterial.Text.Contains("06Cr"))
+            {
+                modulus = Utils.LineInterpolationModulus(Utils.Modulus06Cr, designTemperature) * 1000;
+            }
+
+            // 管道荷载
+            var averageLoad = testingLoad*9.8;
+            if (!chkWaterTest.Checked)
+            {
+                averageLoad = operatingLoad*9.8;
+            }
+
+            concentratedLoad *= 9.8;
+            double span = 0;
+            for (var i = 50.0; i > 0.1; i=i-0.1)
+            {
+                var ret = (i*i*i/modulus/moment)*(5*averageLoad*i/384 + concentratedLoad/48)*100000;
+                if (ret <= 2.5)
+                {
+                    span = i;
+                    break;
+                }
+            }
+            txtHorizontalSpan.Text = Math.Round(span, 1) + string.Empty;
+            txtJacketArea.Text = Math.Round(jackerArea, 3) + string.Empty;
+            txtPaintArea.Text = Math.Round(paintArea, 3) + string.Empty;
+            txtInsulationVolume.Text = Math.Round(insulationVolume, 3) + string.Empty;
+            txtTestingLoad.Text = Math.Round(testingLoad, 3) + string.Empty;
+            txtOperatingLoad.Text = Math.Round(operatingLoad, 3) + string.Empty;
+
+            if (txtDesignTemperature.Text == string.Empty || modulus < 0)
+            {
+                txtHorizontalSpan.Clear();
+                txtHorizontalSpan.Clear();
+            }
+
+            if (materialDensity <= 1)
+            {
+                txtOperatingLoad.Clear();
+            }
+        }
+
+        private void QueryPipeSpecification(object sender, EventArgs e)
+        {
+            txtDo.Clear();
+            txtSCH.Clear();
+            txtThk.Clear();
+            txtDi.Clear();
+            txtMat.Clear();
+
+            var dn = cmbNominalDiameter.Text.Replace("(", "").Replace(")", "");
+            var standardName = cbxStandardName.Text;
+
+            try
+            {
+                // 获取外径
+                var xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/@DO", standardName, dn);
+                var Do = _xmlHelper.GetOnlyAttributeValue(xPath);
+                var dDo = double.Parse(Do);
+                txtDo.Text = Do;
+
+                // 获取壁厚
+                xPath = string.Format("//Project[@Name='{0}']/{1}/*[text()='{2}']/@THK",
+                    cbxProject.Text,
+                    cbxSpecification.Text,
+                    dn);
+                var thk = _xmlHelper.GetOnlyAttributeValue(xPath);
+                if (string.Empty == thk)
+                {
+                    MessageBox.Show(@"当前等级下不存在此管径", @"警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                txtSCH.Text = thk;
+
+                // 材质
+                xPath = string.Format("//Project[@Name='{0}']/{1}/*[text()='{2}']/@MATERIAL",
+                    cbxProject.Text,
+                    cbxSpecification.Text,
+                    dn);
+                txtMat.Text = _xmlHelper.GetOnlyAttributeValue(xPath);
+
+                if (thk.Contains("SCH"))
+                {
+                    var sch = thk.Replace("SCH", string.Empty);
+
+                    // 壁厚
+                    xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/*[text()='{2}']/@THK", standardName, dn, sch);
+                    thk = _xmlHelper.GetOnlyAttributeValue(xPath);
+
+                    // 单重
+                    //xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/*[text()='{2}']/@PW", standardName, dn, sch);
+                    //var pw = _xmlHelper.GetOnlyAttributeValue(xPath);
+                }
+                var dThk = double.Parse(thk);
+                txtThk.Text = thk;
+
+                // 计算内径
+                if ("SHT3405-2012" == cbxStandardName.Text.Trim())
+                {
+                    var nDi = Convert.ToInt32(dDo - 2 * dThk);
+                    txtDi.Text = nDi + "";
+                }
+                else
+                {
+                    var dDi = Convert.ToDouble(dDo - 2 * dThk);
+                    txtDi.Text = dDi + "";
+                }
+
+                Clipboard.Clear();
+                Clipboard.SetData(DataFormats.Text, Do + "×" + thk);
+            }
+            catch (Exception ex)
+            {
+                // 清空编辑框
+                foreach (var ctl in groupBox2.Controls.OfType<TextBox>())
+                {
+                    (ctl).Clear();
+                }
+                //MessageBox.Show("查询失败", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
+
+            cmbNominalDiameter.Focus();
+            cmbNominalDiameter.SelectAll();
+        }
+
+        private void QuerySteamProperty(object sender, EventArgs e)
         {
             // 清空编辑框
             txtDensity1.Clear();
@@ -409,100 +629,7 @@ namespace ThermalMate
             }
         }
 
-        private void cmbNominalDiameter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtDo.Clear();
-            txtSCH.Clear();
-            txtThk.Clear();
-            txtDi.Clear();
-            txtPw.Clear();
-            txtMat.Clear();
-
-            var dn = cmbNominalDiameter.Text.Replace("(", "").Replace(")", "");
-            var standardName = cbxStandardName.Text;
-
-            try
-            {
-                // 获取外径
-                var xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/@DO", standardName, dn);
-                var Do = _xmlHelper.GetOnlyAttributeValue(xPath);
-                txtDo.Text = Do;
-
-                // 获取壁厚
-                xPath = string.Format("//Project[@Name='{0}']/{1}/*[text()='{2}']/@THK",
-                    cbxProject.Text,
-                    cbxSpecification.Text,
-                    dn);
-                var thk = _xmlHelper.GetOnlyAttributeValue(xPath);
-                if (string.Empty == thk)
-                {
-                    MessageBox.Show(@"当前等级下不存在此管径", @"警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                txtSCH.Text = thk;
-
-                // 材质
-                xPath = string.Format("//Project[@Name='{0}']/{1}/*[text()='{2}']/@MATERIAL",
-                    cbxProject.Text,
-                    cbxSpecification.Text,
-                    dn);
-                txtMat.Text = _xmlHelper.GetOnlyAttributeValue(xPath);
-
-                if (thk.Contains("SCH"))
-                {
-                    var sch = thk.Replace("SCH", string.Empty);
-
-                    // 壁厚
-                    xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/*[text()='{2}']/@THK", standardName, dn, sch);
-                    thk = _xmlHelper.GetOnlyAttributeValue(xPath);
-
-                    // 单重
-                    xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/*[text()='{2}']/@PW", standardName, dn, sch);
-                    var pw = _xmlHelper.GetOnlyAttributeValue(xPath);
-                    txtPw.Text = pw;
-                }
-                txtThk.Text = thk;
-
-                // 计算内径
-                if ("SHT3405-2012" == cbxStandardName.Text.Trim())
-                {
-                    var nDo = double.Parse(Do);
-                    var dThk = double.Parse(thk);
-                    var nDi = Convert.ToInt32(nDo - 2 * dThk);
-                    txtDi.Text = nDi + "";
-                }
-                else
-                {
-                    var dDo = double.Parse(Do);
-                    var dThk = double.Parse(thk);
-                    var dDi = Convert.ToDouble(dDo - 2 * dThk);
-                    txtDi.Text = dDi + "";
-                }
-
-                Clipboard.Clear();
-                Clipboard.SetData(DataFormats.Text, Do + "×" + thk);
-            }
-            catch (Exception ex)
-            {
-                // 清空编辑框
-                foreach (var ctl in groupBox2.Controls.OfType<TextBox>())
-                {
-                    (ctl).Clear();
-                }
-                //MessageBox.Show("查询失败", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show(ex.Message);
-            }
-
-            cmbNominalDiameter.Focus();
-            cmbNominalDiameter.SelectAll();
-        }
-
-        private void PipeCharacteristic()
-        {
-
-        }
-
-        private void Coal()
+        private void ConvertCoalGroundMass(object sender, EventArgs e)
         {
             double moistureA, ashA, volatileA, carbonA;
             double.TryParse(txtMoisture1.Text, out moistureA);
@@ -615,24 +742,47 @@ namespace ThermalMate
             txtVolatile2.Text = volatileB.ToString("F2");
             txtCarbon2.Text = carbonB.ToString("F2");
 
-            // 煤炭分类
-            double vdaf;
+
+        }
+
+        private void DistinguishCoalRank(object sender, EventArgs e)
+        {
+
+            double vdaf, pm;
             double.TryParse(txtVdaf.Text, out vdaf);
+            double.TryParse(txtPm.Text, out pm);
+
+
             if (vdaf > 0 && vdaf <= 10)
             {
-                lblCoalRank.Text = @"无烟煤";
+                txtCoalRank.Text = @"无烟煤";
             }
             else if (vdaf > 10 && vdaf <= 37)
             {
-                lblCoalRank.Text = @"烟煤";
+                txtCoalRank.Text = @"烟煤";
             }
-            else if (vdaf > 37)
+            else if (vdaf > 37 && pm <= 50 && pm > 0)
             {
-                lblCoalRank.Text = @"烟煤/褐煤";
+                txtCoalRank.Text = @"褐煤";
+            }
+            else if (vdaf > 37 && pm > 50)
+            {
+                txtCoalRank.Text = @"烟煤";
+            }
+            else
+            {
+                txtCoalRank.Clear();
             }
         }
 
-        private void Misc()
+        private void QueryBoltHole(object sender, EventArgs e)
+        {
+            txtHoleSize.Text = string.Empty;
+            var xpath = string.Format("//BlotHole/{0}[@TYPE='{1}']", cbxBoltSpec.Text, cbxEquipmentType.Text);
+            txtHoleSize.Text = _xmlHelper.GetOnlyInnerText(xpath);
+        }
+
+        private void ConvertFlowRate(object sender, EventArgs e)
         {
             double op, ot, of, sp, st, sf;
             double.TryParse(txtOperatingPressure.Text, out op);
@@ -644,58 +794,25 @@ namespace ThermalMate
 
             if (rioStandardCondition.Checked)
             {
-                var flow = ConvertFlow(sp, st, op, ot, sf);
+                var flow = ConvertFlowRate(sp, st, op, ot, sf);
                 flow = Math.Round(flow, 1);
                 txtOperatingFlow.Text = flow + string.Empty;
             }
             else if (rioOperatingCondition.Checked)
             {
-                var flow = ConvertFlow(op, ot, sp, st, of);
+                var flow = ConvertFlowRate(op, ot, sp, st, of);
                 flow = Math.Round(flow, 1);
                 txtStandardFlow.Text = flow + string.Empty;
             }
         }
 
-        private static double ConvertFlow(double p1, double t1, double p2, double t2, double f1)
+        private static double ConvertFlowRate(double p1, double t1, double p2, double t2, double f1)
         {
             t1 += 273.15;
             t2 += 273.15;
             var f2 = f1 * (t2 / t1) * (p1 / p2);
             return f2;
         }
-
-        private void cbxProject_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // 读取项目包含的管道等级
-            cbxSpecification.Items.Clear();
-            cbxSpecification.ResetText();
-            var xPath = string.Format("//Project[@Name='{0}']/*", cbxProject.Text);
-            var specs = _xmlHelper.GetElementNames(xPath);
-            specs.ToList().ForEach(x => cbxSpecification.Items.Add(x));
-        }
-
-        private void cbxBoltSpec_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtHoleSize.Text = string.Empty;
-            var xpath = string.Format("//BlotHole/{0}[@TYPE='{1}']", cbxBoltSpec.Text, cbxEquipmentType.Text);
-            txtHoleSize.Text = _xmlHelper.GetOnlyInnerText(xpath);
-        }
-
-        private void btnBrowseCurrentDirectory_Click(object sender, EventArgs e)
-        {
-            Process.Start("explorer.exe", Environment.CurrentDirectory);
-        }
-
-        private void btnSaveConfig_Click(object sender, EventArgs e)
-        {
-            Process.Start("notepad++", "ThermalMate.xml");
-        }
-
-        private void btnOpenCalculator_Click(object sender, EventArgs e)
-        {
-            Process.Start("calc");
-        }
-
         #endregion
     }
 }

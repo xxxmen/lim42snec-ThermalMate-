@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("热工小助手")]
 [assembly: AssemblyDescription("集成热工专业常用计算")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SNEC")]
+[assembly: AssemblyCompany("SNEC Thermal Team")]
 [assembly: AssemblyProduct("ThermalMate")]
 [assembly: AssemblyCopyright("Copyright © SNEC 2016")]
 [assembly: AssemblyTrademark("")]
