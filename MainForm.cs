@@ -327,15 +327,16 @@ namespace ThermalMate
                 return;
             }
 
+            
             double outDiameter, insulationThickness, pipeThickness, 
-                insulationDensity, materialDensity,designTemperature, concentratedLoad;
+                insulationDensity, materialDensity,designTemperature;
             double.TryParse(txtInsulationThickness.Text, out insulationThickness);
             double.TryParse(txtPipeThickness.Text, out pipeThickness);
             double.TryParse(txtOutDiameter.Text, out outDiameter);
             double.TryParse(txtInsulationDensity.Text, out insulationDensity);
             double.TryParse(txtMaterialDensity.Text, out materialDensity);
             double.TryParse(txtDesignTemperature.Text, out designTemperature);
-            double.TryParse(txtConcentratedLoad.Text, out concentratedLoad);
+            // 尺寸均已米为单位
             outDiameter /= 1000; insulationThickness /= 1000; pipeThickness /= 1000;
 
             var jackerArea = 3.14 * (outDiameter + insulationThickness * 2);
@@ -353,10 +354,9 @@ namespace ThermalMate
             var testingLoad = pipeWeight + waterWeight + insulationWeight;
             var operatingLoad = pipeWeight + insulationWeight + materialWeight;
             var innerDiameter = outDiameter - 2*pipeThickness;
-
            
             // 截面惯性矩
-            var moment = 3.14 / 64 * (Math.Pow(outDiameter, 4) - Math.Pow(innerDiameter, 4)) *100000000;
+            var moment = 3.14 / 64 * (Math.Pow(outDiameter*1000, 4) - Math.Pow(innerDiameter*1000, 4));
             // 弹性模量
             double modulus = 0;
             if (cbxPipeMaterial.Text.Contains("20"))
@@ -380,24 +380,21 @@ namespace ThermalMate
                 modulus = Utils.LineInterpolationModulus(Utils.Modulus06Cr, designTemperature) * 1000;
             }
 
-            // 管道荷载
+            // 管道单位荷载
             var averageLoad = testingLoad*9.8;
             if (!chkWaterTest.Checked)
             {
                 averageLoad = operatingLoad*9.8;
             }
 
-            concentratedLoad *= 9.8;
-            double span = 0;
-            for (var i = 50.0; i > 0.1; i=i-0.1)
-            {
-                var ret = (i*i*i/modulus/moment)*(5*averageLoad*i/384 + concentratedLoad/48)*100000;
-                if (ret <= 2.5)
-                {
-                    span = i;
-                    break;
-                }
+            // 计算跨度
+            factor = 0.039;
+            if (rioOutSite.Checked)
+            {// 装置外管道
+                factor = 0.048;
             }
+            var span = factor * Math.Pow(moment * modulus / averageLoad, 0.25);
+
             txtHorizontalSpan.Text = Math.Round(span, 1) + string.Empty;
             txtJacketArea.Text = Math.Round(jackerArea, 3) + string.Empty;
             txtPaintArea.Text = Math.Round(paintArea, 3) + string.Empty;
@@ -497,8 +494,6 @@ namespace ThermalMate
                 MessageBox.Show(ex.Message);
             }
 
-            cmbNominalDiameter.Focus();
-            cmbNominalDiameter.SelectAll();
         }
 
         private void QuerySteamProperty(object sender, EventArgs e)
