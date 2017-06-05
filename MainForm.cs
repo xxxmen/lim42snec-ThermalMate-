@@ -38,7 +38,6 @@ namespace ThermalMate
             cbxProject.Text = _xmlHelper.GetOnlyInnerText("//Config/Project");
             cbxSpecification.Text = _xmlHelper.GetOnlyInnerText("//Config/Specification");
             cbxStandardName.Text = _xmlHelper.GetOnlyInnerText("//Config/StandardName");
-
         }
 
         #region 界面
@@ -390,9 +389,14 @@ namespace ThermalMate
             // 计算跨度
             factor = 0.039;
             if (rioOutSite.Checked)
-            {// 装置外管道
-                factor = 0.048;
+            {
+                factor = 0.048; // 装置外管道
             }
+            else if (cbxPipeMaterial.Text.Contains("12Cr") || cbxPipeMaterial.Text.Contains("15Cr"))
+            {
+                factor = 0.02093;   // 电力管道执行DLT5054
+            }
+
             var span = factor * Math.Pow(moment * modulus / averageLoad, 0.25);
 
             txtHorizontalSpan.Text = Math.Round(span, 1) + string.Empty;
