@@ -776,6 +776,11 @@ namespace ThermalMate
 
         private void QueryBoltHole(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cbxBoltSpec.Text) || string.IsNullOrEmpty(cbxEquipmentType.Text))
+            {
+                return;
+            }
+
             txtHoleSize.Text = string.Empty;
             var xpath = string.Format("//BlotHole/{0}[@TYPE='{1}']", cbxBoltSpec.Text, cbxEquipmentType.Text);
             txtHoleSize.Text = _xmlHelper.GetOnlyInnerText(xpath);

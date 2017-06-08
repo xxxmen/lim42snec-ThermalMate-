@@ -88,6 +88,8 @@
             this.txtInnerDiameter = new System.Windows.Forms.TextBox();
             this.rioDiameter = new System.Windows.Forms.RadioButton();
             this.tabPipeCharacteristic = new System.Windows.Forms.TabPage();
+            this.rioOutSite = new System.Windows.Forms.RadioButton();
+            this.rioOnSite = new System.Windows.Forms.RadioButton();
             this.chkWaterTest = new System.Windows.Forms.CheckBox();
             this.label131 = new System.Windows.Forms.Label();
             this.label129 = new System.Windows.Forms.Label();
@@ -102,12 +104,15 @@
             this.label121 = new System.Windows.Forms.Label();
             this.txtDesignTemperature = new System.Windows.Forms.TextBox();
             this.label115 = new System.Windows.Forms.Label();
+            this.txtInsulationThickness = new System.Windows.Forms.TextBox();
+            this.label111 = new System.Windows.Forms.Label();
+            this.txtMaterialDensity = new System.Windows.Forms.TextBox();
+            this.label108 = new System.Windows.Forms.Label();
             this.label120 = new System.Windows.Forms.Label();
             this.label118 = new System.Windows.Forms.Label();
             this.label114 = new System.Windows.Forms.Label();
             this.label106 = new System.Windows.Forms.Label();
             this.label96 = new System.Windows.Forms.Label();
-            this.label108 = new System.Windows.Forms.Label();
             this.label107 = new System.Windows.Forms.Label();
             this.txtJacketArea = new System.Windows.Forms.TextBox();
             this.txtTestingLoad = new System.Windows.Forms.TextBox();
@@ -115,7 +120,6 @@
             this.txtOperatingLoad = new System.Windows.Forms.TextBox();
             this.txtInsulationVolume = new System.Windows.Forms.TextBox();
             this.label105 = new System.Windows.Forms.Label();
-            this.txtMaterialDensity = new System.Windows.Forms.TextBox();
             this.label126 = new System.Windows.Forms.Label();
             this.label124 = new System.Windows.Forms.Label();
             this.label119 = new System.Windows.Forms.Label();
@@ -125,12 +129,10 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtInsulationDensity = new System.Windows.Forms.TextBox();
             this.label116 = new System.Windows.Forms.Label();
-            this.txtInsulationThickness = new System.Windows.Forms.TextBox();
             this.txtPipeThickness = new System.Windows.Forms.TextBox();
             this.txtOutDiameter = new System.Windows.Forms.TextBox();
             this.label112 = new System.Windows.Forms.Label();
             this.label74 = new System.Windows.Forms.Label();
-            this.label111 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
             this.label109 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
@@ -267,8 +269,6 @@
             this.btnBrowseCurrentDirectory = new System.Windows.Forms.Button();
             this.chkTopMost = new System.Windows.Forms.CheckBox();
             this.btnSaveConfig = new System.Windows.Forms.Button();
-            this.rioOnSite = new System.Windows.Forms.RadioButton();
-            this.rioOutSite = new System.Windows.Forms.RadioButton();
             this.tabMain.SuspendLayout();
             this.tabPipeDiameter.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -415,6 +415,7 @@
             this.txtStandardPressure.Name = "txtStandardPressure";
             this.txtStandardPressure.Size = new System.Drawing.Size(75, 21);
             this.txtStandardPressure.TabIndex = 16;
+            this.txtStandardPressure.TabStop = false;
             this.txtStandardPressure.Text = "0.1";
             this.txtStandardPressure.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -434,6 +435,7 @@
             this.txtStandardTemperature.Name = "txtStandardTemperature";
             this.txtStandardTemperature.Size = new System.Drawing.Size(75, 21);
             this.txtStandardTemperature.TabIndex = 17;
+            this.txtStandardTemperature.TabStop = false;
             this.txtStandardTemperature.Text = "0";
             this.txtStandardTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -903,6 +905,30 @@
             this.tabPipeCharacteristic.Text = "管道特性";
             this.tabPipeCharacteristic.UseVisualStyleBackColor = true;
             // 
+            // rioOutSite
+            // 
+            this.rioOutSite.AutoSize = true;
+            this.rioOutSite.ForeColor = System.Drawing.Color.Blue;
+            this.rioOutSite.Location = new System.Drawing.Point(208, 404);
+            this.rioOutSite.Name = "rioOutSite";
+            this.rioOutSite.Size = new System.Drawing.Size(83, 16);
+            this.rioOutSite.TabIndex = 22;
+            this.rioOutSite.Text = "装置外管道";
+            this.rioOutSite.UseVisualStyleBackColor = true;
+            // 
+            // rioOnSite
+            // 
+            this.rioOnSite.AutoSize = true;
+            this.rioOnSite.Checked = true;
+            this.rioOnSite.ForeColor = System.Drawing.Color.Blue;
+            this.rioOnSite.Location = new System.Drawing.Point(115, 403);
+            this.rioOnSite.Name = "rioOnSite";
+            this.rioOnSite.Size = new System.Drawing.Size(83, 16);
+            this.rioOnSite.TabIndex = 22;
+            this.rioOnSite.TabStop = true;
+            this.rioOnSite.Text = "装置内管道";
+            this.rioOnSite.UseVisualStyleBackColor = true;
+            // 
             // chkWaterTest
             // 
             this.chkWaterTest.AutoSize = true;
@@ -1095,6 +1121,46 @@
             this.label115.TabIndex = 27;
             this.label115.Text = "℃";
             // 
+            // txtInsulationThickness
+            // 
+            this.txtInsulationThickness.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtInsulationThickness.ForeColor = System.Drawing.Color.Blue;
+            this.txtInsulationThickness.Location = new System.Drawing.Point(69, 96);
+            this.txtInsulationThickness.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtInsulationThickness.Name = "txtInsulationThickness";
+            this.txtInsulationThickness.Size = new System.Drawing.Size(84, 21);
+            this.txtInsulationThickness.TabIndex = 3;
+            this.txtInsulationThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.Location = new System.Drawing.Point(157, 100);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(17, 12);
+            this.label111.TabIndex = 27;
+            this.label111.Text = "mm";
+            // 
+            // txtMaterialDensity
+            // 
+            this.txtMaterialDensity.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtMaterialDensity.ForeColor = System.Drawing.Color.Blue;
+            this.txtMaterialDensity.Location = new System.Drawing.Point(69, 174);
+            this.txtMaterialDensity.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtMaterialDensity.Name = "txtMaterialDensity";
+            this.txtMaterialDensity.Size = new System.Drawing.Size(84, 21);
+            this.txtMaterialDensity.TabIndex = 6;
+            this.txtMaterialDensity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Location = new System.Drawing.Point(7, 178);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(53, 12);
+            this.label108.TabIndex = 12;
+            this.label108.Text = "物料密度";
+            // 
             // label120
             // 
             this.label120.AutoSize = true;
@@ -1139,15 +1205,6 @@
             this.label96.Size = new System.Drawing.Size(53, 12);
             this.label96.TabIndex = 12;
             this.label96.Text = "绝热体积";
-            // 
-            // label108
-            // 
-            this.label108.AutoSize = true;
-            this.label108.Location = new System.Drawing.Point(7, 178);
-            this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(53, 12);
-            this.label108.TabIndex = 12;
-            this.label108.Text = "物料密度";
             // 
             // label107
             // 
@@ -1226,17 +1283,6 @@
             this.label105.Size = new System.Drawing.Size(53, 12);
             this.label105.TabIndex = 12;
             this.label105.Text = "绝热厚度";
-            // 
-            // txtMaterialDensity
-            // 
-            this.txtMaterialDensity.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtMaterialDensity.ForeColor = System.Drawing.Color.Blue;
-            this.txtMaterialDensity.Location = new System.Drawing.Point(69, 174);
-            this.txtMaterialDensity.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtMaterialDensity.Name = "txtMaterialDensity";
-            this.txtMaterialDensity.Size = new System.Drawing.Size(84, 21);
-            this.txtMaterialDensity.TabIndex = 6;
-            this.txtMaterialDensity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label126
             // 
@@ -1322,17 +1368,6 @@
             this.label116.TabIndex = 27;
             this.label116.Text = "kg/m³";
             // 
-            // txtInsulationThickness
-            // 
-            this.txtInsulationThickness.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtInsulationThickness.ForeColor = System.Drawing.Color.Blue;
-            this.txtInsulationThickness.Location = new System.Drawing.Point(69, 96);
-            this.txtInsulationThickness.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtInsulationThickness.Name = "txtInsulationThickness";
-            this.txtInsulationThickness.Size = new System.Drawing.Size(84, 21);
-            this.txtInsulationThickness.TabIndex = 3;
-            this.txtInsulationThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // txtPipeThickness
             // 
             this.txtPipeThickness.Font = new System.Drawing.Font("宋体", 9F);
@@ -1372,15 +1407,6 @@
             this.label74.Size = new System.Drawing.Size(53, 12);
             this.label74.TabIndex = 12;
             this.label74.Text = "管道材质";
-            // 
-            // label111
-            // 
-            this.label111.AutoSize = true;
-            this.label111.Location = new System.Drawing.Point(157, 100);
-            this.label111.Name = "label111";
-            this.label111.Size = new System.Drawing.Size(17, 12);
-            this.label111.TabIndex = 27;
-            this.label111.Text = "mm";
             // 
             // label71
             // 
@@ -2724,14 +2750,15 @@
             this.cbxEquipmentType.ForeColor = System.Drawing.Color.Blue;
             this.cbxEquipmentType.FormattingEnabled = true;
             this.cbxEquipmentType.Items.AddRange(new object[] {
-            "不产生拉力的设备、卧式容器",
-            "产生拉力的卧式换热器和立式容器",
-            "高耸的塔、容器和振动较大设备"});
+            "不产生拉力的设备",
+            "产生拉力的设备",
+            "振动较大的设备",
+            "高耸的塔、容器"});
             this.cbxEquipmentType.Location = new System.Drawing.Point(89, 55);
             this.cbxEquipmentType.Name = "cbxEquipmentType";
             this.cbxEquipmentType.Size = new System.Drawing.Size(109, 20);
             this.cbxEquipmentType.TabIndex = 20;
-            this.cbxEquipmentType.Text = "不产生拉力的设备、卧式容器";
+            this.cbxEquipmentType.Text = "不产生拉力的设备";
             // 
             // cbxBoltSpec
             // 
@@ -2787,6 +2814,7 @@
             this.txtHoleSize.ReadOnly = true;
             this.txtHoleSize.Size = new System.Drawing.Size(109, 21);
             this.txtHoleSize.TabIndex = 0;
+            this.txtHoleSize.TabStop = false;
             this.txtHoleSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // grpFlowConversion
@@ -2872,30 +2900,6 @@
             this.btnSaveConfig.Text = "编辑配置文件";
             this.btnSaveConfig.UseVisualStyleBackColor = true;
             this.btnSaveConfig.Click += new System.EventHandler(this.btnSaveConfig_Click);
-            // 
-            // rioOnSite
-            // 
-            this.rioOnSite.AutoSize = true;
-            this.rioOnSite.Checked = true;
-            this.rioOnSite.ForeColor = System.Drawing.Color.Blue;
-            this.rioOnSite.Location = new System.Drawing.Point(115, 403);
-            this.rioOnSite.Name = "rioOnSite";
-            this.rioOnSite.Size = new System.Drawing.Size(83, 16);
-            this.rioOnSite.TabIndex = 22;
-            this.rioOnSite.TabStop = true;
-            this.rioOnSite.Text = "装置内管道";
-            this.rioOnSite.UseVisualStyleBackColor = true;
-            // 
-            // rioOutSite
-            // 
-            this.rioOutSite.AutoSize = true;
-            this.rioOutSite.ForeColor = System.Drawing.Color.Blue;
-            this.rioOutSite.Location = new System.Drawing.Point(208, 404);
-            this.rioOutSite.Name = "rioOutSite";
-            this.rioOutSite.Size = new System.Drawing.Size(83, 16);
-            this.rioOutSite.TabIndex = 22;
-            this.rioOutSite.Text = "装置外管道";
-            this.rioOutSite.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
