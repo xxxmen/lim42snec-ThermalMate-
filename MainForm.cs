@@ -551,7 +551,7 @@ namespace ThermalMate
                 txtIsoIndex1.Text = Math.Round(retValue, 3) + string.Empty;
 
             }
-            else if (string.Empty != txtPressure.Text && string.Empty == txtTemperature.Text)
+            else if (string.Empty != txtPressure.Text && (string.Empty == txtTemperature.Text || txtTemperature.Text.Contains("（")))
             {
                 // 沸点
                 Steam.P2T(pressure, ref retValue, ref range);
@@ -591,7 +591,7 @@ namespace ThermalMate
                 Steam.P2KSL(pressure, ref retValue, ref range);
                 txtIsoIndex3.Text = Math.Round(retValue, 3) + string.Empty;
             }
-            else if (string.Empty == txtPressure.Text && string.Empty != txtTemperature.Text)
+            else if (string.Empty == txtPressure.Text && string.Empty != txtPressure.Text && (string.Empty == txtTemperature.Text || txtTemperature.Text.Contains("（")))
             {
                 Steam.T2P(temperature, ref retValue, ref range);
                 txtPressure.Text = string.Format("（{0}）", Math.Round(retValue, 3));
@@ -746,7 +746,6 @@ namespace ThermalMate
 
         private void DistinguishCoalRank(object sender, EventArgs e)
         {
-
             double vdaf, pm;
             double.TryParse(txtVdaf.Text, out vdaf);
             double.TryParse(txtPm.Text, out pm);
