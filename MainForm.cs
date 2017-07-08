@@ -177,6 +177,19 @@ namespace ThermalMate
             }
         }
 
+        private void cbxPipeMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var corrosionAllowance = cbxPipeMaterial.Text.Trim();
+            if (corrosionAllowance.Contains("20#") || corrosionAllowance.Contains("20G")  || corrosionAllowance.Contains("Q235B"))
+            {
+                txtCorrosionAllowance.Text = "1.5";
+            }
+            else if (corrosionAllowance.Contains("304") || corrosionAllowance.Contains("15CrMoG")  || corrosionAllowance.Contains("12Cr1MoVG"))
+            {
+                txtCorrosionAllowance.Text = "0";
+            }
+        }
+
         private void rioCondition_CheckedChanged(object sender, EventArgs e)
         {
             if (rioStandardCondition.Checked)
@@ -326,37 +339,47 @@ namespace ThermalMate
                 return;
             }
 
-            
-            double outDiameter, insulationThickness, pipeThickness, 
-                insulationDensity, materialDensity,designTemperature;
+            double outDiameter, insulationThickness, pipeThickness, insulationDensity, materialDensity, designTemperature, corrosionAllowance;
             double.TryParse(txtInsulationThickness.Text, out insulationThickness);
             double.TryParse(txtPipeThickness.Text, out pipeThickness);
             double.TryParse(txtOutDiameter.Text, out outDiameter);
             double.TryParse(txtInsulationDensity.Text, out insulationDensity);
             double.TryParse(txtMaterialDensity.Text, out materialDensity);
             double.TryParse(txtDesignTemperature.Text, out designTemperature);
-            // 尺寸均已米为单位
-            outDiameter /= 1000; insulationThickness /= 1000; pipeThickness /= 1000;
+            double.TryParse(txtCorrosionAllowance.Text, out corrosionAllowance);
+            // 统一以米为单位
+            outDiameter /= 1000;
+            pipeThickness /= 1000;
+            corrosionAllowance /= 1000; // 腐蚀裕量
+            insulationThickness /= 1000; 
 
+            // 保护层面积
             var jackerArea = 3.14 * (outDiameter + insulationThickness * 2);
+            // 涂漆面积
             var paintArea = 3.14 * outDiameter;
+            // 防烫体积
             var insulationVolume = 3.14 / 4 * (Math.Pow(outDiameter + insulationThickness * 2, 2) - Math.Pow(outDiameter, 2));
-            var factor = 0.02466;
+            // 管道单重
+            var pipeWeight = 0.02466 * 1000000 * pipeThickness * (outDiameter - pipeThickness);
+            // 奥氏体不锈钢考虑1.015系数
             if (cbxPipeMaterial.Text.Contains("304") || cbxPipeMaterial.Text.Contains("316"))
             {
-                factor *= 1.015;
+                pipeWeight *= 1.015;
             }
-            var pipeWeight = factor * 1000000 * pipeThickness * (outDiameter - pipeThickness);
+            // 物料单重
             var materialWeight = materialDensity * 3.14 / 4 * Math.Pow(outDiameter - pipeThickness * 2, 2);
+            // 充水单重
             var waterWeight = 1000 * 3.14 / 4 * Math.Pow(outDiameter - pipeThickness * 2, 2);
+            // 保温单重
             var insulationWeight = insulationVolume * insulationDensity;
+            // 水压试验工况荷重
             var testingLoad = pipeWeight + waterWeight + insulationWeight;
-            var operatingLoad = pipeWeight + insulationWeight + materialWeight;
-            var innerDiameter = outDiameter - 2*pipeThickness;
-           
-            // 截面惯性矩
+            // 操作工况荷重
+            var operatingLoad = pipeWeight + materialWeight + insulationWeight;
+            // 管道截面惯性矩，单位mm4
+            var innerDiameter = outDiameter - 2 * (pipeThickness + corrosionAllowance);
             var moment = 3.14 / 64 * (Math.Pow(outDiameter*1000, 4) - Math.Pow(innerDiameter*1000, 4));
-            // 弹性模量
+            // 弹性模量，单位为MPa
             double modulus = 0;
             if (cbxPipeMaterial.Text.Contains("20"))
             {
@@ -378,26 +401,24 @@ namespace ThermalMate
             {
                 modulus = Utils.LineInterpolationModulus(Utils.Modulus06Cr, designTemperature) * 1000;
             }
-
-            // 管道单位荷载
-            var averageLoad = testingLoad*9.8;
+            // 管道单位荷载，区分是否水压试验
+            var calculatedLoad = testingLoad * 9.8;
             if (!chkWaterTest.Checked)
             {
-                averageLoad = operatingLoad*9.8;
+                calculatedLoad = operatingLoad * 9.8;
             }
-
-            // 计算跨度
-            factor = 0.039;
-            if (rioOutSite.Checked)
+            // 荷载系数，区别装置内、装置外、动力管道
+            var factor = 0.039;
+            if (rioChemicalOnSiteOutSite.Checked)
             {
-                factor = 0.048; // 装置外管道
+                factor = 0.048;
             }
-            else if (cbxPipeMaterial.Text.Contains("12Cr") || cbxPipeMaterial.Text.Contains("15Cr"))
+            else if (rioPowerPipeline.Checked)
             {
-                factor = 0.02093;   // 电力管道执行DLT5054
+                factor = 0.02093;
             }
-
-            var span = factor * Math.Pow(moment * modulus / averageLoad, 0.25);
+            // 计算跨距
+            var span = factor * Math.Pow(moment * modulus / calculatedLoad, 0.25);
 
             txtHorizontalSpan.Text = Math.Round(span, 1) + string.Empty;
             txtJacketArea.Text = Math.Round(jackerArea, 3) + string.Empty;
@@ -531,6 +552,7 @@ namespace ThermalMate
             // 使用IFC97标准
             Steam.SETSTD_WASP(97);
 
+            // 温度压力都给定
             if (string.Empty != txtPressure.Text && string.Empty != txtTemperature.Text &&
                 !txtPressure.Text.Contains("（") && !txtTemperature.Text.Contains("（"))
             {// 过热汽
@@ -551,6 +573,7 @@ namespace ThermalMate
                 txtIsoIndex1.Text = Math.Round(retValue, 3) + string.Empty;
 
             }
+            // 已知压力
             else if (string.Empty != txtPressure.Text && (string.Empty == txtTemperature.Text || txtTemperature.Text.Contains("（")))
             {
                 // 沸点
@@ -591,7 +614,8 @@ namespace ThermalMate
                 Steam.P2KSL(pressure, ref retValue, ref range);
                 txtIsoIndex3.Text = Math.Round(retValue, 3) + string.Empty;
             }
-            else if (string.Empty == txtPressure.Text && string.Empty != txtPressure.Text && (string.Empty == txtTemperature.Text || txtTemperature.Text.Contains("（")))
+            // 已知温度
+            else if (string.Empty != txtTemperature.Text && (string.Empty == txtPressure.Text || txtPressure.Text.Contains("（")))
             {
                 Steam.T2P(temperature, ref retValue, ref range);
                 txtPressure.Text = string.Format("（{0}）", Math.Round(retValue, 3));
@@ -604,6 +628,8 @@ namespace ThermalMate
 
                 Steam.T2HG(temperature, ref retValue, ref range);
                 txtEnthalpy2.Text = Math.Round(retValue, 2) + string.Empty;
+                var totalEnthalpy2 = Math.Round(retValue, 2) * massFlow * 1000;
+                txtTotalEnthalpy2.Text = totalEnthalpy2 + string.Empty;
 
                 Steam.T2ETAG(temperature, ref retValue, ref range);
                 txtViscosity2.Text = Math.Round(retValue * 1000, 3) + string.Empty;
@@ -619,6 +645,8 @@ namespace ThermalMate
 
                 Steam.T2HL(temperature, ref retValue, ref range);
                 txtEnthalpy3.Text = Math.Round(retValue, 2) + string.Empty;
+                var totalEnthalpy3 = Math.Round(retValue, 2) * massFlow * 1000;
+                txtTotalEnthalpy3.Text = totalEnthalpy3 + string.Empty;
 
                 Steam.T2ETAL(temperature, ref retValue, ref range);
                 txtViscosity3.Text = Math.Round(retValue * 1000, 3) + string.Empty;
