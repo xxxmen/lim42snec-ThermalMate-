@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using ThermalMate.Classes;
 
 namespace ThermalMate
 {
@@ -383,23 +384,23 @@ namespace ThermalMate
             double modulus = 0;
             if (cbxPipeMaterial.Text.Contains("20"))
             {
-                modulus = Utils.LineInterpolationModulus(Utils.Modulus20, designTemperature) * 1000;
+                modulus = LinearInterpolation.Interpolate(ElasticModulus.CS20, designTemperature) * 1000;
             }
             else if (cbxPipeMaterial.Text.Contains("12Cr"))
             {
-                modulus = Utils.LineInterpolationModulus(Utils.Modulus12Cr, designTemperature) * 1000;
+                modulus = LinearInterpolation.Interpolate(ElasticModulus.AS12Cr1MoVG, designTemperature) * 1000;
             }
             else if (cbxPipeMaterial.Text.Contains("15Cr"))
             {
-                modulus = Utils.LineInterpolationModulus(Utils.Modulus15Cr, designTemperature) * 1000;
+                modulus = LinearInterpolation.Interpolate(ElasticModulus.AS15CrMoG, designTemperature) * 1000;
             }
             else if (cbxPipeMaterial.Text.Contains("235"))
             {
-                modulus = Utils.LineInterpolationModulus(Utils.Modulus235, designTemperature) * 1000;
+                modulus = LinearInterpolation.Interpolate(ElasticModulus.CSQ235, designTemperature) * 1000;
             }
             else if (cbxPipeMaterial.Text.Contains("06Cr"))
             {
-                modulus = Utils.LineInterpolationModulus(Utils.Modulus06Cr, designTemperature) * 1000;
+                modulus = LinearInterpolation.Interpolate(ElasticModulus.SS06Cr19Ni10, designTemperature) * 1000;
             }
             // 管道单位荷载，区分是否水压试验
             var calculatedLoad = testingLoad * 9.8;
@@ -550,26 +551,26 @@ namespace ThermalMate
             double.TryParse(txtTemperature.Text, out temperature);
 
             // 使用IFC97标准
-            Steam.SETSTD_WASP(97);
+            UEwasp.SETSTD_WASP(97);
 
             // 温度压力都给定
             if (string.Empty != txtPressure.Text && string.Empty != txtTemperature.Text &&
                 !txtPressure.Text.Contains("（") && !txtTemperature.Text.Contains("（"))
             {// 过热汽
-                Steam.PT2V(pressure, temperature, ref retValue, ref range);
+                UEwasp.PT2V(pressure, temperature, ref retValue, ref range);
                 var volumeFlow = massFlow * 1000 * retValue;
                 txtVolumeFlow1.Text = Math.Round(volumeFlow, 1) + string.Empty;
                 txtDensity1.Text = Math.Round(1 / retValue, 3) + string.Empty;
 
-                Steam.PT2H(pressure, temperature, ref retValue, ref range);
+                UEwasp.PT2H(pressure, temperature, ref retValue, ref range);
                 txtEnthalpy1.Text = Math.Round(retValue, 2) + string.Empty;
                 var totalEnthalpy1 = Math.Round(retValue, 2) * massFlow * 1000;
                 txtTotalEnthalpy1.Text = totalEnthalpy1 + string.Empty;
 
-                Steam.PT2ETA(pressure, temperature, ref retValue, ref range);
+                UEwasp.PT2ETA(pressure, temperature, ref retValue, ref range);
                 txtViscosity1.Text = Math.Round(retValue * 1000, 3) + string.Empty;
 
-                Steam.PT2KS(pressure, temperature, ref retValue, ref range);
+                UEwasp.PT2KS(pressure, temperature, ref retValue, ref range);
                 txtIsoIndex1.Text = Math.Round(retValue, 3) + string.Empty;
 
             }
@@ -577,81 +578,81 @@ namespace ThermalMate
             else if (string.Empty != txtPressure.Text && (string.Empty == txtTemperature.Text || txtTemperature.Text.Contains("（")))
             {
                 // 沸点
-                Steam.P2T(pressure, ref retValue, ref range);
+                UEwasp.P2T(pressure, ref retValue, ref range);
                 txtTemperature.Text = string.Format("（{0}）", Math.Round(retValue, 1));
 
                 // 饱和汽
-                Steam.P2VG(pressure, ref retValue, ref range);
+                UEwasp.P2VG(pressure, ref retValue, ref range);
                 var volumeFlow = massFlow * 1000 * retValue;
                 txtVolumeFlow2.Text = Math.Round(volumeFlow, 1) + string.Empty;
                 txtDensity2.Text = Math.Round(1 / retValue, 3) + string.Empty;
 
-                Steam.P2HG(pressure, ref retValue, ref range);
+                UEwasp.P2HG(pressure, ref retValue, ref range);
                 txtEnthalpy2.Text = Math.Round(retValue, 2) + string.Empty;
                 var totalEnthalpy2 = Math.Round(retValue, 2) * massFlow * 1000;
                 txtTotalEnthalpy2.Text = totalEnthalpy2 + string.Empty;
 
-                Steam.P2ETAG(pressure, ref retValue, ref range);
+                UEwasp.P2ETAG(pressure, ref retValue, ref range);
                 txtViscosity2.Text = Math.Round(retValue * 1000, 3) + string.Empty;
 
-                Steam.P2KSG(pressure, ref retValue, ref range);
+                UEwasp.P2KSG(pressure, ref retValue, ref range);
                 txtIsoIndex2.Text = Math.Round(retValue, 3) + string.Empty;
 
                 // 饱和水
-                Steam.P2VL(pressure, ref retValue, ref range);
+                UEwasp.P2VL(pressure, ref retValue, ref range);
                 volumeFlow = massFlow * 1000 * retValue;
                 txtVolumeFlow3.Text = Math.Round(volumeFlow, 1) + string.Empty;
                 txtDensity3.Text = Math.Round(1 / retValue, 3) + string.Empty;
 
-                Steam.P2HL(pressure, ref retValue, ref range);
+                UEwasp.P2HL(pressure, ref retValue, ref range);
                 txtEnthalpy3.Text = Math.Round(retValue, 2) + string.Empty;
                 var totalEnthalpy3 = Math.Round(retValue, 2) * massFlow * 1000;
                 txtTotalEnthalpy3.Text = totalEnthalpy3 + string.Empty;
 
-                Steam.P2ETAL(pressure, ref retValue, ref range);
+                UEwasp.P2ETAL(pressure, ref retValue, ref range);
                 txtViscosity3.Text = Math.Round(retValue * 1000, 3) + string.Empty;
 
-                Steam.P2KSL(pressure, ref retValue, ref range);
+                UEwasp.P2KSL(pressure, ref retValue, ref range);
                 txtIsoIndex3.Text = Math.Round(retValue, 3) + string.Empty;
             }
             // 已知温度
             else if (string.Empty != txtTemperature.Text && (string.Empty == txtPressure.Text || txtPressure.Text.Contains("（")))
             {
-                Steam.T2P(temperature, ref retValue, ref range);
+                UEwasp.T2P(temperature, ref retValue, ref range);
                 txtPressure.Text = string.Format("（{0}）", Math.Round(retValue, 3));
 
                 // 饱和汽
-                Steam.T2VG(temperature, ref retValue, ref range);
+                UEwasp.T2VG(temperature, ref retValue, ref range);
                 var volumeFlow = massFlow * 1000 * retValue;
                 txtVolumeFlow2.Text = Math.Round(volumeFlow, 1) + string.Empty;
                 txtDensity2.Text = Math.Round(1 / retValue, 3) + string.Empty;
 
-                Steam.T2HG(temperature, ref retValue, ref range);
+                UEwasp.T2HG(temperature, ref retValue, ref range);
                 txtEnthalpy2.Text = Math.Round(retValue, 2) + string.Empty;
                 var totalEnthalpy2 = Math.Round(retValue, 2) * massFlow * 1000;
                 txtTotalEnthalpy2.Text = totalEnthalpy2 + string.Empty;
 
-                Steam.T2ETAG(temperature, ref retValue, ref range);
+                UEwasp.T2ETAG(temperature, ref retValue, ref range);
                 txtViscosity2.Text = Math.Round(retValue * 1000, 3) + string.Empty;
 
-                Steam.T2KSG(temperature, ref retValue, ref range);
+                UEwasp.T2KSG(temperature, ref retValue, ref range);
                 txtIsoIndex2.Text = Math.Round(retValue, 3) + string.Empty;
 
                 // 饱和水
-                Steam.T2VL(temperature, ref retValue, ref range);
+                UEwasp.T2VL(temperature, ref retValue, ref range);
                 volumeFlow = massFlow * 1000 * retValue;
                 txtVolumeFlow3.Text = Math.Round(volumeFlow, 1) + string.Empty;
                 txtDensity3.Text = Math.Round(1 / retValue, 3) + string.Empty;
 
-                Steam.T2HL(temperature, ref retValue, ref range);
+                UEwasp.T2HL(temperature, ref retValue, ref range);
                 txtEnthalpy3.Text = Math.Round(retValue, 2) + string.Empty;
                 var totalEnthalpy3 = Math.Round(retValue, 2) * massFlow * 1000;
                 txtTotalEnthalpy3.Text = totalEnthalpy3 + string.Empty;
 
-                Steam.T2ETAL(temperature, ref retValue, ref range);
+                UEwasp.T2ETAL(temperature, ref retValue, ref range);
                 txtViscosity3.Text = Math.Round(retValue * 1000, 3) + string.Empty;
 
-                Steam.T2KSL(temperature, ref retValue, ref range);
+                UEwasp.T2KSL(temperature, ref retValue, ref range);
                 txtIsoIndex3.Text = Math.Round(retValue, 3) + string.Empty;
             }
         }

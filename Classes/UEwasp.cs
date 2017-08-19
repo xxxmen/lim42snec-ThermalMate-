@@ -1,10 +1,9 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace ThermalMate
+namespace ThermalMate.Classes
 {
-    static class Steam
+    static class UEwasp
     {
-        // UEwasp导出函数声明
         [DllImport("UEwasp.dll", CallingConvention = CallingConvention.StdCall)]
         public extern static void SETSTD_WASP(int stdid);
 

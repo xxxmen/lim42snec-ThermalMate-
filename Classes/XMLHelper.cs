@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace ThermalMate
+namespace ThermalMate.Classes
 {
     internal class XmlHelper
     {
